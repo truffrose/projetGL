@@ -1,0 +1,365 @@
+/*  CSS Ecran principal  */
+#account_box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 750px;
+}
+#account_box > #main_box {
+  position: absolute;
+  top: 59px;
+  left: 14px;
+  padding-left: 23px;
+  width: 657px;
+  height: 390px;
+  background-color: #F8F8F8;
+  border: 1px;
+  border-color: #D4D4D4;
+  border-style: solid;
+  border-radius: 12px 12px 12px 12px;
+  padding-top: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+}
+#account_box > #email_label {
+  position: absolute;
+  top: 219px;
+  left: 54px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #tel_label {
+  position: absolute;
+  top: 181px;
+  left: 54px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #adress_label {
+  position: absolute;
+  top: 148px;
+  left: 53px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #title_account {
+  position: absolute;
+  top: 67px;
+  left: 30px;
+  width: 143px;
+  height: 39px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#account_box > #adress_field {
+  position: absolute;
+  top: 143px;
+  left: 217px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#account_box > #tel_field {
+  position: absolute;
+  top: 179px;
+  left: 217px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#account_box > #email_field {
+  position: absolute;
+  top: 214px;
+  left: 217px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#account_box > #password_label {
+  position: absolute;
+  top: 105px;
+  left: 52px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #password_field {
+  position: absolute;
+  top: 100px;
+  left: 217px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#account_box > #title_settings {
+  position: absolute;
+  top: 257px;
+  left: 30px;
+  width: 143px;
+  height: 39px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#account_box > #group_setting_one {
+  position: absolute;
+  top: 303px;
+  left: 54px;
+  width: 247px;
+  height: 21px;
+}
+#account_box > #group_setting_one > #label_setting_one {
+  position: absolute;
+  top: 5.5px;
+  left: 23px;
+  width: 230px;
+  height: 21px;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #group_setting_one > #checkbox_setting_one {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+  cursor: pointer;
+}
+#account_box #group_setting_two {
+  position: absolute;
+  top: 333px;
+  left: 54px;
+  width: 432px;
+  height: 21px;
+}
+#account_box > #group_setting_two > #label_setting_two {
+  position: absolute;
+  top: 5.5px;
+  left: 23px;
+  width: 420px;
+  height: 21px;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #group_setting_two > #checkbox_setting_two {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+  cursor: pointer;
+}
+#account_box > #group_default_user_type {
+  position: absolute;
+  top: 365px;
+  left: 54px;
+  width: 239px;
+  height: 29px;
+}
+#account_box > #group_default_user_type > #select_default_user_type {
+  position: absolute;
+  top: 5px;
+  left: 163px;
+  padding-left: 8px;
+  width: 190px;
+  height: 25px;
+  text-align: left;
+  font-family: Arial;
+  font-size: 11.0pt;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+#account_box > #group_default_user_type > #label_default_user_type {
+  position: absolute;
+  top: 9px;
+  left: 3px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#account_box > #btn_cancel {
+  position: absolute;
+  top: 421px;
+  left: 514px;
+  width: 70px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#account_box > #btn_save {
+  position: absolute;
+  top: 421px;
+  left: 599px;
+  width: 83px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+
+/*  CSS Barre de menu  */
+#account_box > #menu_box {
+  position: absolute;
+  top: 6px;
+  left: 14px;
+  width: 688px;
+  height: 42px;
+}
+#account_box > #menu_box > #menu_select_user {
+  position: absolute;
+  top: 9px;
+  left: 511px;
+  padding-left: 8px;
+  width: 165px;
+  height: 25px;
+  text-align: left;
+  font-family: Arial;
+  font-size: 11.0pt;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+
+/* Principal */
+#account_box > #menu_box > #menu{
+  position: absolute;
+  padding-left: 0px;
+  width: 686px;
+  height: 40px;
+  margin: 0;
+  list-style: none;
+  background-color: #F8F8F8;
+  border: 1px;
+  border-color: #D4D4D4;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#menu li{
+  float: left;
+  padding: 0 0 10px 0;
+  position: relative;
+}
+
+#menu a{
+  float: left;
+  width: 70px;
+  height: 30px;
+  padding: 5px 3px;
+  color: #777777;
+  font-size: 10.0pt;
+  font-family: Arial;
+  text-decoration: none;
+ 
+  border: 0px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #D4D4D4;
+}
+
+#menu li:hover > a{
+  background-color: #E7E7E7;
+  color: #555555;
+}
+
+#menu li.selected > a{
+  background-color: #E7E7E7;
+  color: #555555;
+}
+
+#menu li:hover > ul{
+  display: block;
+}
+
+/* Sous-menu */
+
+#menu ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  z-index: 99999;
+  background-color: #F8F8F8;
+  border: 1px;
+  border-color: #D4D4D4;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+#menu ul li{
+  float: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#menu ul a{
+  padding: 10px;
+  height: auto;
+  line-height: 1;
+  display: block;
+  white-space: nowrap;
+  float: none;
+  text-transform: none;
+  width: 100px;
+  border: 0px;
+}
+
+#menu ul a:hover{
+  background-color: #E7E7E7;
+}
+
+#menu ul li:first-child a{
+  border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:last-child a{
+  border-radius: 0 0 5px 5px;
+}

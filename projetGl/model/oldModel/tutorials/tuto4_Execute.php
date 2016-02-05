@@ -1,0 +1,6 @@
+<h2><a href="#">Executing pseudo code</a></h2>
+They are different way to have some pseudo-code. The first one is to use the <strong>graphic interface</strong> on the left to generate pseudo-code. The other solution is to <strong>import</strong> code from python.<br />
+After that the user can <strong>execute the code</strong>. The execution is when the system <strong>run</strong> the instruction (line of code) <strong>one by one</strong> and show to the users the evolution of the varibles.<br />
+The users need to click on "execute pseudo code" on the right. After that a new windows is open and the users can see <strong>two panels</strong>. On the right it's the pseudo code with in <strong>red</strong> the current who are execute. On the left it's the list of the variables with the <strong>last one</strong> who are changed. We can also see the <strong>type</strong> of the variables. A variable is <strong>undefined</strong> until is not have any affectation.
+<img src="./view/img/exec.jpg" width="75%"/>
+We can see three buttons use to <strong>start</strong> the execution. The line will be the first one. And after the <strong>previous</strong> and <strong>next</strong> use to navigate in the pseudo code line. You just <strong>click to execute</strong> the next line of code.

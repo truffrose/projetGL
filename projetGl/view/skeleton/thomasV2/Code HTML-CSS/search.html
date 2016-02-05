@@ -1,0 +1,116 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="./search.css" />
+  <link type="text/css" rel="stylesheet" href="./menu.css"/>
+  <script type="text/javascript" src="search.js"></script>
+  <body>
+    <div class="search_page">
+       <div id="search_box">
+       
+          <div id="menu_box">
+            <ul id="menu">
+              <li class="single_line"><a href="">Actualite</a></li>
+              <li><a href="">Tableau de bord</a></li>
+              <li class="single_line">
+                <a href="">Listes</a>
+                <ul>
+                  <li><a href="">Projets</a></li>
+                  <li><a href="">Clients</a></li>
+                  <li><a href="">Collaborateurs</a></li>
+                </ul>
+              </li>
+              <li class="single_line selected"><a href="">Recherche</a></li>
+              <li><a href="">Mon Compte</a></li>
+              <li class="single_line"><a href="">Quitter</a></li>
+            </ul>            
+            <select id="menu_select_user">
+              <option>Collaborateur</option>
+              <option selected="selected">Responsable Projet</option>
+              <option>Administrateur</option>
+            </select>
+          </div>
+
+          <div id="main_box"></div>
+
+          <div id="title">Recherche</div>
+          <div id="search_type_label">Rechercher :</div>
+          <select id="search_type_select" onChange="changeFilters()">
+            <option selected="selected">Projet</option>
+            <option>Client</option>
+            <option>Contact</option>
+            <option>Collaborateur</option>
+          </select>
+          <div id="project_filters">
+            <div id="label_project_filter_name">Nom :</div>
+            <input id="field_project_filter_name" type="text"  value="Azur" maxlength="20"/>
+            <div id="label_project_filter_client">Client :</div>
+            <select id="project_filter_client_select">
+              <option selected="selected">Tous les clients</option>
+              <option>Altec</option>
+              <option>Thales</option>
+            </select>
+            <div id="label_project_filter_respo_select">Responsable :</div>
+            <select id="project_filter_respo_select" >
+              <option>Tous les responsables</option>
+              <option selected="selected" >Cyril Roussot</option>
+            </select>
+            <div id="group_project_filter_state">
+              <input id="checkbox_filter_state_ongoing" type="checkbox" checked="checked"/>
+              <div id="label_filter_state_ongoing">En Cours</div>
+              <input id="checkbox_filter_state_finished" type="checkbox"/>
+              <div id="label_filter_state_finished">Termines</div>
+              <input id="checkbox_filter_state_archived" type="checkbox"/>
+              <div id="label_filter_state_archived">Archives</div>
+            </div>
+          </div>
+          <div id="client_filters">
+            <div id="label_client_filter_name">Nom :</div>
+            <input id="field_client_filter_name" type="text"  value="" maxlength="20"/>
+            <div id="label_client_filter_address">Adresse :</div>
+            <input id="field_client_filter_address" type="text"  value="" maxlength="40"/>
+            <div id="label_client_filter_project_select">Projet :</div>
+            <select id="client_filter_project_select" >
+              <option selected="selected">Tous les projets</option>
+              <option>Projet Azure</option>
+              <option>Spartacus</option>
+            </select>
+          </div>
+          <div id="contact_filters">
+            <div id="label_contact_filter_name">Nom :</div>
+            <input id="field_contact_filter_name" type="text"  value="" maxlength="20"/>
+            <div id="label_contact_filter_firstname">Prenom :</div>
+            <input id="field_contact_filter_firstname" type="text"  value="" maxlength="20"/>
+            <div id="label_contact_filter_tel">Telephone :</div>
+            <input id="field_contact_filter_tel" type="text"  value="" maxlength="15"/>
+            <div id="label_contact_filter_client_select">Client :</div>
+            <select id="contact_filter_client_select" >
+              <option selected="selected">Tous les clients</option>
+              <option>Altec</option>
+              <option>Thales</option>
+            </select>
+          </div>
+          <div id="collabo_filters">
+            <div id="label_collabo_filter_name">Nom :</div>
+            <input id="field_collabo_filter_name" type="text"  value="" maxlength="20"/>
+            <div id="label_collabo_filter_firstname">Prenom :</div>
+            <input id="field_collabo_filter_firstname" type="text"  value="" maxlength="20"/>
+            <div id="label_collabo_filter_tel">Telephone :</div>
+            <input id="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
+            <div id="label_collabo_filter_project_select">Projet :</div>
+            <select id="collabo_filter_project_select" >
+              <option selected="selected">Tous les projets</option>
+              <option>Projet Azure</option>
+              <option>Spartacus</option>
+            </select>
+          </div>
+          <input id="btn_search" type="button" value="Rechercher"/>
+
+          <div id="results_box"></div>
+
+          <div id="title_results">Resultat</div>
+          <div id="results">
+            <a href="">Projet Azure</a>
+            <br>
+        </div>  
+      </div>
+  </body>
+</html>
