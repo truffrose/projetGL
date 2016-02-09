@@ -1,0 +1,70 @@
+<html>
+  <link type="text/css" rel="stylesheet" href="./contact_edit.css"/>
+  <link type="text/css" rel="stylesheet" href="./menu.css"/>
+  <body>
+    <div class="contact_page">
+         <div id="contact_box">
+         
+          <div id="menu_box">
+            <ul id="menu">
+              <li class="single_line"><a href="">Actualite</a></li>
+              <li><a href="">Tableau de bord</a></li>
+              <li class="single_line selected">
+                <a href="">Listes</a>
+                <ul>
+                  <li><a href="">Projets</a></li>
+                  <li><a href="">Clients</a></li>
+                  <li><a href="">Collaborateurs</a></li>
+                </ul>
+              </li>
+              <li class="single_line"><a href="">Recherche</a></li>
+              <li><a href="">Mon Compte</a></li>
+              <li class="single_line"><a href="">Quitter</a></li>
+            </ul>            
+            <select id="menu_select_user">
+              <option>Collaborateur</option>
+              <option selected="selected">Responsable Projet</option>
+              <option>Administrateur</option>
+            </select>
+          </div>
+
+          <div id="main_box"></div>
+
+          <div id="main_box_title">Edition de Contact</div>
+          <div id="contact_company">Societe : </div>
+         <select id="contact_company_select">
+            <option selected="selected">Altec</option>
+            <option>Thales</option>
+          </select>
+          <div id="contact_name">Nom : </div>
+          <input id="contact_name_field" type="text" value="Florian Castelain"/>
+          <div id="contact_address">Adresse : </div>
+          <input id="contact_address_field" type="text" value="2 avenue de Paris, 74000 Annecy"/>
+          <div id="contact_tel">Telephone : </div>
+          <input id="contact_tel_field" type="text" value="0156324895"/>
+          <div id="contact_email">Email : </div>
+          <input id="contact_email_field" type="text" value="florian.castelain@altec.com"/>
+
+          <input id="cancel_btn" type="button" value="Annuler"/>
+          <input id="save_btn" type="button" value="Sauvegarder"/>
+
+          <div id="contacts_list_box"></div>
+
+          <input id="search_field" type="text" value="Rechercher"/>
+
+          <div id="contacts_list_title">Altec</div>
+
+          <input id="new_contact_btn" type="button" value="Nouveau Contact"/>
+
+          <div id="contacts_list">
+            <ul class="href_list">
+              <li><a href="">Florian Castelain</a></li>
+              <li><a href="">Albert Duchamps</a></li>
+              <li><a href="">Thomas Djian</a></li>
+            </ul>
+          </div> 
+ 
+        </div>  
+    </div>
+  </body>
+</html>
