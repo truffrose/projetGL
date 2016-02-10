@@ -89,7 +89,6 @@ CREATE TABLE projetGL_uniteTemps (
 CREATE TABLE projetGL_client (
 	id int NOT NULL AUTO_INCREMENT,
 	nom VARCHAR(255) NOT NULL,
-	prenom VARCHAR(255) NOT NULL,
 	adresse TEXT NOT NULL,
 	etat int NOT NULL,
 	PRIMARY KEY (id),
@@ -115,8 +114,8 @@ CREATE TABLE projetGL_contact (
 	id int NOT NULL AUTO_INCREMENT,
 	client int NOT NULL,
 	personne int NOT NULL,
-	PRIMARY KEY (id),
 	etat int NOT NULL,
+	PRIMARY KEY (id),
 	CONSTRAINT fk_contact_client FOREIGN KEY(client) REFERENCES projetGL_client(id),
 	CONSTRAINT fk_contact_personne FOREIGN KEY(personne) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_contact_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
@@ -178,8 +177,13 @@ INSERT INTO projetGL_etat(nom) VALUES ('actif');
 INSERT INTO projetGL_etat(nom) VALUES ('delete');
 
 /* add fake personne */
+    /* utilisateur du system */
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('admin', 'admin', 'admin', '0000000000', 'admin@gmail.com');
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '2 verel dessous', '0642644490', 'truffrose@gmail.com');
+    /* contact du system */
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '2 avenue de paris, 74000 Annecy', '0156324895', 'florian.castelain@altec.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('duchamps', 'albert', '16 rue de france, 94000 Creteil', '0125698745', 'albert@altec.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('djian', 'thomas', '3 impasse des inconue, 14000 Perdu', '0123458965', 'thomas@gmail.com');
 
 /* add value use to test the data base */
 INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('admin@gmail.com', md5('admin'), 1, 1);
@@ -192,4 +196,12 @@ INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('truffrose@gmai
 	INSERT INTO projetGL_personne_role(personne, role) VALUES (1, 1);
 	INSERT INTO projetGL_personne_role(personne, role) VALUES (2, 4);
 	INSERT INTO projetGL_personne_role(personne, role) VALUES (2, 3);
-	
+
+/* ajout de client à la base */
+INSERT INTO projetGL_client(nom, adresse, etat) VALUES("altec", "7 rue de france, 94000 Créteil", 1);
+INSERT INTO projetGL_client(nom, adresse, etat) VALUES("thales", "25 route des champs, 91000 Cachan", 1);
+
+/* ajout des information pour créer des contact */
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 3, 1);
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 4, 1);
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 5, 1);

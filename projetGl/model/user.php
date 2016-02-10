@@ -28,7 +28,7 @@
 			$args = func_get_args();
 			switch($ctp) {
 				case 4:
-					$this->constructor3Args($args[0],$args[1],$args[2],$args[3]);
+					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
@@ -39,7 +39,7 @@
 		}
 
 		// the constrcutor
-		private function constructor3Args($id, $mail, $password, $personne) {
+		private function constructor4Args($id, $mail, $password, $personne) {
 			$this->_id = $id;
 			$this->_mail = $mail;
 			$this->_password = $password;
@@ -104,6 +104,7 @@
 			//permet la deconnection du system
 			function logout() {
 				unset($_SESSION["user"]);
+				session_destroy();
 			}
 			
 			

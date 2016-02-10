@@ -10,6 +10,24 @@
 		private $_mail;
 		private $_telephone;
 		
+		// les getters et les setters de personne
+		public function getId() {
+			return $this->_id;
+		}
+		public function getNom() {
+			return $this->_nom;
+		}
+		public function getPrenom() {
+			return $this->_prenom;
+		}
+		public function getMail() {
+			return $this->_mail;
+		}
+		public function getTelephone() {
+			return $this->_telephone;
+		}
+		
+		
 		// manager of the constructor
 		public function __construct() {
 			$ctp = func_num_args();

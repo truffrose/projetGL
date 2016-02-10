@@ -30,7 +30,7 @@
   font-size: 28.0pt;
   font-family: Arial,Arial;
 }
-#login_Box > #login {
+#login_Box > form > #login {
   position: absolute;
   margin-top: 16%;
   margin-left: 12%;
@@ -42,7 +42,7 @@
   border-style: solid;
   cursor: text;
 }
-#login_Box > #password {
+#login_Box > form > #password {
   position: absolute;
   margin-top: 23%;
   margin-left: 12%;
@@ -54,7 +54,7 @@
   border-style: solid;
   cursor: text;
 }
-#login_Box > #btn_connect {
+#login_Box > form > #btn_connect {
   position: absolute;
   margin-top: 30%;
   margin-left: 12%;
