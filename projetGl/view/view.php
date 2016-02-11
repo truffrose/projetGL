@@ -14,10 +14,7 @@
 					$_SESSION["user"]->logout();
 					break;
 				case $CURSOR_contactView:
-					/*
-						$idClient = $_SESSION["client"];
-					*/
-					$idClient = 1;
+					$idClient = $_SESSION["client"];
 					if (isset($_SESSION["contact"])) {
 						$idContact = $_SESSION["contact"];
 					}
@@ -28,13 +25,26 @@
 					$listeContact = $selectClient->getContact();
 					require_once($path . "html/contact.php");
 					break;
-				// use as default page
-				default:
-					$idClient = 1;
-					$idContact = 1;
+				case $CURSOR_clientView:
+					if (isset($_SESSION["client"])) {
+						$idClient = $_SESSION["client"];
+					}
+					else {
+						$idClient = -1;
+					}
 					$selectClient = new Client($idClient);
 					$listeContact = $selectClient->getContact();
-					require_once($path . "html/contact.php");
+					$listeProjet = $selectClient->getProjet();
+					$listeClient = getListActiveClient();
+					require_once($path . "html/client.php");
+					break;
+				case $CURSOR_compteView:
+					$personneAccount = getPersonneById($_SESSION["user"]->getId());
+					require_once($path . "html/account.php");
+				// use as default page
+				default:
+					$personneAccount = getPersonneById($_SESSION["user"]->getId());
+					require_once($path . "html/account.php");
 			}
 		}
 		else {

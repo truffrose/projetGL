@@ -88,6 +88,28 @@
 					return null;
 				}
 			}
+			// retourne la liste des projets via un client
+			function getProjet() {
+				if (isConnectMySql()) {
+					$sql = 'select p.id, p.nom, p.description, u.typeUnite, p.avancement from projetGL_projet p join projetGL_uniteTemps u on u.id = p.uniteTemps where etat = 1 and client = ' . sanitize_string($this->_id) . ';';
+                    $result = $_SESSION["link"]->query($sql);
+					if ($result->num_rows == 0){
+						return null;
+					}
+					else {
+						$i = 0;
+                        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+							$retVal[$i] = new Projet($row["id"], $row["nom"], $row["description"], $row["typeUnite"], $row["avancement"], $this->_id);
+                            $i++;
+                        }
+                        return $retVal;
+					}
+				}
+				else {
+					return null;
+				}
+			}
+			
             // supprime un client de la base de donnée (passe en inactif)
             
             // modifie un client de la base de donnée

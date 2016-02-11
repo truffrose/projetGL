@@ -21,6 +21,7 @@
 		require_once("./model/personne.php");
 		require_once("./model/user.php");
 		require_once("./model/userParameters.php");
+		require_once("./model/projet.php");
 		require_once("./model/client.php");
 		require_once("./model/contact.php");
 		require_once("./model/systemData.php");

@@ -17,6 +17,7 @@
 		$ACTION_logIn = 1;
 		$ACTION_logOut = 2;
 		$ACTION_contactView = 3;
+		$ACTION_clientView = 4;
 	
 		// getting the action
 		function getCurrentAction() {
@@ -56,6 +57,8 @@
 		// la liste de navigation possible
 		$CURSOR_home = 0;
 		$CURSOR_contactView = 1;
+		$CURSOR_clientView = 2;
+		$CURSOR_compteView = 3;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

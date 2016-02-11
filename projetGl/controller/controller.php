@@ -29,10 +29,13 @@
 				}
 				break;
 			case $ACTION_contactView:
-				// a enlever plus tard (utilise pour le debug) /!\
-				$_SESSION["client"] = 1;
 				if (isContactActif($_GET["contact"], $_SESSION["client"])) {
 					$_SESSION["contact"] = $_GET["contact"];
+				}
+				break;
+			case $ACTION_clientView:
+				if (isset($_GET["client"])) {
+					$_SESSION["client"] = $_GET["client"];
 				}
 				break;
 			default:

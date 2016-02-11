@@ -205,3 +205,10 @@ INSERT INTO projetGL_client(nom, adresse, etat) VALUES("thales", "25 route des c
 INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 3, 1);
 INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 4, 1);
 INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 5, 1);
+
+/* ajout des projets */
+    /* 2 projet altec */
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("azure", "projet asure du client altec", 1, 12, 1, 1);
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("projetGL", "projet pour la GL", 2, 30, 1, 1);
+    /* 1 projet thales */
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("deleteProjet", "supprimer de la base (du moins pas actif)", 1, 85, 2, 2);

@@ -14,12 +14,19 @@
 		function getId() {
 			return $this->_id;
 		}
+		function getPassword() {
+			return $this->_password;
+		}
 		function setParameters($param) {
 			$this->_parameters = $param;
 		}
 		function getParameters() {
 			return $this->_parameters;
 		}
+		function getPersonne() {
+			return $this->_personne;
+		}
+		
 		
 
 		// manager of the constructor
@@ -58,14 +65,14 @@
 			// permet de ce connecter au systeme
 			function login() {
 				if (isConnectMySql()) {
-					$sql = 'select id, mail, password, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\');';
+					$sql = 'select id, mail, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\');';
 					$result = $_SESSION["link"]->query($sql);
 					if ($result->num_rows == 0){
 						return false;
 					}
 					else {
 						$row = $result->fetch_array(MYSQLI_ASSOC);
-						$user = new User($row["id"], $row["mail"], $row["password"], $row["personne"]);
+						$user = new User($row["id"], $row["mail"], $this->_password, $row["personne"]);
 						$_SESSION["user"] = $user;
 						// load the paremeter of the account
 						$param = new UserParameters();
