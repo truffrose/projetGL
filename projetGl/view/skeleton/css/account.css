@@ -6,9 +6,33 @@
   margin-top: 1%;
   width: 750px;
 }
+#account_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#account_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
 #account_box > #main_box {
-  position: absolute;
-  top: 59px;
+  position: relative;
+  top: 56px;
   left: 14px;
   padding-left: 23px;
   width: 657px;
@@ -22,91 +46,28 @@
   padding-right: 6px;
   padding-bottom: 6px;
 }
-#account_box > #email_label {
+#title_account {
   position: absolute;
-  top: 219px;
-  left: 54px;
-  width: auto;
-  height: auto;
-  font-size: 11.0pt;
-  font-family: Arial;
-}
-#account_box > #tel_label {
-  position: absolute;
-  top: 181px;
-  left: 54px;
-  width: auto;
-  height: auto;
-  font-size: 11.0pt;
-  font-family: Arial;
-}
-#account_box > #adress_label {
-  position: absolute;
-  top: 148px;
-  left: 53px;
-  width: auto;
-  height: auto;
-  font-size: 11.0pt;
-  font-family: Arial;
-}
-#account_box > #title_account {
-  position: absolute;
-  top: 67px;
-  left: 30px;
+  top: 8px;
+  left: 15px;
   width: 143px;
   height: 39px;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#account_box > #adress_field {
+#password_label {
   position: absolute;
-  top: 143px;
-  left: 217px;
-  width: 237px;
-  height: 25px;
-  border: 1px;
-  border-color: #C8C8C8;
-  border-style: solid;
-  padding-left: 2px;
-  cursor: text;
-}
-#account_box > #tel_field {
-  position: absolute;
-  top: 179px;
-  left: 217px;
-  width: 237px;
-  height: 25px;
-  border: 1px;
-  border-color: #C8C8C8;
-  border-style: solid;
-  padding-left: 2px;
-  cursor: text;
-}
-#account_box > #email_field {
-  position: absolute;
-  top: 214px;
-  left: 217px;
-  width: 237px;
-  height: 25px;
-  border: 1px;
-  border-color: #C8C8C8;
-  border-style: solid;
-  padding-left: 2px;
-  cursor: text;
-}
-#account_box > #password_label {
-  position: absolute;
-  top: 105px;
-  left: 52px;
+  top: 46px;
+  left: 37px;
   width: auto;
   height: auto;
   font-size: 11.0pt;
   font-family: Arial;
 }
-#account_box > #password_field {
+#password_field {
   position: absolute;
-  top: 100px;
-  left: 217px;
+  top: 41px;
+  left: 202px;
   width: 237px;
   height: 25px;
   border: 1px;
@@ -115,23 +76,86 @@
   padding-left: 2px;
   cursor: text;
 }
-#account_box > #title_settings {
+#adress_label {
   position: absolute;
-  top: 257px;
-  left: 30px;
+  top: 89px;
+  left: 37px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#adress_field {
+  position: absolute;
+  top: 84px;
+  left: 202px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#tel_label {
+  position: absolute;
+  top: 122px;
+  left: 37px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#tel_field {
+  position: absolute;
+  top: 117px;
+  left: 202px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#email_label {
+  position: absolute;
+  top: 160px;
+  left: 37px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#email_field {
+  position: absolute;
+  top: 155px;
+  left: 202px;
+  width: 237px;
+  height: 25px;
+  border: 1px;
+  border-color: #C8C8C8;
+  border-style: solid;
+  padding-left: 2px;
+  cursor: text;
+}
+#title_settings {
+  position: absolute;
+  top: 198px;
+  left: 15px;
   width: 143px;
   height: 39px;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#account_box > #group_setting_one {
+#group_setting_one {
   position: absolute;
-  top: 303px;
-  left: 54px;
+  top: 244px;
+  left: 37px;
   width: 247px;
   height: 21px;
 }
-#account_box > #group_setting_one > #label_setting_one {
+#group_setting_one > #label_setting_one {
   position: absolute;
   top: 5.5px;
   left: 23px;
@@ -140,7 +164,7 @@
   font-size: 11.0pt;
   font-family: Arial;
 }
-#account_box > #group_setting_one > #checkbox_setting_one {
+#group_setting_one > #checkbox_setting_one {
   position: absolute;
   top: 4px;
   left: 0px;
@@ -148,12 +172,12 @@
 }
 #account_box #group_setting_two {
   position: absolute;
-  top: 333px;
-  left: 54px;
+  top: 274px;
+  left: 37px;
   width: 432px;
   height: 21px;
 }
-#account_box > #group_setting_two > #label_setting_two {
+#group_setting_two > #label_setting_two {
   position: absolute;
   top: 5.5px;
   left: 23px;
@@ -162,20 +186,20 @@
   font-size: 11.0pt;
   font-family: Arial;
 }
-#account_box > #group_setting_two > #checkbox_setting_two {
+#group_setting_two > #checkbox_setting_two {
   position: absolute;
   top: 4px;
   left: 0px;
   cursor: pointer;
 }
-#account_box > #group_default_user_type {
+#group_default_user_type {
   position: absolute;
-  top: 365px;
-  left: 54px;
+  top: 306px;
+  left: 37px;
   width: 239px;
   height: 29px;
 }
-#account_box > #group_default_user_type > #select_default_user_type {
+#group_default_user_type > #select_default_user_type {
   position: absolute;
   top: 5px;
   left: 163px;
@@ -188,7 +212,7 @@
   vertical-align: middle;
   border-radius: 4px;
 }
-#account_box > #group_default_user_type > #label_default_user_type {
+#group_default_user_type > #label_default_user_type {
   position: absolute;
   top: 9px;
   left: 3px;
@@ -197,10 +221,10 @@
   font-size: 11.0pt;
   font-family: Arial;
 }
-#account_box > #btn_cancel {
+#btn_cancel {
   position: absolute;
-  top: 421px;
-  left: 514px;
+  top: 362px;
+  left: 499px;
   width: 70px;
   height: 23px;
   background-color: #FFFFFF;
@@ -218,10 +242,10 @@
   font-size: 10.0pt;
   font-family: Arial;
 }
-#account_box > #btn_save {
+#btn_save {
   position: absolute;
-  top: 421px;
-  left: 599px;
+  top: 362px;
+  left: 584px;
   width: 83px;
   height: 23px;
   background-color: #FFFFFF;
