@@ -5,9 +5,33 @@
   margin-top: 1%;
   width: 750px;
 }
+#contact_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#contact_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
 #contact_box > #main_box {
-  position: absolute;
-  top: 59px;
+  position: relative;
+  top: 56px;
   left: 182px;
   padding-left: 31px;
   width: 473px;
@@ -24,10 +48,10 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#contact_box > #main_box_title {
+#main_box_title {
   position: absolute;
-  top: 63px;
-  left: 208px;
+  top: 3px;
+  left: 25px;
   width: auto;
   height: auto;
   background-color: transparent;
@@ -35,20 +59,20 @@
   font-size: 14.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_company {
+#contact_company {
   position: absolute;
-  top: 110px;
-  left: 220px;
+  top: 50px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_company_select {
+#contact_company_select {
   position: absolute;
-  top: 105px;
-  left: 320px;
+  top: 45px;
+  left: 137px;
   padding-left: 8px;
   width: 240px;
   height: 21px;
@@ -58,20 +82,20 @@
   vertical-align: middle;
   border-radius: 4px;
 }
-#contact_box > #contact_name {
+#contact_name {
   position: absolute;
-  top: 135px;
-  left: 220px;
+  top: 75px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_name_field {
+#contact_name_field {
   position: absolute;
-  top: 130px;
-  left: 320px;
+  top: 70px;
+  left: 137px;
   width: 240px;
   height: 21px;
   padding-left: 8px;
@@ -81,20 +105,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#contact_box > #contact_address {
+#contact_address {
   position: absolute;
-  top: 160px;
-  left: 220px;
+  top: 100px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_address_field {
+#contact_address_field {
   position: absolute;
-  top: 155px;
-  left: 320px;
+  top: 95px;
+  left: 137px;
   width: 240px;
   height: 21px;
   padding-left: 8px;
@@ -104,20 +128,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#contact_box > #contact_tel {
+#contact_tel {
   position: absolute;
-  top: 185px;
-  left: 220px;
+  top: 125px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_tel_field {
+#contact_tel_field {
   position: absolute;
-  top: 180px;
-  left: 320px;
+  top: 120px;
+  left: 137px;
   width: 240px;
   height: 21px;
   padding-left: 8px;
@@ -127,20 +151,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#contact_box > #contact_email {
+#contact_email {
   position: absolute;
-  top: 210px;
-  left: 220px;
+  top: 150px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contact_email_field {
+#contact_email_field {
   position: absolute;
-  top: 205px;
-  left: 320px;
+  top: 145px;
+  left: 137px;
   width: 240px;
   height: 21px;
   padding-left: 8px;
@@ -150,10 +174,10 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#contact_box > #cancel_btn {
+#cancel_btn {
   position: absolute;
-  top: 260px;
-  left: 200px;
+  top: 200px;
+  left: 17px;
   width: 60px;
   height: 23px;
   background-color: #FFFFFF;
@@ -170,10 +194,10 @@
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #save_btn {
+#save_btn {
   position: absolute;
-  top: 260px;
-  left: 605px;
+  top: 200px;
+  left: 422px;
   width: 85px;
   height: 23px;
   background-color: #FFFFFF;
@@ -191,8 +215,8 @@
   font-family: Arial;
 }
 #contact_box > #contacts_list_box {
-  position: absolute;
-  top: 59px;
+  position: relative;
+  top: -184px;
   left: 14px;
   padding-left: 26px;
   width: 120px;
@@ -209,10 +233,10 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#contact_box > #search_field {
+#search_field {
   position: absolute;
-  top: 94px;
-  left: 24px;
+  top: 34px;
+  left: 9px;
   width: 137px;
   height: 29px;
   background-color: #FFFFFF;
@@ -226,10 +250,10 @@
   font-family: Arial;
   color: #C0C0C0;
 }
-#contact_box > #contacts_list_title {
+#contacts_list_title {
   position: absolute;
-  top: 63px;
-  left: 37px;
+  top: 3px;
+  left: 22px;
   width: auto;
   height: auto;
   background-color: transparent;
@@ -237,10 +261,10 @@
   font-size: 14.0pt;
   font-family: Arial;
 }
-#contact_box > #new_contact_btn {
+#new_contact_btn {
   position: absolute;
-  top: 238px;
-  left: 27px;
+  top: 178px;
+  left: 12px;
   width: 132px;
   height: 23px;
   background-color: #FFFFFF;
@@ -257,10 +281,10 @@
   font-size: 10.0pt;
   font-family: Arial;
 }
-#contact_box > #contacts_list {
+#contacts_list {
   position: absolute;
-  top: 132px;
-  left: 26px;
+  top: 72px;
+  left: 11px;
   width: 130px;
   height: 98px;
   background-color: #FFFFFF;

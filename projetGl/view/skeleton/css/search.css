@@ -5,8 +5,32 @@
   margin-top: 1%;
   width: 750px;
 }
+#search_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#search_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
 #search_box > #main_box {
-  position: absolute;
+  position: relative;
   top: 59px;
   left: 166px;
   padding-left: 24px;
@@ -23,30 +47,30 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#search_box > #title {
+#title {
   position: absolute;
-  top: 75px;
-  left: 187px;
+  top: 15px;
+  left: 20px;
   width: 325px;
   height: 35px;
   background-color: transparent;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#search_box > #search_type_label {
+#search_type_label {
   position: absolute;
-  top: 115px;
-  left: 213px;
+  top: 55px;
+  left: 46px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #search_type_select {
+#search_type_select {
   position: absolute;
-  top: 108px;
-  left: 318px;
+  top: 48px;
+  left: 151px;
   width: 169px;
   height: 25px;
   padding-left: 8px;
@@ -69,20 +93,20 @@
   visibility: hidden;
 }
 /* Filters for a project search */
-#search_box > #project_filters > #label_project_filter_name {
+#project_filters > #label_project_filter_name {
   position: absolute;
-  top: 173px;
-  left: 197px;
+  top: 113px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #project_filters > #field_project_filter_name {
+#project_filters > #field_project_filter_name {
   position: absolute;
-  top: 166px;
-  left: 301px;
+  top: 106px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -92,20 +116,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #project_filters > #label_project_filter_client {
+#project_filters > #label_project_filter_client {
   position: absolute;
-  top: 216px;
-  left: 197px;
+  top: 156px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #project_filters > #project_filter_client_select {
+#project_filters > #project_filter_client_select {
   position: absolute;
-  top: 209px;
-  left: 301px;
+  top: 149px;
+  left: 134px;
   width: 209px;
   height: 25px;
   padding-left: 8px;
@@ -115,20 +139,20 @@
   vertical-align: middle;
   border-radius: 4px;
 }
-#search_box > #project_filters > #label_project_filter_respo_select {
+#project_filters > #label_project_filter_respo_select {
   position: absolute;
-  top: 262px;
-  left: 197px;
+  top: 202px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #project_filters > #project_filter_respo_select {
+#project_filters > #project_filter_respo_select {
   position: absolute;
-  top: 255px;
-  left: 301px;
+  top: 195px;
+  left: 134px;
   width: 209px;
   height: 25px;
   padding-left: 8px;
@@ -138,19 +162,19 @@
   vertical-align: middle;
   border-radius: 4px;
 }
-#search_box > #project_filters > #group_project_filter_state {
+#project_filters > #group_project_filter_state {
   position: absolute;
-  top: 305px;
-  left: 220px;
+  top: 245px;
+  left: 53px;
   width: 104px;
   height: 21px;
 }
-#search_box > #project_filters > #group_project_filter_state > #checkbox_filter_state_ongoing {
+#project_filters > #group_project_filter_state > #checkbox_filter_state_ongoing {
   position: absolute;
   top: 4px;
   left: 0px;
 }
-#search_box > #project_filters > #group_project_filter_state > #label_filter_state_ongoing {
+#project_filters > #group_project_filter_state > #label_filter_state_ongoing {
   position: absolute;
   top: 5px;
   left: 25px;
@@ -158,13 +182,13 @@
   font-size: 11.0pt;
   font-family: Arial;
 }
-#search_box > #project_filters > #group_project_filter_state > #checkbox_filter_state_finished {
+#project_filters > #group_project_filter_state > #checkbox_filter_state_finished {
   position: absolute;
   top: 4px;
   left: 95px;
   box-shadow: none;
 }
-#search_box > #project_filters > #group_project_filter_state > #label_filter_state_finished {
+#project_filters > #group_project_filter_state > #label_filter_state_finished {
   position: absolute;
   top: 5px;
   left: 120px;
@@ -172,12 +196,12 @@
   font-size: 11.0pt;
   font-family: Arial;
 }
-#search_box > #project_filters > #group_project_filter_state > #checkbox_filter_state_archived {
+#project_filters > #group_project_filter_state > #checkbox_filter_state_archived {
   position: absolute;
   top: 4px;
   left: 185px;
 }
-#search_box > #project_filters > #group_project_filter_state > #label_filter_state_archived {
+#project_filters > #group_project_filter_state > #label_filter_state_archived {
   position: absolute;
   top: 5px;
   left: 210px;
@@ -186,20 +210,20 @@
   font-family: Arial;
 }
 /*  Filters for a Client search */
-#search_box > #client_filters > #label_client_filter_name {
+#client_filters > #label_client_filter_name {
   position: absolute;
-  top: 173px;
-  left: 197px;
+  top: 113px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #client_filters > #field_client_filter_name {
+#client_filters > #field_client_filter_name {
   position: absolute;
-  top: 166px;
-  left: 301px;
+  top: 106px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -209,20 +233,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #client_filters > #label_client_filter_address {
+#client_filters > #label_client_filter_address {
   position: absolute;
-  top: 216px;
-  left: 197px;
+  top: 156px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #client_filters > #field_client_filter_address {
+#client_filters > #field_client_filter_address {
   position: absolute;
-  top: 209px;
-  left: 301px;
+  top: 149px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -232,20 +256,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #client_filters > #label_client_filter_project_select {
+#client_filters > #label_client_filter_project_select {
   position: absolute;
-  top: 262px;
-  left: 197px;
+  top: 202px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #client_filters > #client_filter_project_select {
+#client_filters > #client_filter_project_select {
   position: absolute;
-  top: 255px;
-  left: 301px;
+  top: 195px;
+  left: 134px;
   width: 209px;
   height: 25px;
   padding-left: 8px;
@@ -256,20 +280,20 @@
   border-radius: 4px;
 }
 /*  Filters for a contact search */
-#search_box > #contact_filters > #label_contact_filter_name {
+#contact_filters > #label_contact_filter_name {
   position: absolute;
-  top: 173px;
-  left: 197px;
+  top: 113px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #contact_filters > #field_contact_filter_name {
+#contact_filters > #field_contact_filter_name {
   position: absolute;
-  top: 166px;
-  left: 301px;
+  top: 106px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -279,20 +303,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #contact_filters > #label_contact_filter_firstname {
+#contact_filters > #label_contact_filter_firstname {
   position: absolute;
-  top: 216px;
-  left: 197px;
+  top: 156px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #contact_filters > #field_contact_filter_firstname {
+#contact_filters > #field_contact_filter_firstname {
   position: absolute;
-  top: 209px;
-  left: 301px;
+  top: 149px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -302,20 +326,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #contact_filters > #label_contact_filter_tel {
+#contact_filters > #label_contact_filter_tel {
   position: absolute;
-  top: 262px;
-  left: 197px;
+  top: 202px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #contact_filters > #field_contact_filter_tel {
+#contact_filters > #field_contact_filter_tel {
   position: absolute;
-  top: 255px;
-  left: 301px;
+  top: 195px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -325,20 +349,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #contact_filters > #label_contact_filter_client_select {
+#contact_filters > #label_contact_filter_client_select {
   position: absolute;
-  top: 310px;
-  left: 197px;
+  top: 250px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #contact_filters > #contact_filter_client_select {
+#contact_filters > #contact_filter_client_select {
   position: absolute;
-  top: 303px;
-  left: 301px;
+  top: 243px;
+  left: 134px;
   width: 209px;
   height: 25px;
   padding-left: 8px;
@@ -349,20 +373,20 @@
   border-radius: 4px;
 }
 /*  Filters for a collabo search */
-#search_box > #collabo_filters > #label_collabo_filter_name {
+#collabo_filters > #label_collabo_filter_name {
   position: absolute;
-  top: 173px;
-  left: 197px;
+  top: 113px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #collabo_filters > #field_collabo_filter_name {
+#collabo_filters > #field_collabo_filter_name {
   position: absolute;
-  top: 166px;
-  left: 301px;
+  top: 106px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -372,20 +396,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #collabo_filters > #label_collabo_filter_firstname {
+#collabo_filters > #label_collabo_filter_firstname {
   position: absolute;
-  top: 216px;
-  left: 197px;
+  top: 156px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #collabo_filters > #field_collabo_filter_firstname {
+#collabo_filters > #field_collabo_filter_firstname {
   position: absolute;
-  top: 209px;
-  left: 301px;
+  top: 149px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -395,20 +419,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #collabo_filters > #label_collabo_filter_tel {
+#collabo_filters > #label_collabo_filter_tel {
   position: absolute;
-  top: 262px;
-  left: 197px;
+  top: 202px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #collabo_filters > #field_collabo_filter_tel {
+#collabo_filters > #field_collabo_filter_tel {
   position: absolute;
-  top: 255px;
-  left: 301px;
+  top: 195px;
+  left: 134px;
   width: 209px;
   height: 27px;
   padding-left: 8px;
@@ -418,20 +442,20 @@
   border-color: #C8C8C8;
   cursor: text;
 }
-#search_box > #collabo_filters > #label_collabo_filter_project_select {
+#collabo_filters > #label_collabo_filter_project_select {
   position: absolute;
-  top: 310px;
-  left: 197px;
+  top: 250px;
+  left: 30px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#search_box > #collabo_filters > #collabo_filter_project_select {
+#collabo_filters > #collabo_filter_project_select {
   position: absolute;
-  top: 303px;
-  left: 301px;
+  top: 243px;
+  left: 134px;
   width: 209px;
   height: 25px;
   padding-left: 8px;
@@ -441,10 +465,10 @@
   vertical-align: middle;
   border-radius: 4px;
 }
-#search_box > #btn_search {
+#btn_search {
   position: absolute;
-  top: 348px;
-  left: 442px;
+  top: 288px;
+  left: 275px;
   width: 80px;
   height: 23px;
   background-color: #FFFFFF;
@@ -462,8 +486,8 @@
   font-family: Arial;
 }
 #search_box > #results_box {
-  position: absolute;
-  top: 387px;
+  position: relative;
+  top: 65px;
   left: 167px;
   padding-left: 24px;
   width: 337px;
@@ -479,20 +503,20 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#search_box > #title_results {
+#title_results {
   position: absolute;
-  top: 402px;
-  left: 181px;
+  top: 14px;
+  left: 13px;
   width: 284px;
   height: 35px;
   background-color: transparent;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#search_box > #results {
+#results {
   position: absolute;
-  top: 432px;
-  left: 198px;
+  top: 44px;
+  left: 30px;
   width: 290px;
   height: 60px;
   line-height: 200%;
