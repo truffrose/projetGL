@@ -5,9 +5,33 @@
   margin-top: 1%;
   width: 750px;
 }
+#client_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#client_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
 #client_box > #main_box {
-  position: absolute;
-  top: 59px;
+  position: relative;
+  top: 56px;
   left: 182px;
   padding-left: 31px;
   width: 473px;
@@ -24,10 +48,10 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#client_box > #edit_btn {
+#edit_btn {
   position: absolute;
-  top: 73px;
-  left: 640px;
+  top: 13px;
+  left: 457px;
   width: 44px;
   height: 23px;
   background-color: #FFFFFF;
@@ -45,10 +69,10 @@
   font-size: 10.0pt;
   font-family: Arial;
 }
-#client_box > #main_box_title {
+#main_box_title {
   position: absolute;
-  top: 63px;
-  left: 208px;
+  top: 3px;
+  left: 25px;
   width: 78px;
   height: 35px;
   background-color: transparent;
@@ -56,40 +80,40 @@
   font-size: 14.0pt;
   font-family: Arial;
 }
-#client_box > #client_name {
+#client_name {
   position: absolute;
-  top: 110px;
-  left: 220px;
+  top: 50px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#client_box > #client_address {
+#client_address {
   position: absolute;
-  top: 135px;
-  left: 220px;
+  top: 75px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 10.0pt;
   font-family: Arial;
 }
-#client_box > #client_contacts_title {
+#client_contacts_title {
   position: absolute;
-  top: 168px;
-  left: 220px;
+  top: 108px;
+  left: 37px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#client_box > #client_contacts {
+#client_contacts {
   position: absolute;
-  top: 195px;
-  left: 220px;
+  top: 135px;
+  left: 37px;
   width: 178px;
   height: 81px;
   background-color: #FFFFFF;
@@ -104,20 +128,20 @@
   font-size: 10.0pt;
   overflow: auto;
 }
-#client_box > #client_projects_title {
+#client_projects_title {
   position: absolute;
-  top: 168px;
-  left: 457px;
+  top: 108px;
+  left: 274px;
   width: auto;
   height: auto;
   background-color: transparent;
   font-size: 14.0pt;
   font-family: Arial;
 }
-#client_box > #client_projects {
+#client_projects {
   position: absolute;
-  top: 195px;
-  left: 457px;
+  top: 135px;
+  left: 274px;
   width: 178px;
   height: 81px;
   background-color: #FFFFFF;
@@ -134,8 +158,8 @@
   overflow: auto;
 }
 #client_box > #clients_list_box {
-  position: absolute;
-  top: 59px;
+  position: relative;
+  top: -184px;
   left: 14px;
   padding-left: 26px;
   width: 120px;
@@ -152,10 +176,10 @@
   font-size: 16.0pt;
   font-family: Arial;
 }
-#client_box > #search_field {
+#search_field {
   position: absolute;
-  top: 94px;
-  left: 24px;
+  top: 34px;
+  left: 9px;
   width: 137px;
   height: 29px;
   background-color: #FFFFFF;
@@ -169,10 +193,10 @@
   font-family: Arial;
   color: #C0C0C0;
 }
-#client_box > #clients_list_title {
+#clients_list_title {
   position: absolute;
-  top: 63px;
-  left: 37px;
+  top: 3px;
+  left: 22px;
   width: 78px;
   height: 35px;
   background-color: transparent;
@@ -180,10 +204,10 @@
   font-size: 14.0pt;
   font-family: Arial;
 }
-#client_box > #new_client_btn {
+#new_client_btn {
   position: absolute;
-  top: 238px;
-  left: 27px;
+  top: 178px;
+  left: 12px;
   width: 132px;
   height: 23px;
   background-color: #FFFFFF;
@@ -200,10 +224,10 @@
   font-size: 10.0pt;
   font-family: Arial;
 }
-#client_box > #clients_list {
+#clients_list {
   position: absolute;
-  top: 132px;
-  left: 26px;
+  top: 72px;
+  left: 11px;
   width: 130px;
   height: 98px;
   background-color: #FFFFFF;
