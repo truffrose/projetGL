@@ -23,7 +23,31 @@
 					}
 					$selectClient = new Client($idClient);
 					$listeContact = $selectClient->getContact();
+					$selectContact = null;
+					foreach ($listeContact as $value) {
+						if ($idContact == $value->getPersonne()->getId()) {
+							$selectContact = $value;
+						}
+					}
 					require_once($path . "html/contact.php");
+					break;
+				case $CURSOR_contactEditView:
+					$idClient = $_SESSION["client"];
+					if (isset($_SESSION["contact"])) {
+						$idContact = $_SESSION["contact"];
+					}
+					else {
+						$idContact = -1;
+					}
+					$selectClient = new Client($idClient);
+					$listeContact = $selectClient->getContact();
+					$selectContact = null;
+					foreach ($listeContact as $value) {
+						if ($idContact == $value->getPersonne()->getId()) {
+							$selectContact = $value;
+						}
+					}
+					require_once($path . "html/contact_edit.php");
 					break;
 				case $CURSOR_clientView:
 					if (isset($_SESSION["client"])) {
@@ -43,7 +67,6 @@
 					require_once($path . "html/account.php");
 					break;
 				case $CURSOR_clientEditView:
-					/*
 					if (isset($_SESSION["client"])) {
 						$idClient = $_SESSION["client"];
 					}
@@ -54,14 +77,10 @@
 					$listeContact = $selectClient->getContact();
 					$listeProjet = $selectClient->getProjet();
 					$listeClient = getListActiveClient();
-					*/
 					require_once($path . "html/client_edit.php");
 					break;
 				case $CURSOR_research:
 					require_once($path . "html/search.php");
-					break;
-				case $CURSOR_contactEditView:
-					require_once($path . "html/contact_edit.php");
 					break;
 				// use as default page
 				default:

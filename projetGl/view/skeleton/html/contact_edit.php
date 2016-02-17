@@ -1,5 +1,5 @@
 <html>
-  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/contact.css' ?>"/>
+  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/contact_edit.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <body>
     <div class="contact_page">
@@ -14,7 +14,7 @@
                 <ul>
                   <li><a href="">Projets</a></li>
                   <?php
-                    echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=-1">Clients</a></li>';
+                  echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=-1">Clients</a></li>';
                   ?>
                   <li><a href="">Collaborateurs</a></li>
                 </ul>
@@ -33,28 +33,38 @@
           <div id="msg_box">
             <span id="span_msg">Panneau d'administration</span>
           </div>
-           
-          <div id="main_box">
 
-            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId(); ?>'"/>
-		
-            <div id="main_box_title">Contact</div>
+          <div id="main_box">
+            <div id="main_box_title">Edition de Contact</div>
+            
+            <div id="contact_company">Societe : </div>
+            <select id="contact_company_select">
+              <option selected="selected">Altec</option>
+              <option>Thales</option>
+            </select>
             
             <?php
               if ($idContact == -1 ) {
                 echo '<div id="contact_company">Veuillez selectionner un contact (utilise la balise message)</div>';
               }
               else {
-                echo '<div id="contact_company">Societe : ' . $selectClient->getNom() .'</div>';
-                echo '<div id="contact_name">Nom : ' . $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom() . '</div>';
-                echo '<div id="contact_address">Adresse : 2 avenue de Paris, 74000 Annecy // c est quoi cette adress</div>';
-                echo '<div id="contact_tel">Telephone : ' . $selectContact->getPersonne()->getTelephone() . '</div>';
-                echo '<div id="contact_email">Email : ' . $selectContact->getPersonne()->getMail() . '</div>';
+                ?>
+                <div id="contact_name">Nom : </div>
+                <input id="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom(); ?>"/>
+                <div id="contact_address">Adresse : </div>
+                <input id="contact_address_field" type="text" value="que c'est que c'est quoi?"/>
+                <div id="contact_tel">Telephone : </div>
+                <input id="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
+                <div id="contact_email">Email : </div>
+                <input id="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
+                <?php
               }
             ?>
             
-            <input id="contact_btn" type="button" value="Contacter"/>
+            
 
+            <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getId(); ?>'"/>
+            <input id="save_btn" type="button" value="Sauvegarder"/>
           </div>
 
           <div id="contacts_list_box">
@@ -71,7 +81,7 @@
                   if (isset($listeContact)) {
                     foreach ($listeContact as $value) {
                       if ($idContact != $value->getPersonne()->getId()) {
-                        echo '<li><a href="./index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getPrenom() . ' ' . $value->getPersonne()->getNom() . '</a></li>';
+                        echo '<li><a href="./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getPrenom() . ' ' . $value->getPersonne()->getNom() . '</a></li>';
                       }
                     }
                   }

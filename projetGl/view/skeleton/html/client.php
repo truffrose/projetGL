@@ -36,7 +36,7 @@
 
           <div id="main_box">
 
-            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientEditView; ?>'"/>
+            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientEditView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
 
             
     
@@ -95,7 +95,6 @@
                       echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                     }
                   }
-                
                 ?>
               </ul>
             </div> 

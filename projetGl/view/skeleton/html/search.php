@@ -2,6 +2,8 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/search.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="search.js"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search.js' ?>"></script>
+  
   <body>
     <div class="search_page">
        <div id="search_box">
