@@ -19,7 +19,7 @@
                   <li><a href="">Collaborateurs</a></li>
                 </ul>
               </li>
-              <li class="single_line"><a href="">Recherche</a></li>
+              <li class="single_line"><a href="<?php echo './index.php?cursor=' . $CURSOR_research; ?>">Recherche</a></li>
               <li><a class="selected" href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
               <li class="single_line"><a href="<?php echo './index.php?action=' . $ACTION_logOut; ?>">Quitter</a></li>
             </ul>            

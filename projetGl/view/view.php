@@ -41,6 +41,28 @@
 				case $CURSOR_compteView:
 					$personneAccount = getPersonneById($_SESSION["user"]->getId());
 					require_once($path . "html/account.php");
+					break;
+				case $CURSOR_clientEditView:
+					/*
+					if (isset($_SESSION["client"])) {
+						$idClient = $_SESSION["client"];
+					}
+					else {
+						$idClient = -1;
+					}
+					$selectClient = new Client($idClient);
+					$listeContact = $selectClient->getContact();
+					$listeProjet = $selectClient->getProjet();
+					$listeClient = getListActiveClient();
+					*/
+					require_once($path . "html/client_edit.php");
+					break;
+				case $CURSOR_research:
+					require_once($path . "html/search.php");
+					break;
+				case $CURSOR_contactEditView:
+					require_once($path . "html/contact_edit.php");
+					break;
 				// use as default page
 				default:
 					$personneAccount = getPersonneById($_SESSION["user"]->getId());

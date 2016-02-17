@@ -19,7 +19,7 @@
                   <li><a href="">Collaborateurs</a></li>
                 </ul>
               </li>
-              <li class="single_line"><a href="">Recherche</a></li>
+              <li class="single_line"><a href="<?php echo './index.php?cursor=' . $CURSOR_research; ?>">Recherche</a></li>
               <li><a href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
               <li class="single_line"><a href="<?php echo './index.php?action=' . $ACTION_logOut; ?>">Quitter</a></li>
             </ul>            
@@ -36,8 +36,8 @@
            
           <div id="main_box">
 
-            <input id="edit_btn" type="button" value="Editer"/>
-
+            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView; ?>'"/>
+		
             <div id="main_box_title">Contact</div>
             
             <?php

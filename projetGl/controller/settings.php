@@ -58,7 +58,10 @@
 		$CURSOR_home = 0;
 		$CURSOR_contactView = 1;
 		$CURSOR_clientView = 2;
-		$CURSOR_compteView = 3;
+		$CURSOR_clientEditView = 3;
+		$CURSOR_compteView = 4;
+		$CURSOR_contactEditView = 5;
+		$CURSOR_research = 6;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {
