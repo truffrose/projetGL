@@ -6,6 +6,8 @@ CREATE DATABASE IF NOT EXISTS projetGL;
 
 GRANT SELECT, UPDATE, INSERT, DELETE ON projetGL.* TO 'glUser'@'localhost' IDENTIFIED BY '123' ;
 
+USE projetGL;
+
 /* Use to reset the database */
 	/* drop the table */
 DROP TABLE IF EXISTS projetGL_personne_role;

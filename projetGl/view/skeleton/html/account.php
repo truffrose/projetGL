@@ -8,8 +8,8 @@
           <div id="menu_box">
             <ul id="menu">
               <li class="single_line"><a href="">Actualite</a></li>
-              <li><a href="">Tableau de bord</a></li>
-              <li class="single_line selected">
+              <li><a href="<?php echo './index.php?cursor=' . $CURSOR_tableau; ?>">Tableau de bord</a></li>
+              <li class="single_line">
                 <a href="">Listes</a>
                 <ul>
                   <li><a href="">Projets</a></li>
@@ -20,7 +20,7 @@
                 </ul>
               </li>
               <li class="single_line"><a href="<?php echo './index.php?cursor=' . $CURSOR_research; ?>">Recherche</a></li>
-              <li><a class="selected" href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
+              <li class="selected"><a href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
               <li class="single_line"><a href="<?php echo './index.php?action=' . $ACTION_logOut; ?>">Quitter</a></li>
             </ul>            
             <select id="menu_select_user">

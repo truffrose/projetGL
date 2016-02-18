@@ -8,7 +8,7 @@
           <div id="menu_box">
             <ul id="menu">
               <li class="single_line"><a href="">Actualite</a></li>
-              <li><a href="">Tableau de bord</a></li>
+              <li><a href="<?php echo './index.php?cursor=' . $CURSOR_tableau; ?>">Tableau de bord</a></li>
               <li class="single_line selected">
                 <a href="">Listes</a>
                 <ul>

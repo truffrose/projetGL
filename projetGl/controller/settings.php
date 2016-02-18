@@ -62,6 +62,7 @@
 		$CURSOR_compteView = 4;
 		$CURSOR_contactEditView = 5;
 		$CURSOR_research = 6;
+		$CURSOR_tableau = 7;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

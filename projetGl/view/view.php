@@ -82,10 +82,13 @@
 				case $CURSOR_research:
 					require_once($path . "html/search.php");
 					break;
+				case $CURSOR_tableau:
+					require_once($path . "html/tableau_collabo.php");
+					break;
 				// use as default page
 				default:
-					$personneAccount = getPersonneById($_SESSION["user"]->getId());
-					require_once($path . "html/account.php");
+					require_once($path . "html/tableau_collabo.php");
+					break;
 			}
 		}
 		else {
