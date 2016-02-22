@@ -1,0 +1,139 @@
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" rel="stylesheet" href="./collabo_delete_admin.css"/>
+  <link type="text/css" rel="stylesheet" href="./menu.css"/>
+  <body>
+    <div class="collabo_page">
+         <div id="collabo_box">
+         
+          <div id="menu_box">
+            <ul id="menu">
+              <li class="single_line selected">
+                <a href="">Listes</a>
+                <ul>
+                  <li><a href="">Projets</a></li>
+                  <li><a href="">Clients</a></li>
+                  <li><a href="">Collaborateurs</a></li>
+                </ul>
+              </li>
+              <li class="single_line"><a href="">Recherche</a></li>
+              <li><a href="">Mon Compte</a></li>
+              <li class="single_line"><a href="">Quitter</a></li>
+            </ul>            
+            <select id="menu_select_user">
+              <option>Collaborateur</option>
+              <option>Responsable Projet</option>
+              <option selected="selected">Administrateur</option>
+            </select>
+          </div>
+
+          <div id="msg_box">
+            <span id="span_msg">Panneau d'administration</span>
+          </div>
+
+          <div id="main_box">
+
+            <div id="main_box_title">Suppression Collaborateur : </div>
+            <div id="collabo_name">Marc Dasilvette</div>
+
+            <div id="div_table_project">
+
+              <div id="info_div_project">Indiquez un nouveau responsable pour chaque projet.</div>
+
+              <table id="title_table_project">
+                <tr>
+                  <th class="th1">Projet</th>
+                  <th class="th2">Nouveau Responsable</th>
+                </tr>    
+              </table>
+
+              <div id="div_table_collabo_project"> 
+            
+                <table id="collabo_table_project">   
+                  <tr> 
+                    <td class="td1"><a href="">Projet Azure</a></td> 
+                    <td class="td2">
+                      <select class="select_new_collabo">
+                        <option selected="selected">Cyril Roussot</option>
+                      </select>
+                    </td> 
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div id="div_table_task">
+
+              <div id="info_div_task">Si vous voulez que le nouveau responsable d'une tâche soit le collaborateur de la tache mère, choisir "Automatique".</div>
+
+              <table id="title_table_task">
+                <tr>
+                  <th class="th1">Projet</th>
+                  <th class="th2">Tâche</th>
+                  <th class="th3">Nouveau Responsable</th>
+                </tr>    
+              </table>
+
+              <div id="div_table_collabo_task"> 
+            
+                <table id="collabo_table_task">   
+                  <tr> 
+                    <td class="td1"><a href="">Projet Azure</a></td> 
+                    <td class="td2"><a href="">Tâche 1.1</a></td> 
+                    <td class="td3">
+                      <select class="select_new_collabo">
+                        <option selected="selected">Automatique</option>
+                        <option>Cyril Roussot</option>
+                      </select>
+                    </td> 
+                  </tr>
+                  <tr> 
+                    <td class="td1"><a href="">Projet Azure</a></td> 
+                    <td class="td2"><a href="">Tâche 1.3</a></td> 
+                    <td class="td3">
+                      <select class="select_new_collabo">
+                        <option>Automatique</option>
+                        <option selected="selected">Cyril Roussot</option>
+                      </select>
+                    </td> 
+                  </tr>
+                  <tr> 
+                    <td class="td1"><a href="">Spartacus</a></td> 
+                    <td class="td2"><a href="">Tâche 8.7</a></td> 
+                    <td class="td3">
+                      <select class="select_new_collabo">
+                        <option selected="selected">Automatique</option>
+                        <option>Cyril Roussot</option>
+                      </select>
+                    </td> 
+                  </tr>  
+                </table>
+              </div>
+            </div>
+
+            <input id="cancel_btn" type="button" value="Annuler"/>
+            <input id="delete_btn" type="button" value="Supprimer"/>
+
+          </div>
+
+          <div id="collabos_list_box">
+
+            <input id="search_field" type="text" value="Rechercher"/>
+
+            <div id="collabos_list_title">Collaborateurs</div>
+
+            <input id="new_collabo_btn" type="button" value="Nouveau Collaborateur"/>
+
+            <div id="collabos_list">
+              <ul class="href_list">
+                <li><a href="">Marc Dasilvette</a></li>
+                <li><a href="">Cyril Roussot</a></li>
+              </ul>
+            </div> 
+
+          </div>
+ 
+        </div>  
+    </div>
+  </body>
+</html>

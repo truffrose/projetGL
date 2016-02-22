@@ -1,0 +1,385 @@
+#collabo_box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 750px;
+}
+#collabo_box > #msg_box {
+  position: relative;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#collabo_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
+#collabo_box > #main_box {
+  position: relative;
+  top: 56px;
+  left: 182px;
+  padding-left: 31px;
+  width: 473px;
+  height: 495px;
+  background-color: #F8F8F8;
+  background-image: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #D4D4D4;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: 14px;
+  padding-right: 14px;
+  padding-bottom: 14px;
+  font-size: 16.0pt;
+  font-family: Arial;
+}
+#main_box_title {
+  position: absolute;
+  top: 3px;
+  left: 25px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#collabo_name {
+  position: absolute;
+  top: 3px;
+  left: 287px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+
+/* CSS pour le tableau project */
+#div_table_project {
+  position: absolute;
+  top: 40px;
+  left: 12px;
+  width: 490px;
+  height: 200px;
+  border-style: solid;
+  border-color: #515151;
+  border-width: 2px;
+  background-color: white;
+}
+#info_div_project {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  font-size: 12.0pt;
+  font-family: Arial;
+}
+#title_table_project {
+  position: absolute;
+  top: 53px;
+  left: 7px;
+  width: 476px;
+  height: 40px;
+  border-collapse:collapse;
+}
+#title_table_project tr{
+  border-collapse:collapse;
+  border: 2px solid #E2E2E2;
+}
+#title_table_project th{
+  border-top: 1px solid #E2E2E2;
+  border-left: 1px solid #E2E2E2;
+  border-right: 1px solid #E2E2E2;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#title_table_project .th1{
+  width: 40%;
+}
+#title_table_project .th2{
+  width: 60%;
+}
+#div_table_collabo_project {
+  position: absolute;
+  top: 92px;
+  left: 7px;
+  width: 473px;
+  height: 91px;
+  overflow: auto; 
+  overflow-x: hidden;
+  border-right: 2px solid #E2E2E2;
+  border-left: 1px solid #E2E2E2;
+  border-bottom: 1px solid #E2E2E2;
+}
+#div_table_collabo_project table {
+  width: 476px;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+}
+#div_table_collabo_project table td{
+  border: 1px solid #E2E2E2;
+  text-align: center;
+  height: 30px;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#div_table_collabo_project table .td1{
+  width: 40%;
+}
+#div_table_collabo_project table .td2{
+  width: 60%;
+}
+/* Fin CSS tableau task */
+
+/* CSS pour le tableau task */
+#div_table_task {
+  position: absolute;
+  top: 265px;
+  left: 12px;
+  width: 490px;
+  height: 200px;
+  border-style: solid;
+  border-color: #515151;
+  border-width: 2px;
+  background-color: white;
+}
+#info_div_task {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  font-size: 12.0pt;
+  font-family: Arial;
+}
+#title_table_task {
+  position: absolute;
+  top: 53px;
+  left: 7px;
+  width: 476px;
+  height: 40px;
+  border-collapse:collapse;
+}
+#title_table_task tr{
+  border-collapse:collapse;
+  border: 2px solid #E2E2E2;
+}
+#title_table_task th{
+  border-top: 1px solid #E2E2E2;
+  border-left: 1px solid #E2E2E2;
+  border-right: 1px solid #E2E2E2;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#title_table_task .th1{
+  width: 120px;
+}
+#title_table_task .th2{
+  width: 120px;
+}
+#title_table_task .th3{
+  width: 200px;
+}
+#div_table_collabo_task {
+  position: absolute;
+  top: 92px;
+  left: 7px;
+  width: 473px;
+  height: 91px;
+  overflow: auto; 
+  overflow-x: hidden;
+  border-right: 2px solid #E2E2E2;
+  border-left: 1px solid #E2E2E2;
+  border-bottom: 1px solid #E2E2E2;
+}
+#div_table_collabo_task table {
+  width: 476px;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+}
+#div_table_collabo_task table td{
+  border: 1px solid #E2E2E2;
+  text-align: center;
+  height: 30px;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#div_table_collabo_task table .td1{
+  width: 118px;
+}
+#div_table_collabo_task table .td2{
+  width: 118px;
+}
+#div_table_collabo_task table .td3{
+  width: 200px;
+}
+/* Fin CSS tableau task */
+
+.select_new_collabo{
+  padding-left: 2px;
+  text-align: left;
+  font-family: Arial;
+  font-size: 11.0pt;
+  vertical-align: middle;
+  border-radius: 4px;
+  border-radius: 4px;
+}
+
+#cancel_btn {
+  position: absolute;
+  top: 485px;
+  left: 12px;
+  width: 60px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#delete_btn {
+  position: absolute;
+  top: 485px;
+  left: 422px;
+  width: 85px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#collabo_box > #collabos_list_box {
+  position: relative;
+  top: -469px;
+  left: 14px;
+  padding-left: 26px;
+  width: 120px;
+  height: 202px;
+  background-color: #F8F8F8;
+  background-image: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #D4D4D4;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: 9px;
+  padding-right: 9px;
+  padding-bottom: 9px;
+  font-size: 16.0pt;
+  font-family: Arial;
+}
+#search_field {
+  position: absolute;
+  top: 34;
+  left: 9px;
+  width: 137px;
+  height: 29px;
+  background-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 15px 15px 15px 15px;
+  padding: 8px;
+  padding-left: 12px;
+  font-size: 10.0pt;
+  font-family: Arial;
+  color: #C0C0C0;
+}
+#collabos_list_title {
+  position: absolute;
+  top: 3px;
+  left: 15px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#new_collabo_btn {
+  position: absolute;
+  top: 178px;
+  left: 12px;
+  width: 132px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  font-size: 8.0pt;
+  font-family: Arial;
+}
+#collabos_list {
+  position: absolute;
+  top: 72px;
+  left: 11px;
+  width: 130px;
+  height: 98px;
+  background-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  border-color: #DDDDDD;
+  font-size: 11.0pt;
+  font-family: Arial;
+  overflow: auto;
+}
+.href_list,ul{
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -40px;
+}
+.href_list li{
+  padding: 4px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #EBEBEB;
+}
+.href_list li:nth-child(n+4):last-child{
+  padding: 4px;
+  border: 0px;
+}
