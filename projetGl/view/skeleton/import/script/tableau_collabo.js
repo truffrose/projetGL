@@ -1,3 +1,9 @@
+function showNbPage(){
+	var nbElement = parseInt(document.getElementById("main_table").rows.length);
+	var nbPage = Math.ceil(nbElement/6);
+	document.getElementById("title_account").innerHTML = "Tableau de bord" + " (" + nbPage + " pages)";
+}
+
 function previous(){
 	var currentPage = parseInt(document.getElementById("btn_actual").value);
 	var oldPage = parseInt(currentPage);

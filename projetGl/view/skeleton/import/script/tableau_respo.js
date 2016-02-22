@@ -1,3 +1,9 @@
+function showNbPage(){
+	var nbElement = getNbElements();
+	var nbPage = Math.ceil(nbElement/6);
+	document.getElementById("title_account").innerHTML = "Tableau de bord" + " (" + nbPage + " pages)";
+}
+
 function changeTable(){
 	var selectMode = document.getElementById("filter_three_select").options[document.getElementById("filter_three_select").selectedIndex].value;
 
@@ -21,6 +27,8 @@ function changeTable(){
 	for (var i = 0; i < toShowElements.length; i++) {
 	    toShowElements[i].style.display = "table-row";
 	}
+
+	showNbPage();
 }
 
 function getNbElements(){

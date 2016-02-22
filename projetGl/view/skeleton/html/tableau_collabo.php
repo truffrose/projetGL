@@ -3,7 +3,7 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/tableau_collabo.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/tableau_collabo.js' ?>"></script>
-  <body>
+  <body onload="showNbPage();">
     <div class="account_page">
          <div id="account_box">
 
