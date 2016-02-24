@@ -14,6 +14,7 @@
 	if (!$link->set_charset("utf8")) {
 		echo 'Error Load UTF8';
 	}
+	
 
 	// return true or false if the system is connect to the DB
 	function isConnectMySql() {

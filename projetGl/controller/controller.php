@@ -14,8 +14,8 @@
 		switch(getCurrentAction()) {
 			case $ACTION_logIn:
 				// pour les test on utilise un compte deja existant
-				// $user = new User("truffrose@gmail.com", "123");
-				$user = new User($_POST["login"], $_POST["password"]);
+				$user = new User("a.rousseau", "arousse");
+				// $user = new User($_POST["login"], $_POST["password"]);
 				if ($user->login()) {
 					// TO DO: affiché une réussite
 				}
@@ -33,9 +33,18 @@
 					$_SESSION["contact"] = $_GET["contact"];
 				}
 				break;
+			case $ACTION_contactSave:
+				
+				break;
 			case $ACTION_clientView:
 				if (isset($_GET["client"])) {
 					$_SESSION["client"] = $_GET["client"];
+				}
+				break;
+			case $ACTION_changeRole:
+				// besoin des faire des verif savoir si l'utilisateur a bien le droit de change de ce role
+				if (isset($_GET["role"])) {
+					$_SESSION["systemData"]->setUserRole($_GET["role"]);
 				}
 				break;
 			default:

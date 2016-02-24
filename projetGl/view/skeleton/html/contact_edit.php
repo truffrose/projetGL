@@ -1,6 +1,16 @@
 <html>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/contact_edit.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
+  <script type="text/javascript">
+    function changeRole(element)
+    {
+      var idx=element.selectedIndex;
+      var val=element.options[idx].value;
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      strPos = strPos + "" + val;
+      window.location.assign(strPos);
+    }    
+  </script>
   <body>
     <div class="contact_page">
          <div id="contact_box">
@@ -22,11 +32,18 @@
               <li class="single_line"><a href="<?php echo './index.php?cursor=' . $CURSOR_research; ?>">Recherche</a></li>
               <li><a href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
               <li class="single_line"><a href="<?php echo './index.php?action=' . $ACTION_logOut; ?>">Quitter</a></li>
-            </ul>            
-            <select id="menu_select_user">
-              <option>Collaborateur</option>
-              <option selected="selected">Responsable Projet</option>
-              <option>Administrateur</option>
+            </ul>
+            <select id="menu_select_user" onchange="changeRole(this)">
+              <?php
+                foreach (getRoleIdNameByIdUser($_SESSION["user"]->getId()) as $value) {
+                  if ($value["id"] == $_SESSION["systemData"]->getUserRole()) {
+                   echo '<option value="' . $value["id"] . '" selected="selected">' . $value["nom"] . '</option>';
+                  }
+                  else {
+                    echo '<option value="' . $value["id"] . '">' . $value["nom"] . '</option>';
+                  }
+                }
+              ?>
             </select>
           </div>
 

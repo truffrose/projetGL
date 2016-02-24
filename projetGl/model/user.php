@@ -114,6 +114,8 @@
 				session_destroy();
 			}
 			
+			// met à jour la base de donnée avec les valeurs de la session utilisé
+			
 			
 	}
 	
@@ -186,8 +188,6 @@
 		else {
 			return false;
 		}
-		
-		
 	}
 	
 	

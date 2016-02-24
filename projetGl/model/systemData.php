@@ -18,10 +18,10 @@
 			$ctp = func_num_args();
 			$args = func_get_args();
 			switch($ctp) {
-				case 4:
+				case 1:
 					$this->constructor1Args($args[0]);
 					break;
-				case 2:
+				case 0:
 					$this->constructor0Args();
 					break;
 				 default:

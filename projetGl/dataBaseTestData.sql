@@ -1,28 +1,12 @@
-/* add the default unite of time */
-INSERT INTO projetGL_uniteTemps(typeUnite) VALUES('jour homme');
-INSERT INTO projetGL_uniteTemps(typeUnite) VALUES('heure');
-
-/* add the different role */
-INSERT INTO projetGL_role(nom, description) VALUES('SuperAdmin', 'Ne peut pas être supprimé de la base de donné.');
-INSERT INTO projetGL_role(nom, description) VALUES('Administrateur', 'A un droit de vision sur l integralié des projets. Il peeut aussi modifier des droit utilisateurs.');
-INSERT INTO projetGL_role(nom, description) VALUES('Chef projet', 'A le droit d interragir sur un projet');
-INSERT INTO projetGL_role(nom, description) VALUES('Collaborateur', 'Peut uniquement travailler sur ces projets');
-
-/* add the default etat */
-INSERT INTO projetGL_etat(nom) VALUES ('actif');
-INSERT INTO projetGL_etat(nom) VALUES ('delete');
-INSERT INTO projetGL_etat(nom) VALUES ('termines');
-INSERT INTO projetGL_etat(nom) VALUES ('archives');
-
-/* add fake personne */
+/* ajout des personnes pour le teste */
     /* utilisateur du system */
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('admin', 'admin', 'admin', '0000000000', 'admin@gmail.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('rousseau', 'aurelien', '9 sentier Eugène Brégeard 94230 Cachan', '0608544087', 'ta.rousseau@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('rousseau', 'aurelien', '9 sentier Eugene Bregeard 94230 Cachan', '0608544087', 'ta.rousseau@gmail.com');
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('da Silva', 'thomas', '15 rue des bois 91400 Saclay', '0658644587', 't.dasilva@gmail.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '5 rue des paumés 74400 Talloires', '0638224087', '.castelain@gmail.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('djian', 'thomas', '5 rue des damnés 91 800 Velizy', '0677444065', 't.djian@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '5 rue des paumes 74400 Talloires', '0638224087', '.castelain@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('djian', 'thomas', '5 rue des damnes 91 800 Velizy', '0677444065', 't.djian@gmail.com');
     /* contact du system */
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('morroy', 'pierre', '9 sentier Eugène Brégeard 94230 Cachan', '0145467645', 'pierre.morroy@desjoyaux.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('morroy', 'pierre', '9 sentier Eugene Bregeard 94230 Cachan', '0145467645', 'pierre.morroy@desjoyaux.com');
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('marlay', 'damien', '14 avenue Charles 94500 Gentilly', '0154468645', 'damien.marley@interflora.com');
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('richard', 'benoit', '7 avenue De Gaulle 75 000 Paris', '0145467645', 'pierre.morroy@interflora.com');
 
@@ -60,4 +44,4 @@ INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 7, 1);
 INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 8, 1);
 
 /* ajout des projets */
-INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("Bouquet de fleur", "Création d’un bouquet de fleur", 1, 35, 1, 1);
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("Bouquet de fleur", "Creation d’un bouquet de fleur", 1, 35, 1, 1);

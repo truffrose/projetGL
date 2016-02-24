@@ -17,7 +17,9 @@
 		$ACTION_logIn = 1;
 		$ACTION_logOut = 2;
 		$ACTION_contactView = 3;
-		$ACTION_clientView = 4;
+		$ACTION_contactSave = 4;
+		$ACTION_clientView = 5;
+		$ACTION_changeRole = 6;
 	
 		// getting the action
 		function getCurrentAction() {
