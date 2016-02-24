@@ -14,8 +14,8 @@
 		switch(getCurrentAction()) {
 			case $ACTION_logIn:
 				// pour les test on utilise un compte deja existant
-				$user = new User("truffrose@gmail.com", "123");
-				// $user = new User($_POST["login"], $_POST["password"]);
+				// $user = new User("truffrose@gmail.com", "123");
+				$user = new User($_POST["login"], $_POST["password"]);
 				if ($user->login()) {
 					// TO DO: affiché une réussite
 				}

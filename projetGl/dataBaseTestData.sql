@@ -17,36 +17,47 @@ INSERT INTO projetGL_etat(nom) VALUES ('archives');
 /* add fake personne */
     /* utilisateur du system */
 INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('admin', 'admin', 'admin', '0000000000', 'admin@gmail.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '2 verel dessous', '0642644490', 'truffrose@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('rousseau', 'aurelien', '9 sentier Eugène Brégeard 94230 Cachan', '0608544087', 'ta.rousseau@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('da Silva', 'thomas', '15 rue des bois 91400 Saclay', '0658644587', 't.dasilva@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '5 rue des paumés 74400 Talloires', '0638224087', '.castelain@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('djian', 'thomas', '5 rue des damnés 91 800 Velizy', '0677444065', 't.djian@gmail.com');
     /* contact du system */
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('castelain', 'florian', '2 avenue de paris, 74000 Annecy', '0156324895', 'florian.castelain@altec.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('duchamps', 'albert', '16 rue de france, 94000 Creteil', '0125698745', 'albert@altec.com');
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('djian', 'thomas', '3 impasse des inconue, 14000 Perdu', '0123458965', 'thomas@gmail.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('morroy', 'pierre', '9 sentier Eugène Brégeard 94230 Cachan', '0145467645', 'pierre.morroy@desjoyaux.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('marlay', 'damien', '14 avenue Charles 94500 Gentilly', '0154468645', 'damien.marley@interflora.com');
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES ('richard', 'benoit', '7 avenue De Gaulle 75 000 Paris', '0145467645', 'pierre.morroy@interflora.com');
 
 /* add value use to test the data base */
-INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('admin@gmail.com', md5('admin'), 1, 1);
-INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('truffrose@gmail.com', md5('123'), 2, 1);
+INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('admin', md5('admin'), 1, 1);
+INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('a.rousseau', md5('arousse'), 2, 1);
+INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('t.dasilva', md5('tdasilv'), 3, 1);
+INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('f.castelain', md5('fcastel'), 4, 1);
+INSERT INTO projetGL_user(mail, password, personne, etat) VALUES('t.djian', md5('tdjian'), 5, 1);
 	
 	/* add the default parameters */
 	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(2, false, false, false, 4);
+	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(3, false, false, false, 4);
+	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(4, false, false, false, 4);
+	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(5, false, false, false, 4);
 	
 	/* add the default role to account */
 	INSERT INTO projetGL_personne_role(personne, role) VALUES (1, 1);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (2, 2);
 	INSERT INTO projetGL_personne_role(personne, role) VALUES (2, 4);
-	INSERT INTO projetGL_personne_role(personne, role) VALUES (2, 3);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (3, 3);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (3, 4);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (4, 2);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (4, 4);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (5, 3);
+	INSERT INTO projetGL_personne_role(personne, role) VALUES (5, 4);
 
 /* ajout de client à la base */
-INSERT INTO projetGL_client(nom, adresse, etat) VALUES("altec", "7 rue de france, 94000 Créteil", 1);
-INSERT INTO projetGL_client(nom, adresse, etat) VALUES("thales", "25 route des champs, 91000 Cachan", 1);
+INSERT INTO projetGL_client(nom, adresse, etat) VALUES("InterFlora", "15 rue des Amandiers 94230 Cachan", 1);
+INSERT INTO projetGL_client(nom, adresse, etat) VALUES("Piscine DesJoyaux", "4 rue des fleuristes 91 400 Saclay", 1);
 
 /* ajout des information pour créer des contact */
-INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 3, 1);
-INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 4, 1);
-INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 5, 1);
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (2, 6, 1);
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 7, 1);
+INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 8, 1);
 
 /* ajout des projets */
-    /* 2 projet altec */
-INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("azure", "projet asure du client altec", 1, 12, 1, 1);
-INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("projetGL", "projet pour la GL", 2, 30, 1, 1);
-    /* 1 projet thales */
-INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("deleteProjet", "supprimer de la base (du moins pas actif)", 1, 85, 2, 2);
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("Bouquet de fleur", "Création d’un bouquet de fleur", 1, 35, 1, 1);
