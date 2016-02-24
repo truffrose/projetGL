@@ -3,6 +3,16 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/tableau_collabo.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/tableau_collabo.js' ?>"></script>
+  <script type="text/javascript">
+    function changeRole(element)
+    {
+      var idx=element.selectedIndex;
+      var val=element.options[idx].value;
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_tableau . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      strPos = strPos + "" + val;
+      window.location.assign(strPos);
+    }    
+  </script>
   <body onload="showNbPage();">
     <div class="account_page">
          <div id="account_box">
@@ -16,19 +26,27 @@
                 <ul>
                   <li><a href="">Projets</a></li>
                   <?php
-                  echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=-1">Clients</a></li>';
+                    echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=-1">Clients</a></li>';
                   ?>
                   <li><a href="">Collaborateurs</a></li>
                 </ul>
               </li>
+              
               <li class="single_line"><a href="<?php echo './index.php?cursor=' . $CURSOR_research; ?>">Recherche</a></li>
               <li><a href="<?php echo './index.php?cursor=' . $CURSOR_compteView; ?>">Mon Compte</a></li>
               <li class="single_line"><a href="<?php echo './index.php?action=' . $ACTION_logOut; ?>">Quitter</a></li>
-            </ul>            
-            <select id="menu_select_user">
-              <option>Collaborateur</option>
-              <option selected="selected">Responsable Projet</option>
-              <option>Administrateur</option>
+            </ul>
+            <select id="menu_select_user" onchange="changeRole(this)">
+              <?php
+                foreach (getRoleIdNameByIdUser($_SESSION["user"]->getId()) as $value) {
+                  if ($value["id"] == $_SESSION["systemData"]->getUserRole()) {
+                   echo '<option value="' . $value["id"] . '" selected="selected">' . $value["nom"] . '</option>';
+                  }
+                  else {
+                    echo '<option value="' . $value["id"] . '">' . $value["nom"] . '</option>';
+                  }
+                }
+              ?>
             </select>
           </div>
 

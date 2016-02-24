@@ -34,7 +34,20 @@
 				}
 				break;
 			case $ACTION_contactSave:
-				
+				print_r($_POST);
+				majUserInformation($_SESSION["user"]->getId(), $_POST["adress_field"], $_POST["email_field"], $_POST["tel_field"]);
+				/*
+				$_SESSION["user"]->getPersonne()->setAdresse($_POST["adress_field"]);
+				$_SESSION["user"]->getPersonne()->setMail($_POST["email_field"]);
+				$_SESSION["user"]->getPersonne()->setTelephone($_POST["tel_field"]);
+				/*
+				if ($_SESSION["user"]->majUserInformation()) {
+					// TO DO: affiché une réussite
+				}
+				else {
+					// TO DO: gestion des erreurs
+				}
+				*/
 				break;
 			case $ACTION_clientView:
 				if (isset($_GET["client"])) {

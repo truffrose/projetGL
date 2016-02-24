@@ -12,6 +12,7 @@
 		private $_adresse;
 		
 		// les getters et les setters de personne
+			// les getters
 		public function getId() {
 			return $this->_id;
 		}
@@ -30,7 +31,22 @@
 		public function getAdresse() {
 			return $this->_adresse;
 		}
-		
+			// les setters
+		public function setNom($nom) {
+			$this->_nom = $nom;
+		}
+		public function setPrenom ($prenom){
+			$this->_prenom = $prenom;
+		}
+		public function setTelephone ($telephone){
+			$this->_telephone = $telephone;
+		}
+		public function setAdresse($adresse){
+			$this->_adresse = $adresse;
+		}
+		public function setMail($mail){
+			$this->_mail = $mail;
+		}
 		
 		// manager of the constructor
 		public function __construct() {

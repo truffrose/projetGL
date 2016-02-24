@@ -57,13 +57,13 @@
               <div id="title_account">Mon Compte</div>
   
               <div id="password_label">Nouveau mot de passe :</div>
-              <input id="password_field" type="password" value="<?php echo $_SESSION["user"]->getPassword(); ?>" maxlength="20"/>
+              <input id="password_field" name="password_field" type="password" value="<?php echo $_SESSION["user"]->getPassword(); ?>" maxlength="20"/>
               <div id="adress_label">Adresse :</div>
-              <input id="adress_field" type="text" value="<?php echo $personneAccount->getAdresse(); ?>" maxlength="40"/>
+              <input id="adress_field" name="adress_field" type="text" value="<?php echo $personneAccount->getAdresse(); ?>" maxlength="40"/>
               <div id="tel_label">Telephone :</div>
-              <input id="tel_field" type="text" value="<?php echo $personneAccount->getTelephone(); ?>" maxlength="15"/>
+              <input id="tel_field"  name="tel_field" type="text" value="<?php echo $personneAccount->getTelephone(); ?>" maxlength="15"/>
               <div id="email_label">Email :</div>
-              <input id="email_field" type="text" value="<?php echo $personneAccount->getMail(); ?>" maxlength="40"/>
+              <input id="email_field" name="email_field" type="text" value="<?php echo $personneAccount->getMail(); ?>" maxlength="40"/>
              
               <div id="title_settings">Parametres</div>
   

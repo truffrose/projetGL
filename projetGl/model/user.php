@@ -114,8 +114,19 @@
 				session_destroy();
 			}
 			
-			// met à jour la base de donnée avec les valeurs de la session utilisé
 			
+				
+				/*
+				UPDATE TABLE_A a 
+    JOIN TABLE_B b ON a.join_col = b.join_col AND a.column_a = b.column_b 
+    JOIN TABLE_C c ON [condition]
+SET a.column_c = a.column_c + 1
+
+
+INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) 
+INSERT INTO projetGL_user(mail, password, personne, etat) 
+	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole)
+				*/
 			
 	}
 	
@@ -190,5 +201,15 @@
 		}
 	}
 	
-	
+	// met à jour la base de donnée avec les valeurs de la session utilisé
+	function majUserInformation($idUser, $adresse, $mail, $telephone) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set p.adresse = "' . $adresse .'", p.telephone = "' . $telephone .'", p.mail = "' . $mail .'" where u.id = ' . $idUser . ';';
+			echo 'sql : ' . $sql;
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
 ?>
