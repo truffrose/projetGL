@@ -75,6 +75,8 @@
                     </select>
                     <div id="contact_name">Nom : </div>
                     <input id="contact_name_field" type="text" value=""/>
+                    <div id="contact_firstname">Prenom : </div>
+                    <input id="contact_firstname_field" type="text" value=""/>
                     <div id="contact_address">Adresse : </div>
                     <input id="contact_address_field" type="text" value=""/>
                     <div id="contact_tel">Telephone : </div>
@@ -104,6 +106,8 @@
                     </select>
                     <div id="contact_name">Nom : </div>
                     <input id="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom(); ?>"/>
+                    <div id="contact_firstname">Prenom : </div>
+                    <input id="contact_firstname_field" type="text" value=""/>
                     <div id="contact_address">Adresse : </div>
                     <input id="contact_address_field" type="text" value="<?php echo $selectContact->getPersonne()->getAdresse(); ?>"/>
                     <div id="contact_tel">Telephone : </div>
