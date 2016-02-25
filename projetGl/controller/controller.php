@@ -36,7 +36,14 @@
 				}
 				elseif (isset($_GET["contact"]) && $_GET["contact"] == -1) {
 					$_SESSION["contact"] = -1;
-					// TODO: lever une erreur
+				}
+				break;
+			case $ACTION_collaboView:
+				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {
+					$_SESSION["collabo"] = $_GET["collabo"];
+				}
+				elseif (isset($_GET["collabo"]) && $_GET["collabo"] == -1) {
+					$_SESSION["collabo"] = -1;
 				}
 				break;
 			case $ACTION_accountSave:

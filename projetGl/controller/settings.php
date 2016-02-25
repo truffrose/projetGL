@@ -21,6 +21,7 @@
 		$ACTION_accountSave = 5;
 		$ACTION_clientView = 6;
 		$ACTION_changeRole = 7;
+		$ACTION_collaboView = 8;
 	
 		// getting the action
 		function getCurrentAction() {
@@ -66,6 +67,7 @@
 		$CURSOR_contactEditView = 5;
 		$CURSOR_research = 6;
 		$CURSOR_tableau = 7;
+		$CURSOR_collabo = 8;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

@@ -87,7 +87,7 @@
 					break;
 				// use as default page
 				default:
-					require_once($path . "html/tableau_collabo.php");
+					require_once($path . "html/collabo.php");
 					break;
 			}
 		}
