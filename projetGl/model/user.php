@@ -202,9 +202,9 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 	}
 	
 	// met à jour la base de donnée avec les valeurs de la session utilisé
-	function majUserInformation($idUser, $adresse, $mail, $telephone) {
+	function majUserInformation($idUser, $password, $adresse, $mail, $telephone) {
 		if (isConnectMySql()) {
-			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set p.adresse = "' . $adresse .'", p.telephone = "' . $telephone .'", p.mail = "' . $mail .'" where u.id = ' . $idUser . ';';
+			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set u.password = md5("' . $password . '") p.adresse = "' . $adresse .'", p.telephone = "' . $telephone .'", p.mail = "' . $mail .'" where u.id = ' . $idUser . ';';
 			echo 'sql : ' . $sql;
 			return $_SESSION["link"]->query($sql);
 		}
