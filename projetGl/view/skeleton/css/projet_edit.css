@@ -1,0 +1,374 @@
+#project_box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 750px;
+}
+#project_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#project_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
+#project_box > #main_box {
+  position: relative;
+  top: 56px;
+  left: 182px;
+  padding-left: 31px;
+  width: 473px;
+  height: 515px;
+  background-color: #F8F8F8;
+  background-image: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #D4D4D4;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: 14px;
+  padding-right: 14px;
+  padding-bottom: 14px;
+  font-size: 16.0pt;
+  font-family: Arial;
+}
+#main_box_title {
+  position: absolute;
+  top: 3px;
+  left: 25px;
+  width: auto;
+  height: 35px;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#label_project_name {
+  position: absolute;
+  top: 45px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#project_name {
+  position: absolute;
+  top: 45px;
+  left: 130px;
+  width: 370px;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  padding-left: 5px;
+}
+#label_project_description {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#project_description {
+  position: absolute;
+  top: 75px;
+  left: 130px;
+  width: 370px;
+  height: 100px;
+  font-size: 10.0pt;
+  font-family: Arial;
+  overflow: auto;
+  resize: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  padding-left: 5px;
+}
+#label_project_client {
+  position: absolute;
+  top: 185px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#select_project_client {
+  position: absolute;
+  top: 185px;
+  left: 130px;
+  width: 370px;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+#label_project_respo {
+  position: absolute;
+  top: 215px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#select_project_respo {
+  position: absolute;
+  top: 215px;
+  left: 130px;
+  width: 370px;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+#list_title {
+  position: absolute;
+  top: 255px;
+  left: 25px;
+  width: auto;
+  height: 35px;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 13.0pt;
+  font-family: Arial;
+}
+#search_field_task {
+  position: absolute;
+  top: 285px;
+  left: 16px;
+  width: 486px;
+  height: 29px;
+  background-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 15px 15px 15px 15px;
+  padding: 8px;
+  padding-left: 12px;
+  font-size: 10.0pt;
+  font-family: Arial;
+  color: #C0C0C0;
+}
+#div_tasks{
+  position: absolute;
+  top: 325px;
+  left: 16px;
+  width: 486px;
+  height: 134px;
+  border : 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  overflow: auto;
+  border-radius: 4px;
+  font-size: 12.0pt;
+}
+#task_btn {
+  position: absolute;
+  top: 470px;
+  left: 16px;
+  width: 486px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#cancel_btn {
+  position: absolute;
+  top: 510px;
+  left: 16px;
+  width: 80px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#delete_btn {
+  position: absolute;
+  top: 510px;
+  left: 293px;
+  width: 100px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#save_btn {
+  position: absolute;
+  top: 510px;
+  left: 403px;
+  width: 100px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#project_box > #projects_list_box {
+  position: relative;
+  top: -489px;
+  left: 14px;
+  padding-left: 26px;
+  width: 120px;
+  height: 190px;
+  background-color: #F8F8F8;
+  background-image: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #D4D4D4;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: 9px;
+  padding-right: 9px;
+  padding-bottom: 9px;
+  font-size: 16.0pt;
+  font-family: Arial;
+}
+#search_field {
+  position: absolute;
+  top: 34px;
+  left: 9px;
+  width: 137px;
+  height: 29px;
+  background-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 15px 15px 15px 15px;
+  padding: 8px;
+  padding-left: 12px;
+  font-size: 10.0pt;
+  font-family: Arial;
+  color: #C0C0C0;
+}
+#projects_list_title {
+  position: absolute;
+  top: 3px;
+  left: 15px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  line-height: 27px;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#new_project_btn {
+  position: absolute;
+  top: 178px;
+  left: 12px;
+  width: 132px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-style: solid;
+  border-color: #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#projects_list {
+  position: absolute;
+  top: 72px;
+  left: 11px;
+  width: 130px;
+  height: 98px;
+  background-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  border-color: #DDDDDD;
+  font-size: 11.0pt;
+  font-family: Arial;
+  overflow: auto;
+}
+.href_list,ul{
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -40px;
+}
+.href_list li{
+  padding: 4px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #EBEBEB;
+}
+.href_list li:nth-child(n+4):last-child{
+  padding: 4px;
+  border: 0px;
+}

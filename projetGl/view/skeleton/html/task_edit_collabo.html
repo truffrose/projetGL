@@ -1,9 +1,8 @@
 <html>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link type="text/css" rel="stylesheet" href="./task.css"/>
+  <link type="text/css" rel="stylesheet" href="./task_edit_collabo.css"/>
   <link type="text/css" rel="stylesheet" href="./menu.css"/>
-  <script type="text/javascript" src="progress_task.js"></script>
-  <body onload="setProgress();">
+  <body>
     <div class="task_page">
          <div id="task_box">
          
@@ -24,8 +23,8 @@
               <li class="single_line"><a href="">Quitter</a></li>
             </ul>            
             <select id="menu_select_user">
-              <option>Collaborateur</option>
-              <option selected="selected">Responsable Projet</option>
+              <option selected="selected">Collaborateur</option>
+              <option>Responsable Projet</option>
               <option>Administrateur</option>
             </select>
           </div>
@@ -35,9 +34,6 @@
           </div>
            
           <div id="main_box">
-
-            <!-- BOUTON A CACHER SELON LE ROLE-->
-            <input id="edit_btn" type="button" value="Editer"/>
 
             <div id="main_box_title">Tâche 2</div>
 
@@ -54,19 +50,14 @@
 
             <div id="label_date_end_soon">Date fin (plus tôt) : <span id="date_end_soon_value">10/11/15</span></div>
             <div id="label_date_end_late">Date fin (plus tard) : <span id="date_end_late_value">15/11/15</span></div>
-            <div id="label_time_spend">Temps passé : <span id="time_spend_value">6</span><span id="time_spend_unit"> jour(s)</span></div>
-            <div id="label_time_remain">Temps restant : <span id="time_remain_value">1</span><span id="time_remain_unit"> jour(s)</span></div>         
+            <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" type="text" value="6" maxlength="3"/></div> 
+            <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" type="text" value="1" maxlength="3"/></div>   
 
-            <div id="group_progress">
-              <div id="back_bar"></div>
-              <div id="bar"></div>             
-              <div id="label">Avancement <span id="progress_value">35</span> %</div>
-            </div>
+            <div id="label_progress">Avancement (%) : <input id="progress" type="text" value="65" maxlength="3"/></div>    
 
-            <!-- BOUTON A CACHER SI L'UTILISATEUR N'EST PAS COLLABORATEUR -->
-            <input id="alert_btn" type="button" value="Alerte"/>
-
-            <input id="contact_btn" type="button" value="Contacter"/>
+            <input id="cancel_btn" type="button" value="Annuler"/>
+            <div id="label_generate"><input id="generate_check" type="checkbox"/>Générer alerte</div>
+            <input id="save_btn" type="button" value="Sauvegarder"/>
 
           </div>
 
