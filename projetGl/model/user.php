@@ -211,4 +211,57 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 			return false;
 		}
 	}
+	
+	// retourne l'id d'un utilisateur via un id de personne
+	function getUserIdFromPers($idPers) {
+		if (isConnectMySql()) { // projetGL_user(mail, password, personne, etat) 
+			$sql = 'select id from projetGL_user where personne = ' . $idPers . ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$row = $result->fetch_array(MYSQLI_ASSOC);
+				return $row["id"];
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
+	// change l'état d'un collaborateur pour le mettre dans l'état supprime
+	function deleteCollabo($idCollabo) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_user u set u.etat = 2 where u.personne = ' . sanitize_string($idCollabo) . ';';
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	// met a jour les valeurs d'un collaborateur sur la base de donnée
+	function saveCollaboWithPassword($idCollabo, $nom, $prenom, $password, $adresse, $telephone, $mail) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_user u join projetGL_personne p on u.personne = p.id set u.password = md5("' . sanitize_string($password) . '"), p.nom = "' . sanitize_string($nom) .'", p.prenom = "' . sanitize_string($prenom) .'",  p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where personne = ' . sanitize_string($idCollabo) . ';';
+			echo 'sql : ' . $sql;
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	function saveCollabo($idCollabo, $nom, $prenom, $adresse, $telephone, $mail) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_user u join projetGL_personne p on u.personne = p.id set p.nom = "' . sanitize_string($nom) .'", p.prenom = "' . sanitize_string($prenom) .'",  p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where personne = ' . sanitize_string($idCollabo) . ';';
+			echo 'sql : ' . $sql;
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	// projetGL_personne(nom, prenom, adresse, telephone, mail)
 ?>

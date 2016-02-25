@@ -85,10 +85,29 @@
 				case $CURSOR_tableau:
 					require_once($path . "html/tableau_collabo.php");
 					break;
-				// use as default page
-				default:
+				case $CURSOR_collabo:
+					if (isset($_SESSION["collabo"])) {
+						$idCollabo = $_SESSION["collabo"];
+					}
+					else {
+						$idCollabo = -1;
+					}
+					$listeCollabo = getCollaboList();
 					require_once($path . "html/collabo.php");
 					break;
+				case $CURSOR_collaboEditView:
+					if (isset($_SESSION["collabo"])) {
+						$idCollabo = $_SESSION["collabo"];
+					}
+					else {
+						$idCollabo = -1;
+					}
+					$listeCollabo = getCollaboList();
+					require_once($path . "html/collabo_edit_admin.php");
+					break;
+				// use as default page
+				default:
+					require_once($path . "html/search.php");
 			}
 		}
 		else {

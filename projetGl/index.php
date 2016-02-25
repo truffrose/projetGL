@@ -34,16 +34,11 @@
 		require_once("./view/view.php");
 
         
-        
-        echo '</br></br></br></br>';
-        echo '</br></br></br></br>';
-        echo '</br></br></br></br>';
-        echo '</br></br></br></br>';
-        echo '</br></br></br></br>';
-        echo '</br></br></br></br>';
+        // utile uniquement pour le debug
+        /* */
         echo '</br></br></br></br>';
         echo '</br></br></br></br>';
         if (isset($_SESSION))
             print_r($_SESSION);
-        
+        /* */
 ?>

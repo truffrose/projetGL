@@ -1,12 +1,12 @@
 <html>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/collabo.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
-    <script type="text/javascript">
+  <script type="text/javascript">
     function changeRole(element)
     {
       var idx=element.selectedIndex;
       var val=element.options[idx].value;
-      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_changeRole . '&role='; ?>";
       strPos = strPos + "" + val;
       window.location.assign(strPos);
     }    
@@ -25,7 +25,7 @@
                   <li><a href="">Projets</a></li>
                   <?php
                   echo '<li><a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=-1">Clients</a></li>';
-                  echo '<li><a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&client=-1">Collaborateurs</a></li>';
+                  echo '<li><a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=-1">Collaborateurs</a></li>';
                   ?>
                 </ul>
               </li>
@@ -52,18 +52,29 @@
           </div>
            
           <div id="main_box">
-
-            <!-- BOUTON A MONTRER SI LE USER EST ADMIN-->
-            <input id="edit_btn" type="button" value="Editer"/>
-
-            <div id="main_box_title">Collaborateur</div>
-            <div id="collabo_name">Nom : Cyril Roussot</div>
-            <div id="collabo_address">Adresse : 15 rue des bois, 94230 Cachan</div>
-            <div id="collabo_tel">Telephone : 01.56.32.48.95</div>
-            <div id="collabo_email">Email : cyril.roussot@maboite.com</div>
-
-            <input id="collabo_btn" type="button" value="Contacter"/>
-
+        
+          <?php
+            if ($idCollabo == -1) {
+              echo '<div id="main_box_title">Collaborateur</div>';
+              echo '<div id="collabo_name">Veuillez selectionner un client (utilise la balise message)</div>';
+            }
+            else {
+              if ($_SESSION["systemData"]->getUserRole() == 2) {
+                // <!-- BOUTON A MONTRER SI LE USER EST ADMIN-->
+                echo '<input id="edit_btn" type="button" value="Editer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_collaboEditView . '&action=' . $ACTION_collaboView . '&collabo=' . $idCollabo . '\'"/>';
+              }
+              echo '<div id="main_box_title">Collaborateur</div>';
+              foreach($listeCollabo as $value) {
+                if ($value->getId() == $idCollabo) {
+                  echo '<div id="collabo_name">Nom : ' . $value->getNom() . ' ' . $value->getPrenom() . '</div>';
+                  echo '<div id="collabo_address">Adresse : ' . $value->getAdresse() . '</div>';
+                  echo '<div id="collabo_tel">Telephone : ' . $value->getTelephone() . '</div>';
+                  echo '<div id="collabo_email">Email : ' . $value->getMail() . '</div>';
+                  echo '<input id="collabo_btn" type="button" value="Contacter"/>';
+                }
+              }
+            }
+          ?>
           </div>
 
           <div id="collabos_list_box">
@@ -77,8 +88,13 @@
 
             <div id="collabos_list">
               <ul class="href_list">
-                <li><a href="">Marc Dasilvette</a></li>
-                <li><a href="">Cyril Roussot</a></li>
+                <?php
+                  foreach($listeCollabo as $value) {
+                    if ($value->getId() != $idCollabo) {
+                      echo '<li><a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $value->getId() . '">' . $value->getNom() . ' ' . $value->getPrenom() . '</a></li>';
+                    }
+                  }
+                ?>
               </ul>
             </div> 
 
