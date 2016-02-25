@@ -29,12 +29,28 @@
 				}
 				break;
 			case $ACTION_contactView:
-				if (isContactActif($_GET["contact"], $_SESSION["client"])) {
-					$_SESSION["contact"] = $_GET["contact"];
+				if (isset($_GET["contact"]) && $_GET["contact"] != -1) {
+					if (isContactActif($_GET["contact"], $_SESSION["client"])) {
+						$_SESSION["contact"] = $_GET["contact"];
+					}
+				}
+				elseif (isset($_GET["contact"]) && $_GET["contact"] == -1) {
+					$_SESSION["contact"] = -1;
+					// TODO: lever une erreur
 				}
 				break;
-			case $ACTION_contactSave:
-				if (majUserInformation($_SESSION["user"]->getId(), $_POST["password_field"], $_POST["adress_field"], $_POST["email_field"], $_POST["tel_field"])) {
+			case $ACTION_accountSave:
+				$notif = "false";
+				if (isset($_POST["checkbox_receive_notif"]) && $_POST["checkbox_receive_notif"] == "check") {
+					$notif = "true";
+				}
+				$mail = "false";
+				if (isset($_POST["checkbox_receive_mail"]) && $_POST["checkbox_receive_mail"] == "check") {
+					$mail = "true";
+				}
+				if (majUserInformation($_SESSION["user"]->getId(), $_POST["password_field"], $mail, $notif, $_POST["select_default_user_type"], $_POST["adress_field"], $_POST["email_field"], $_POST["tel_field"])) {
+					// mise a jour des données de l'utilisateur
+					$_SESSION["user"]->getParameters()->getParameters();
 					// TO DO: affiché une réussite
 				}
 				else {

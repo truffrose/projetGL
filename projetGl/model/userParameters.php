@@ -14,6 +14,12 @@
 		function getDefaultRole() {
 			return $this->_defaultRole;
 		}
+		function getReceiveMail() {
+			return $this->_receiveMail;
+		}
+		function getReceiveAlerte() {
+			return $this->_receiveAlerte;
+		}
 		
 		// manager of the constructor
 		public function __construct() {

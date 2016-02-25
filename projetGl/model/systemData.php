@@ -28,7 +28,7 @@
 					break;
 			}
 		}
-
+		
 		// the constrcutor
 		private function constructor1Args($idRole) {
 			$this->_userRole = $idRole;
@@ -38,12 +38,5 @@
 		}
 		
 	}
-	
-	/*
-	// return les droits d'un utilisateur (le role du compte connecté)
-	function isSuperAdmin() {
-		return isset($_SESSION["user"]);
-	}
-	*/
 	
 ?>

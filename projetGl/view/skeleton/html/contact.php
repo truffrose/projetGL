@@ -64,7 +64,7 @@
               else {
                 echo '<div id="contact_company">Societe : ' . $selectClient->getNom() .'</div>';
                 echo '<div id="contact_name">Nom : ' . $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom() . '</div>';
-                echo '<div id="contact_address">Adresse : 2 avenue de Paris, 74000 Annecy // c est quoi cette adress</div>';
+                echo '<div id="contact_address">Adresse : ' . $selectContact->getPersonne()->getAdresse() . '</div>';
                 echo '<div id="contact_tel">Telephone : ' . $selectContact->getPersonne()->getTelephone() . '</div>';
                 echo '<div id="contact_email">Email : ' . $selectContact->getPersonne()->getMail() . '</div>';
               }
@@ -78,9 +78,11 @@
 
             <input id="search_field" type="text" value="Rechercher"/>
 
-            <div id="contacts_list_title">Altec</div>
+            <?php
+                echo '<div id="contacts_list_title">' . $selectClient->getNom() . '</div>';
+            ?>
 
-            <input id="new_contact_btn" type="button" value="Nouveau Contact"/>
+            <input id="new_contact_btn" type="button" value="Nouveau Contact" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
 
             <div id="contacts_list">
               <ul class="href_list">

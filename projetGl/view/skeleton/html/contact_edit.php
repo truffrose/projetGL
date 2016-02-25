@@ -54,43 +54,80 @@
           <div id="main_box">
             <div id="main_box_title">Edition de Contact</div>
             
-            <div id="contact_company">Societe : </div>
-            <select id="contact_company_select">
-              <option selected="selected">Altec</option>
-              <option>Thales</option>
-            </select>
-            
             <?php
               if ($idContact == -1 ) {
-                echo '<div id="contact_company">Veuillez selectionner un contact (utilise la balise message)</div>';
+                ?>
+                  <FORM method=post action="./">
+                    <input type="hidden"  name="action"  value="<?php echo $ACTION_contactCreate; ?>">
+                    <div id="contact_company">Societe : </div>
+                    <select id="contact_company_select" name="contact_company_select">
+                      <option value="0"></option>
+                      <?php
+                        foreach(getListActiveClient() as $value) {
+                          if ($value->getId() == $selectClient->getId()) {
+                            echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
+                          }
+                          else {
+                            echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+                          }
+                        }
+                      ?>
+                    </select>
+                    <div id="contact_name">Nom : </div>
+                    <input id="contact_name_field" type="text" value=""/>
+                    <div id="contact_address">Adresse : </div>
+                    <input id="contact_address_field" type="text" value=""/>
+                    <div id="contact_tel">Telephone : </div>
+                    <input id="contact_tel_field" type="text" value=""/>
+                    <div id="contact_email">Email : </div>
+                    <input id="contact_email_field" type="text" value=""/>
+                    <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
+                    <input id="save_btn" type="submit" value="Creer"/>
+                  </FORM>
+                <?php
               }
               else {
                 ?>
-                <div id="contact_name">Nom : </div>
-                <input id="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom(); ?>"/>
-                <div id="contact_address">Adresse : </div>
-                <input id="contact_address_field" type="text" value="que c'est que c'est quoi?"/>
-                <div id="contact_tel">Telephone : </div>
-                <input id="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
-                <div id="contact_email">Email : </div>
-                <input id="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
+                  <FORM method=post action="./">
+                    <div id="contact_company">Societe : </div>
+                    <select id="contact_company_select" name="contact_company_select">
+                      <?php
+                        foreach(getListActiveClient() as $value) {
+                          if ($value->getId() == $selectContact->getClient()) {
+                            echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
+                          }
+                          else {
+                            echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+                          }
+                        }
+                      ?>
+                    </select>
+                    <div id="contact_name">Nom : </div>
+                    <input id="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom() . ' ' . $selectContact->getPersonne()->getNom(); ?>"/>
+                    <div id="contact_address">Adresse : </div>
+                    <input id="contact_address_field" type="text" value="<?php echo $selectContact->getPersonne()->getAdresse(); ?>"/>
+                    <div id="contact_tel">Telephone : </div>
+                    <input id="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
+                    <div id="contact_email">Email : </div>
+                    <input id="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
+                    <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getId(); ?>'"/>
+                    <input id="save_btn" type="submit" value="Sauvegarder"/>
+                  </FORM>
                 <?php
               }
             ?>
             
-            
-
-            <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getId(); ?>'"/>
-            <input id="save_btn" type="button" value="Sauvegarder"/>
           </div>
 
           <div id="contacts_list_box">
 
             <input id="search_field" type="text" value="Rechercher"/>
 
-            <div id="contacts_list_title">Altec</div>
-
-            <input id="new_contact_btn" type="button" value="Nouveau Contact"/>
+            <?php
+                echo '<div id="contacts_list_title">' . $selectClient->getNom() . '</div>';
+            ?>
+            
+            <input id="new_contact_btn" type="button" value="Nouveau Contact" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
 
             <div id="contacts_list">
               <ul class="href_list">

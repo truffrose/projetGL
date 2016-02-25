@@ -118,7 +118,6 @@ CREATE TABLE projetGL_contact (
 	personne int NOT NULL,
 	etat int NOT NULL,
 	PRIMARY KEY (id),
-	CONSTRAINT fk_contact_client FOREIGN KEY(client) REFERENCES projetGL_client(id),
 	CONSTRAINT fk_contact_personne FOREIGN KEY(personne) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_contact_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
