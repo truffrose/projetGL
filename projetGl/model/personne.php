@@ -115,7 +115,7 @@
 	// retoune tous les collaborateur actifs
 	function getCollaboList() {
 		if (isConnectMySql()) {
-			$sql = 'select p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne_role pr join projetGL_personne p on pr.personne = p.id join projetGL_user u on u.personne = p.id where pr.role = 4 and u.etat = 1;';
+			$sql = 'select distinct p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne_role pr join projetGL_personne p on pr.personne = p.id join projetGL_user u on u.personne = p.id where pr.role <> 1 and u.etat = 1;';
 			$result = $_SESSION["link"]->query($sql);
 			if ($result->num_rows == 0){
 				return null;

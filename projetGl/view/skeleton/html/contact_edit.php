@@ -95,7 +95,7 @@
                     <select id="contact_company_select" name="contact_company_select">
                       <?php
                         foreach(getListActiveClient() as $value) {
-                          if ($value->getId() == $selectContact->getClient()) {
+                          if ($value->getId() == $idClient) {
                             echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
                           }
                           else {
