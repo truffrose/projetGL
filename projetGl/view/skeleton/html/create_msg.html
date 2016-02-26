@@ -1,0 +1,64 @@
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" rel="stylesheet" href="./create_msg.css"/>
+  <link type="text/css" rel="stylesheet" href="./menu.css"/>
+  <script type="text/javascript" src="create_msg.js"></script>
+  <body>
+    <div class="create_msg_page">
+         <div id="create_msg_box">
+
+          <div id="menu_box">
+            <ul id="menu">
+              <li class="single_line"><a href="">Actualite</a></li>
+              <li><a href="">Tableau de bord</a></li>
+              <li class="single_line selected" >
+                <a href="">Listes</a>
+                <ul>
+                    <li><a href="">Projets</a></li>
+                    <li><a href="">Clients</a></li>
+                    <li><a href="">Collaborateurs</a></li>
+                </ul>
+              </li>
+              <li class="single_line"><a href="">Recherche</a></li>
+              <li><a href="">Mon Compte</a></li>
+              <li class="single_line"><a href="">Quitter</a></li>
+            </ul>            
+            <select id="menu_select_user">
+              <option selected="selected">Collaborateur</option>
+              <option>Responsable Projet</option>
+              <option>Administrateur</option>
+            </select>
+          </div>
+
+          <div id="msg_box">
+            <span id="span_msg">Message</span>
+          </div>
+
+          <div id="main_box">
+
+            <div id="title_box_msg">Création message</div>
+
+            <div id="title_msg">Titre du message : </div>
+            <input id="title_msg_field" type="text" value="titre du message"/>
+
+            <div id="receiver_msg">Destinataires : </div>
+            <div id="div_receivers">
+              <ul class="receiver_list">
+                <li onclick="selectReceiver(this);">&nbsp;&nbsp;&nbsp;Cyril Roussot (Responsable Projet)</li>
+                <li onclick="selectReceiver(this);">&nbsp;&nbsp;&nbsp;Florian Castelain (Contact)</li>
+                <li onclick="selectReceiver(this);">&nbsp;&nbsp;&nbsp;Marc Dasilvette (Responsable Tâche)</li>
+              </ul>
+            </div>
+
+            <div id="content_msg">Corps du message : </div>
+            <textarea id="content_msg_text" cols="40" rows="5" maxlength="1000">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</textarea>
+
+            <input id="btn_cancel" type="button" value="Annuler"/>
+            <input id="btn_send" type="button" value="Envoyer"/>  
+
+          </div>
+
+         </div>  
+    </div>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+/*  CSS Ecran principal  */
+#create_msg_box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 750px;
+}
+#create_msg_box > #msg_box {
+  position: relative;
+  display: none;
+  top: 56px;
+  left: 14px;
+  width: 665px;
+  height: 28px;
+  padding-top: 12px;
+  padding-left: 21px;
+  background-color: #D9EDF7;
+  border: 1px;
+  border-style: solid;
+  border-color: #BCE8F1;
+  border-radius: 5px;
+  margin-bottom: 8px; 
+}
+#create_msg_box > #msg_box > #span_msg {
+  color: #3A87BD;
+  font-family: Arial;
+  font-size: 11.0pt;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
+#create_msg_box > #main_box {
+  position: relative;
+  top: 56px;
+  left: 14px;
+  padding-left: 23px;
+  width: 657px;
+  height: 450px;
+  background-color: #F8F8F8;
+  border: 1px;
+  border-color: #D4D4D4;
+  border-style: solid;
+  border-radius: 12px 12px 12px 12px;
+  padding-top: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+}
+#title_box_msg {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: auto;
+  height: auto;
+  font-size: 14.0pt;
+  font-family: Arial;
+}
+#title_msg {
+  position: absolute;
+  top: 45px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 12.0pt;
+  font-family: Arial;
+}
+#title_msg_field {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  width: 645px;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+  border : 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding-left: 10px;
+}
+#receiver_msg {
+  position: absolute;
+  top: 105px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 12.0pt;
+  font-family: Arial;
+}
+#div_receivers{
+  position: absolute;
+  top: 130px;
+  left: 20px;
+  width: 645px;
+  height: 98px;
+  border : 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  overflow: auto;
+  border-radius: 4px;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+.receiver_list,ul{
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -40px;
+}
+.receiver_list li{
+  padding: 4px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #EBEBEB;
+  cursor: pointer;
+}
+.receiver_list li:hover{
+  background-color: #D0E8FF;
+}
+.receiver_list .selected_li{
+  background-color: #7DBFFF;
+}
+.receiver_list li:nth-child(n+4):last-child{
+  padding: 4px;
+  border: 0px;
+}
+#content_msg {
+  position: absolute;
+  top: 240px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 12.0pt;
+  font-family: Arial;
+}
+#content_msg_text {
+  position: absolute;
+  top: 265px;
+  left: 20px;
+  width: 645px;
+  height: 150px;
+  font-size: 11.0pt;
+  font-family: Arial;
+  overflow: auto;
+  resize: none;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  padding: 10px;
+}
+#btn_cancel {
+  position: absolute;
+  top: 425px;
+  left: 494px;
+  width: 80px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}
+#btn_send {
+  position: absolute;
+  top: 425px;
+  left: 584px;
+  width: 80px;
+  height: 23px;
+  background-color: #FFFFFF;
+  background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FFFFFF), color-stop(100%,#E6E6E6));
+  background-image: -o-linear-gradient(top,#FFFFFF,#E6E6E6);
+  background-image: linear-gradient(to bottom,#FFFFFF,#E6E6E6);
+  border: 1px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-radius: 4px 4px 4px 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 10.0pt;
+  font-family: Arial;
+}

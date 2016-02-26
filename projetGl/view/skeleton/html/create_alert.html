@@ -1,0 +1,50 @@
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" rel="stylesheet" href="./create_alert.css"/>
+  <link type="text/css" rel="stylesheet" href="./menu.css"/>
+  <body>
+    <div class="create_alert_page">
+         <div id="create_alert_box">
+
+          <div id="menu_box">
+            <ul id="menu">
+              <li class="single_line"><a href="">Actualite</a></li>
+              <li><a href="">Tableau de bord</a></li>
+              <li class="single_line selected" >
+                <a href="">Listes</a>
+                <ul>
+                    <li><a href="">Projets</a></li>
+                    <li><a href="">Clients</a></li>
+                    <li><a href="">Collaborateurs</a></li>
+                </ul>
+              </li>
+              <li class="single_line"><a href="">Recherche</a></li>
+              <li><a href="">Mon Compte</a></li>
+              <li class="single_line"><a href="">Quitter</a></li>
+            </ul>            
+            <select id="menu_select_user">
+              <option selected="selected">Collaborateur</option>
+              <option>Responsable Projet</option>
+              <option>Administrateur</option>
+            </select>
+          </div>
+
+          <div id="msg_box">
+            <span id="span_msg">Message</span>
+          </div>
+
+          <div id="main_box">
+
+            <div id="title_alert"><span id="type_alert">Retard</span><span id="task_alert"> Tâche 2.1</span>,<span id="project_alert"> Spartacus</span> (<span id="date_alert">12/05/2015</span>)</div>
+
+            <textarea id="alert_text" cols="40" rows="5" maxlength="1000">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</textarea>
+
+            <input id="btn_cancel" type="button" value="Annuler"/>
+            <input id="btn_send" type="button" value="Envoyer"/>  
+
+          </div>
+
+         </div>  
+    </div>
+  </body>
+</html>
