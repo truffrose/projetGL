@@ -62,6 +62,9 @@
 				case 4:
 					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
+				case 1:
+					$this->constructor1Args($args[0]);
+					break;
 				 default:
 					break;
 			}
@@ -92,23 +95,32 @@
 			$this->_telephone = $telephone;
 			$this->_adresse = "";
 		}
-	}
-	
-	// retoune un objet personne en fonction de son id
-	function getPersonneById($idPersonne) {
-		if (isConnectMySql()) {
-			$sql = 'select nom, prenom, adresse, telephone, mail from projetGL_personne where id = ' . sanitize_string($idPersonne) . ';';
-			$result = $_SESSION["link"]->query($sql);
-			if ($result->num_rows == 0){
-				return null;
-			}
-			else {
-				$row = $result->fetch_array(MYSQLI_ASSOC);
-				return new Personne($idPersonne, $row["nom"], $row["prenom"], $row["mail"], $row["telephone"], $row["adresse"]);
+		private function constructor1Args($id) {
+			if (isConnectMySql()) {
+				$sql = 'select nom, prenom, adresse, telephone, mail from projetGL_personne where id = ' . sanitize_string($id) . ';';
+				$result = $_SESSION["link"]->query($sql);
+				if ($result->num_rows != 0){
+					$row = $result->fetch_array(MYSQLI_ASSOC);
+					$this->_id = $id;
+					$this->_nom = $row["nom"];
+					$this->_prenom = $row["prenom"];
+					$this->_mail = $row["mail"];
+					$this->_telephone = $row["telephone"];
+					$this->_adresse = $row["adresse"];
+				}
 			}
 		}
-		else {
-			return null;
+		
+		// sauvegarde une personne
+		public function save() {
+			if (isConnectMySql()) {
+				$sql = 'update projetGL_personne p set p.nom = "' . sanitize_string($this->_nom) .'", p.prenom = "' . sanitize_string($this->_prenom) .'",  p.adresse = "' . sanitize_string($this->_adresse) .'", p.telephone = "' . sanitize_string($this->_telephone) . '", p.mail = "' . sanitize_string($this->_mail) .'" where personne = ' . sanitize_string($this->_id) . ';';
+				echo 'sql : ' . $sql;
+				return $_SESSION["link"]->query($sql);
+			}
+			else {
+				return false;
+			}
 		}
 	}
 	

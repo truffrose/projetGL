@@ -58,12 +58,10 @@ CREATE TABLE projetGL_personne_role (
 );
 
 CREATE TABLE projetGL_user (
-	id int NOT NULL AUTO_INCREMENT,
 	mail VARCHAR(255) NOT NULL,
 	password VARCHAR(32) NOT NULL,
 	personne int NOT NULL,
 	etat int NOT NULL,
-	PRIMARY KEY (id),
 	CONSTRAINT uc_user_mail UNIQUE (mail),
 	CONSTRAINT fk_user_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id),
 	CONSTRAINT fk_user_personne FOREIGN KEY(personne) REFERENCES projetGL_personne(id)
@@ -78,7 +76,7 @@ CREATE TABLE projetGL_user_parameters (
 	defaultRole int NOT NULL,
 	PRIMARY KEY (userId),
 	CONSTRAINT fk_user_parameters_role FOREIGN KEY(defaultRole) REFERENCES projetGL_role(id),
-	CONSTRAINT fk_user_parameters_user FOREIGN KEY(userId) REFERENCES projetGL_user(id)
+	CONSTRAINT fk_user_parameters_user FOREIGN KEY(userId) REFERENCES projetGL_personne(id)
 );
 
 CREATE TABLE projetGL_uniteTemps (
@@ -113,11 +111,9 @@ CREATE TABLE projetGL_projet (
 );
 
 CREATE TABLE projetGL_contact (
-	id int NOT NULL AUTO_INCREMENT,
 	client int NOT NULL,
 	personne int NOT NULL,
 	etat int NOT NULL,
-	PRIMARY KEY (id),
 	CONSTRAINT fk_contact_personne FOREIGN KEY(personne) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_contact_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
@@ -146,7 +142,7 @@ CREATE TABLE projetGL_tache (
 	CONSTRAINT fk_tache_predecesseur FOREIGN KEY(predecesseur) REFERENCES projetGL_tache(id),
 	CONSTRAINT fk_tache_projet FOREIGN KEY(projet) REFERENCES projetGL_projet(id),
 	CONSTRAINT fk_tache_responssable FOREIGN KEY(responssable) REFERENCES projetGL_personne(id),
-	CONSTRAINT fk_tache_contact FOREIGN KEY(contact) REFERENCES projetGL_contact(id),
+	CONSTRAINT fk_tache_contact FOREIGN KEY(contact) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_tache_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
 

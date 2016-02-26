@@ -56,7 +56,7 @@
 			$this->_defaultRole = -1;
 		}
 		private function constructor0Args() {
-			$this->_idUser = $_SESSION["user"]->getId();
+			$this->_idUser = $_SESSION["user"]->getPersonne()->getId();
 			$this->_autoAlert = false;
 			$this->_receiveMail = false;
 			$this->_receiveAlerte = false;

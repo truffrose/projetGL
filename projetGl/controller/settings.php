@@ -18,13 +18,14 @@
 		$ACTION_logOut = 2;
 		$ACTION_contactView = 3;
 		$ACTION_contactCreate = 4;
-		$ACTION_accountSave = 5;
+		$ACTION_contactSave = 5;
 		$ACTION_clientView = 6;
 		$ACTION_changeRole = 7;
 		$ACTION_collaboView = 8;
 		$ACTION_collaboDelete = 9;
 		$ACTION_collaboSave = 10;
 		$ACTION_collaboNew = 11;
+		$ACTION_accountSave = 12;
 	
 		// getting the action
 		function getCurrentAction() {

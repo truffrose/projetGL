@@ -4,7 +4,6 @@
 	class User {
 		
 		// les variables de la class
-		private $_id;
 		private $_mail;
 		private $_password;
 		private $_personne;
@@ -12,7 +11,7 @@
 		
 		// getters and setters
 		function getId() {
-			return $this->_id;
+			return $this->_personne->getId();
 		}
 		function getPassword() {
 			return $this->_password;
@@ -34,8 +33,8 @@
 			$ctp = func_num_args();
 			$args = func_get_args();
 			switch($ctp) {
-				case 4:
-					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
+				case 3:
+					$this->constructor3Args($args[0],$args[1],$args[2]);
 					break;
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
@@ -46,15 +45,13 @@
 		}
 
 		// the constrcutor
-		private function constructor4Args($id, $mail, $password, $personne) {
-			$this->_id = $id;
+		private function constructor3Args($mail, $password, $personne) {
 			$this->_mail = $mail;
 			$this->_password = $password;
 			$this->_personne = $personne;
 			$this->_parameters = null;
 		}
 		private function constructor2Args($mail, $password) {
-			$this->_id = -1;
 			$this->_mail = $mail;
 			$this->_password = $password;
 			$this->_personne = -1;
@@ -65,14 +62,14 @@
 			// permet de ce connecter au systeme
 			function login() {
 				if (isConnectMySql()) {
-					$sql = 'select id, mail, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\');';
+					$sql = 'select mail, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\');';
 					$result = $_SESSION["link"]->query($sql);
 					if ($result->num_rows == 0){
 						return false;
 					}
 					else {
 						$row = $result->fetch_array(MYSQLI_ASSOC);
-						$user = new User($row["id"], $row["mail"], $this->_password, $row["personne"]);
+						$user = new User($row["mail"], $this->_password, new Personne($row["personne"]));
 						$_SESSION["user"] = $user;
 						// load the paremeter of the account
 						$param = new UserParameters();
@@ -113,21 +110,6 @@
 				unset($_SESSION["user"]);
 				session_destroy();
 			}
-			
-			
-				
-				/*
-				UPDATE TABLE_A a 
-    JOIN TABLE_B b ON a.join_col = b.join_col AND a.column_a = b.column_b 
-    JOIN TABLE_C c ON [condition]
-SET a.column_c = a.column_c + 1
-
-
-INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) 
-INSERT INTO projetGL_user(mail, password, personne, etat) 
-	INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole)
-				*/
-			
 	}
 	
 	// permet la connection de l'auteur
@@ -144,7 +126,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 	// recupere la liste des utilisateurs
 	function getListActiveUser() {
 		if (isConnectMySql()) {
-			$sql = 'select pu.id, pp.nom, pp.prenom from projetGL_user as pu join projetGL_personne as pp on pu.personne = pp.id where pu.id <> 1;';
+			$sql = 'select pu.personne, pp.nom, pp.prenom from projetGL_user as pu join projetGL_personne as pp on pu.personne = pp.id where pu.id <> 1;';
 			$result = $_SESSION["link"]->query($sql);
 			if ($result->num_rows == 0){
 				return null;
@@ -152,7 +134,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 			else {
 				$i = 0;
 				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-					$retVal[$i]["id"] = $row["id"];
+					$retVal[$i]["id"] = $row["personne"];
 					$retVal[$i]["nom"] = $row["nom"];
 					$retVal[$i]["prenom"] = $row["prenom"];
 					$i++;
@@ -176,11 +158,10 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 				$sqlUser = 'INSERT INTO projetGL_user(mail, password, personne, etat) VALUES(\'' . sanitize_string($mail) . '\', md5(\'' . sanitize_string($userPassword) . '\'), ' . $persId . ', 1);'; 
 				if ($_SESSION["link"]->query($sqlUser) === true) {
 					// ajout les parametres par default
-					$userId = $_SESSION["link"]->insert_id;
 					$sqlRole = 'INSERT INTO projetGL_personne_role(personne, role) VALUES (' . $persId . ', ' . $firstRole . ');';
 					if ($_SESSION["link"]->query($sqlRole) === true) {
 						// ajout des param
-						$sqlParams = 'INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(' . $userId . ', false, false, false, ' . $firstRole . ');';
+						$sqlParams = 'INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(' . $persId . ', false, false, false, ' . $firstRole . ');';
 						return $persId;
 					}
 					else {
@@ -203,7 +184,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 	// met à jour la base de donnée avec les valeurs de la session utilisé
 	function majUserInformation($idUser, $password, $receiveMail, $receiveNotif, $defaultUser, $adresse, $mail, $telephone) {
 		if (isConnectMySql()) {
-			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set u.password = md5("' . sanitize_string($password) . '"), up.receiveMail = ' . sanitize_string($receiveMail) . ', up.receiveAlert = ' . sanitize_string($receiveNotif) . ', up.defaultRole = ' . sanitize_string($defaultUser) . ', p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where u.id = ' . sanitize_string($idUser) . ';';
+			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set u.password = md5("' . sanitize_string($password) . '"), up.receiveMail = ' . sanitize_string($receiveMail) . ', up.receiveAlert = ' . sanitize_string($receiveNotif) . ', up.defaultRole = ' . sanitize_string($defaultUser) . ', p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where u.personne = ' . sanitize_string($idUser) . ';';
 			return $_SESSION["link"]->query($sql);
 		}
 		else {
@@ -211,6 +192,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 		}
 	}
 	
+	/*
 	// retourne l'id d'un utilisateur via un id de personne
 	function getUserIdFromPers($idPers) {
 		if (isConnectMySql()) {
@@ -228,6 +210,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 			return null;
 		}
 	}
+	*/
 	
 	// change l'état d'un collaborateur pour le mettre dans l'état supprime
 	function deleteCollabo($idCollabo) {
@@ -311,6 +294,4 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 			return false;
 		}
 	}
-	
-	// projetGL_personne(nom, prenom, adresse, telephone, mail)
 ?>

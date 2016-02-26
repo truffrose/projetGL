@@ -38,6 +38,10 @@
 					$_SESSION["contact"] = -1;
 				}
 				break;
+			case $ACTION_contactSave:
+				$contact = new Contact($_POST["contact_company_select"], new Personne($_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"]));
+				// $id, $nom, $prenom, $mail, $telephone, $adresse
+				break;
 			case $ACTION_collaboView:
 				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {
 					$_SESSION["collabo"] = $_GET["collabo"];
@@ -76,7 +80,6 @@
 						// TO DO: gestion des erreurs
 					}
 				}
-				
 				break;
 			case $ACTION_collaboNew:
 				// recupere les valeur des checkbox

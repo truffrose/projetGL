@@ -6,7 +6,7 @@
     {
       var idx=element.selectedIndex;
       var val=element.options[idx].value;
-      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_tableau . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_changeRole . '&role='; ?>";
       strPos = strPos + "" + val;
       window.location.assign(strPos);
     }    
@@ -53,8 +53,12 @@
            
           <div id="main_box">
 
-            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=' . $idContact; ?>'"/>
-		
+		  <?php
+			if ($_SESSION["systemData"]->getUserRole() != 4){
+			  echo '<input id="edit_btn" type="button" value="Editer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=' . $idContact .'\'"/>';
+			}
+		  ?>
+		  
             <div id="main_box_title">Contact</div>
             
             <?php
@@ -82,8 +86,12 @@
                 echo '<div id="contacts_list_title">' . $selectClient->getNom() . '</div>';
             ?>
 
-            <input id="new_contact_btn" type="button" value="Nouveau Contact" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
-
+			<?php
+			  if ($_SESSION["systemData"]->getUserRole() != 4){
+				echo '<input id="new_contact_btn" type="button" value="Nouveau Contact" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1\'"/>';
+			  }
+			?>
+			
             <div id="contacts_list">
               <ul class="href_list">
                 <?php

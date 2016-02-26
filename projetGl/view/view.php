@@ -63,7 +63,7 @@
 					require_once($path . "html/client.php");
 					break;
 				case $CURSOR_compteView:
-					$personneAccount = getPersonneById($_SESSION["user"]->getId());
+					$personneAccount = new Personne($_SESSION["user"]->getId());
 					require_once($path . "html/account.php");
 					break;
 				case $CURSOR_clientEditView:
@@ -107,7 +107,7 @@
 					break;
 				// use as default page
 				default:
-					require_once($path . "html/search.php");
+					require_once($path . "html/tableau_collabo.php");
 			}
 		}
 		else {

@@ -4,14 +4,10 @@
 	class Contact {
 		
 		// les variables de la class
-		private $_id;
 		private $_personne;
 		private $_client;
 		
 		// getters and setters
-		function getId() {
-			return $this->_id;
-		}
 		function setPersonne($personne) {
 			$this->_personne = $personne;
 		}
@@ -27,9 +23,6 @@
 			$ctp = func_num_args();
 			$args = func_get_args();
 			switch($ctp) {
-				case 3:
-					$this->constructor3Args($args[0],$args[1],$args[2]);
-					break;
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
 					break;
@@ -42,20 +35,28 @@
 		}
 
 		// the constrcutor
-		private function constructor3Args($id, $client, $personne) {
-			$this->_id = $id;
+		private function constructor2Args($client, $personne) {
 			$this->client = $client;
 			$this->_personne = $personne;
 		}
-		private function constructor2Args($id, $personne) {
-			$this->_id = $id;
+		private function constructor1Args($personne) {
 			$this->client = -1;
 			$this->_personne = $personne;
 		}
-		private function constructor1Args($personne) {
-			$this->_id = -1;
-			$this->_client = -1;
-			$this->_personne = $personne;
+		
+		// sauvegarde un contact
+		public function save() {
+			if($this->_personne->save()) { // projetGL_contact(client, personne, etat)
+				if (isConnectMySql()) {
+					$sql = 'update projetGL_contact c set c.client = ' . sanitize_string($this->_client) .' where c.personne = ' . sanitize_string($this->_personne->getId()) . ';';
+					echo 'sql : ' . $sql;
+					return $_SESSION["link"]->query($sql);
+				}
+				else {
+					return false;
+				}
+			}
+			return false;
 		}
 		
 	}
@@ -63,7 +64,7 @@
     // test si le contact existe
     function isContactActif($idContact, $idClient) {
         if (isConnectMySql()) {
-			$sql = 'select id from projetGL_contact where etat = 1 and client = ' . sanitize_string($idClient) . ' and personne = ' . sanitize_string($idContact) . ';';
+			$sql = 'select personne from projetGL_contact where etat = 1 and client = ' . sanitize_string($idClient) . ' and personne = ' . sanitize_string($idContact) . ';';
             $result = $_SESSION["link"]->query($sql);
 			if ($result->num_rows == 0){
 				return false;
@@ -77,5 +78,29 @@
 		}
     }
     
+	// créer un nouveau contact dans la base de donné (celui-ci n'est pas forcement rataché à un client)
+	function createContact($nom, $prenom, $adresse, $telephone, $mail, $client) {
+		if (isConnectMySql()) {
+			// creation de la personne
+			$sqlPersonne = 'INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES (\'' . sanitize_string($nom) . '\', \'' . sanitize_string($prenom) . '\', \'' . sanitize_string($adresse) . '\', \'' . sanitize_string($telephone) . '\', \'' . sanitize_string($mail) . '\');';
+			if ($_SESSION["link"]->query($sqlPersonne) === true) {
+				// creer le compte utilisateur liée à la personne creer
+				$persId = $_SESSION["link"]->insert_id;
+				$sqlContact = 'INSERT INTO projetGL_contact(client, personne, etat) VALUES (' . sanitize_string($client) . ', ' . $persId . ', 1);';
+				if ($_SESSION["link"]->query($sqlUser) === true) {
+					return $persId;
+				}
+				else {
+					return 0;
+				}
+			}
+			else {
+				return 0;
+			}
+		}
+		else {
+			return 0;
+		}
+	}
 	
 ?>

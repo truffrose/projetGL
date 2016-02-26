@@ -70,7 +70,7 @@
 			// retoune la liste des contact via un client
 			function getContact() {
 				if (isConnectMySql()) {
-                    $sql = 'select c.id as contact, c.client, p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne p join projetGL_contact c on p.id = c.personne where etat = 1 and c.client = ' . sanitize_string($this->_id) . ';';
+                    $sql = 'select c.client, p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne p join projetGL_contact c on p.id = c.personne where etat = 1 and c.client = ' . sanitize_string($this->_id) . ';';
                     $result = $_SESSION["link"]->query($sql);
 					if ($result->num_rows == 0){
 						return null;
@@ -78,7 +78,7 @@
 					else {
 						$i = 0;
                         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                            $retVal[$i] = new Contact($row["contact"], $row["client"], new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"], $row["adresse"]));
+                            $retVal[$i] = new Contact($row["client"], new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"], $row["adresse"]));
                             $i++;
                         }
                         return $retVal;

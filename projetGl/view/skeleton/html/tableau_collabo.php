@@ -38,7 +38,7 @@
             </ul>
             <select id="menu_select_user" onchange="changeRole(this)">
               <?php
-                foreach (getRoleIdNameByIdUser($_SESSION["user"]->getId()) as $value) {
+                foreach (getRoleIdNameByIdUser($_SESSION["user"]->getPersonne()->getId()) as $value) {
                   if ($value["id"] == $_SESSION["systemData"]->getUserRole()) {
                    echo '<option value="' . $value["id"] . '" selected="selected">' . $value["nom"] . '</option>';
                   }

@@ -58,7 +58,9 @@
               if ($idContact == -1 ) {
                 ?>
                   <FORM method=post action="./">
-                    <input type="hidden"  name="action"  value="<?php echo $ACTION_contactCreate; ?>">
+					<input type="hidden"  name="cursor"  value="<?php echo $CURSOR_contactView; ?>">
+					<input type="hidden"  name="action"  value="<?php echo $ACTION_contactCreate; ?>">
+                    
                     <div id="contact_company">Societe : </div>
                     <select id="contact_company_select" name="contact_company_select">
                       <option value="0"></option>
@@ -91,6 +93,11 @@
               else {
                 ?>
                   <FORM method=post action="./">
+                    
+					<input type="hidden"  name="cursor"  value="<?php echo $CURSOR_contactView; ?>">
+					<input type="hidden"  name="action"  value="<?php echo $ACTION_contactSave; ?>">
+					<input type="hidden"  name="contact"  value="<?php echo $selectContact->getPersonne()->getId(); ?>">
+                    
                     <div id="contact_company">Societe : </div>
                     <select id="contact_company_select" name="contact_company_select">
                       <?php
@@ -114,7 +121,7 @@
                     <input id="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
                     <div id="contact_email">Email : </div>
                     <input id="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
-                    <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getId(); ?>'"/>
+                    <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
                     <input id="save_btn" type="submit" value="Sauvegarder"/>
                   </FORM>
                 <?php

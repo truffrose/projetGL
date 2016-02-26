@@ -53,8 +53,11 @@
 
           <div id="main_box">
 
-            <input id="edit_btn" type="button" value="Editer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientEditView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
-
+            <?php
+              if ($_SESSION["systemData"]->getUserRole() != 4) {
+                echo '<input id="edit_btn" type="button" value="Editer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_clientEditView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId() . '\'"/>';
+              }
+            ?>
             
     
             <div id="main_box_title">Client</div>
@@ -102,8 +105,12 @@
 
             <div id="clients_list_title">Clients</div>
 
-            <input id="new_client_btn" type="button" value="Nouveau Client"/>
-
+            <?php
+              if ($_SESSION["systemData"]->getUserRole() != 4) {
+                echo '<input id="new_client_btn" type="button" value="Nouveau Client"/>';
+              }
+            ?>
+            
             <div id="clients_list">
               <ul class="href_list">
                 <?php
