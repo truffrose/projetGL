@@ -78,6 +78,43 @@
 				}
 				
 				break;
+			case $ACTION_collaboNew:
+				// recupere les valeur des checkbox
+				$collabo = false;
+				$current = 0;
+				if (isset($_POST["collabo_permission_check_collabo"]) && $_POST["collabo_permission_check_collabo"] == "check") {
+					$collabo = true;
+					$current = 4;
+				}
+				$respo = false;
+				if (isset($_POST["collabo_permission_check_respo"]) && $_POST["collabo_permission_check_respo"] == "check") {
+					$respo = true;
+					$current = 3;
+				}
+				$admin = false;
+				if (isset($_POST["collabo_permission_check_admin"]) && $_POST["collabo_permission_check_admin"] == "check") {
+					$admin = true;
+					$current = 2;
+				}
+				if ($current == 0) {
+					$collabo = true;
+					$current = 4;
+				}
+				// ($nom, $prenom, $adresse, $userPassword, $telephone, $mail, $firstRole)
+				$collaboId = createAccount($_POST["collabo_name_field"], $_POST["collabo_firstname_field"], $_POST["collabo_address_field"], $_POST["collabo_phone_field"], $_POST["collabo_password_field"], $_POST["collabo_email_field"], $current);
+				if ($collaboId > 0) {
+						$_SESSION["collabo"] = $collaboId;
+						if (synchroniseRole($collaboId, $collabo, $respo, $admin)) {
+							// TO DO: affiché une réussite
+						}
+						else {
+							// TO DO: gestion des erreurs
+						}
+					}
+					else {
+						// TO DO: gestion des erreurs
+					}
+				break;
 			case $ACTION_collaboDelete:
 				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {
 					$_SESSION["collabo"] = -1;

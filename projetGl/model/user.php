@@ -166,14 +166,13 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 	}
 	
 	// creer un collaborateur et l'ajoute à la base
-	function createAccount($nom, $prenom, $adresse, $telephone, $mail, $firstRole) {
+	function createAccount($nom, $prenom, $adresse, $userPassword, $telephone, $mail, $firstRole) {
 		if (isConnectMySql()) {
 			// creation de la personne
 			$sqlPersonne = 'INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES (\'' . sanitize_string($nom) . '\', \'' . sanitize_string($prenom) . '\', \'' . sanitize_string($adresse) . '\', \'' . sanitize_string($telephone) . '\', \'' . sanitize_string($mail) . '\');';
 			if ($_SESSION["link"]->query($sqlPersonne) === true) {
 				// creer le compte utilisateur liée à la personne creer
 				$persId = $_SESSION["link"]->insert_id;
-				$userPassword = '123'; // need a fonction to make a random password and give it by mail and need to change it
 				$sqlUser = 'INSERT INTO projetGL_user(mail, password, personne, etat) VALUES(\'' . sanitize_string($mail) . '\', md5(\'' . sanitize_string($userPassword) . '\'), ' . $persId . ', 1);'; 
 				if ($_SESSION["link"]->query($sqlUser) === true) {
 					// ajout les parametres par default
@@ -182,22 +181,22 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 					if ($_SESSION["link"]->query($sqlRole) === true) {
 						// ajout des param
 						$sqlParams = 'INSERT INTO projetGL_user_parameters(userId, autoAlert, receiveMail, receiveAlert, defaultRole) VALUES(' . $userId . ', false, false, false, ' . $firstRole . ');';
-						return $_SESSION["link"]->query($sqlParams);
+						return $persId;
 					}
 					else {
-						return false;
+						return 0;
 					}
 				}
 				else {
-					return false;
+					return 0;
 				}
 			}
 			else {
-				return false;
+				return 0;
 			}
 		}
 		else {
-			return false;
+			return 0;
 		}
 	}
 	

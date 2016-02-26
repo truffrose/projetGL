@@ -24,6 +24,7 @@
 		$ACTION_collaboView = 8;
 		$ACTION_collaboDelete = 9;
 		$ACTION_collaboSave = 10;
+		$ACTION_collaboNew = 11;
 	
 		// getting the action
 		function getCurrentAction() {

@@ -82,9 +82,12 @@
             <input id="search_field" type="text" value="Rechercher"/>
 
             <div id="collabos_list_title">Collaborateurs</div>
-
-            <!-- BOUTON A MONTRER SI LE USER EST ADMIN-->
-            <input id="new_collabo_btn" type="button" value="Nouveau Collaborateur"/>
+            
+            <?php
+              if ($_SESSION["systemData"]->getUserRole() == 2) {
+                echo '<input id="new_collabo_btn" type="button" value="Nouveau Collaborateur" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_collaboEditView . '&action=' . $ACTION_collaboView . '&collabo=-1\'"/>';
+              }
+            ?>
 
             <div id="collabos_list">
               <ul class="href_list">
