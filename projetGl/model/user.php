@@ -214,7 +214,7 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 	
 	// retourne l'id d'un utilisateur via un id de personne
 	function getUserIdFromPers($idPers) {
-		if (isConnectMySql()) { // projetGL_user(mail, password, personne, etat) 
+		if (isConnectMySql()) {
 			$sql = 'select id from projetGL_user where personne = ' . $idPers . ';';
 			$result = $_SESSION["link"]->query($sql);
 			if ($result->num_rows == 0){
@@ -257,6 +257,56 @@ INSERT INTO projetGL_user(mail, password, personne, etat)
 			$sql = 'update projetGL_user u join projetGL_personne p on u.personne = p.id set p.nom = "' . sanitize_string($nom) .'", p.prenom = "' . sanitize_string($prenom) .'",  p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where personne = ' . sanitize_string($idCollabo) . ';';
 			echo 'sql : ' . $sql;
 			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	function synchroniseRole($idCollabo, $collabo, $respo, $admin) {
+		if (isConnectMySql()) {
+			$temp[0][0] = 2;
+			$temp[1][0] = 3;
+			$temp[2][0] = 4;
+			if ($collabo)
+				$temp[2][1] = "add";
+			else
+				$temp[2][1] = "";
+			if ($respo)
+				$temp[1][1] = "add";
+			else
+				$temp[1][1] = "";
+			if ($admin)
+				$temp[0][1] = "add";
+			else
+				$temp[0][1] = "";
+			$sql = 'select role from projetGL_personne_role where personne = ' . sanitize_string($idCollabo) . ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows != 0){
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					if ($temp[$row["role"] - 2][1] == "add") {
+						$temp[$row["role"] - 2][1] = "";
+					}
+					else if ($temp[$row["role"] - 2][1] == "") {
+						$temp[$row["role"] - 2][1] = "rm";
+					}
+				}
+			}
+			for ($i = 0; $i < 3; $i ++) {
+				$sql = "";
+				if ($temp[$i][1] == "add") {
+					$sql = 'INSERT INTO projetGL_personne_role(personne, role) VALUES (' . $idCollabo . ', ' . $temp[$i][0] . ');';
+				}
+				elseif ($temp[$i][1] == "rm") {
+					$sql = 'DELETE FROM projetGL_personne_role where personne = ' . $idCollabo . ' and role = ' . $temp[$i][0] . ';';
+				}
+				if ($sql != "") {
+					echo 'sql : ' . $sql . '<br/>';
+					if(!$_SESSION["link"]->query($sql)) {
+						return false;
+					}
+				}
+			}
+			return true;
 		}
 		else {
 			return false;

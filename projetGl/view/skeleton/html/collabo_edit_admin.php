@@ -95,12 +95,15 @@
                 $tempArray[0][0] = 4;
                 $tempArray[0][1] = " Collaborateur";
                 $tempArray[0][2] = false;
+				$tempArray[0][3] = "collabo";
                 $tempArray[1][0] = 3;
                 $tempArray[1][1] = " Responsable de projet";
                 $tempArray[1][2] = false;
+				$tempArray[1][3] = "respo";
                 $tempArray[2][0] = 2;
                 $tempArray[2][1] = " Administrateur";
                 $tempArray[2][2] = false;
+				$tempArray[2][3] = "admin";
                 foreach (getRoleIdNameByIdUser(getUserIdFromPers($idCollabo)) as $value) {
                   for ($i = 0; $i < 3; $i++) {
                     if ($tempArray[$i][0] == $value["id"]) {
@@ -110,10 +113,10 @@
                 }
                 for ($i = 0; $i < 3; $i++) {
                   if ($tempArray[$i][2]) {
-                    echo '<input id="collabo_permission_check_collabo" type="checkbox" value="' . $tempArray[$i][0] . '" checked="checked">' . $tempArray[$i][1] . '<p>';
+                    echo '<input id="collabo_permission_check_' . $tempArray[$i][3] . '"  name="collabo_permission_check_' . $tempArray[$i][3] . '"  type="checkbox" value="check" checked="checked">' . $tempArray[$i][1] . '<p>';
                   }
                   else {
-                    echo '<input id="collabo_permission_check_collabo" type="checkbox" value="' . $tempArray[$i][0] . '">' . $tempArray[$i][1] . '<p>';
+                    echo '<input id="collabo_permission_check_' . $tempArray[$i][3] . '" name="collabo_permission_check_' . $tempArray[$i][3] . '"  type="checkbox" value="check">' . $tempArray[$i][1] . '<p>';
                   }
                 }
               ?>

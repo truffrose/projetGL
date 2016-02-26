@@ -47,6 +47,19 @@
 				}
 				break;
 			case $ACTION_collaboSave:
+				// recupere les valeur des checkbox
+				$collabo = false;
+				if (isset($_POST["collabo_permission_check_collabo"]) && $_POST["collabo_permission_check_collabo"] == "check") {
+					$collabo = true;
+				}
+				$respo = false;
+				if (isset($_POST["collabo_permission_check_respo"]) && $_POST["collabo_permission_check_respo"] == "check") {
+					$respo = true;
+				}
+				$admin = false;
+				if (isset($_POST["collabo_permission_check_admin"]) && $_POST["collabo_permission_check_admin"] == "check") {
+					$admin = true;
+				}
 				// besoin de faire les modifs de gestion des droits
 				if (isset($_POST["collabo"]) && $_POST["collabo"] != -1) {
 					$_SESSION["collabo"] = $_POST["collabo"];
@@ -56,7 +69,14 @@
 					else {
 						saveCollaboWithPassword($_POST["collabo"], $_POST["collabo_name_field"],  $_POST["collabo_firstname_field"], $_POST["collabo_password_field"], $_POST["collabo_address_field"], $_POST["collabo_phone_field"], $_POST["collabo_email_field"]) ;
 					}
+					if (synchroniseRole($_SESSION["collabo"], $collabo, $respo, $admin)) {
+						// TO DO: affiché une réussite
+					}
+					else {
+						// TO DO: gestion des erreurs
+					}
 				}
+				
 				break;
 			case $ACTION_collaboDelete:
 				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {
