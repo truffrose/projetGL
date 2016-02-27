@@ -25,6 +25,7 @@
 					$listeContact = $selectClient->getContact();
 					$selectContact = null;
 					foreach ($listeContact as $value) {
+						echo 'contact ' . $value->getPersonne()->getId() . '<br/>';
 						if ($idContact == $value->getPersonne()->getId()) {
 							$selectContact = $value;
 						}

@@ -36,11 +36,11 @@
 
 		// the constrcutor
 		private function constructor2Args($client, $personne) {
-			$this->client = $client;
+			$this->_client = $client;
 			$this->_personne = $personne;
 		}
 		private function constructor1Args($personne) {
-			$this->client = -1;
+			$this->_client = -1;
 			$this->_personne = $personne;
 		}
 		
@@ -49,7 +49,6 @@
 			if($this->_personne->save()) { // projetGL_contact(client, personne, etat)
 				if (isConnectMySql()) {
 					$sql = 'update projetGL_contact c set c.client = ' . sanitize_string($this->_client) .' where c.personne = ' . sanitize_string($this->_personne->getId()) . ';';
-					echo 'sql : ' . $sql;
 					return $_SESSION["link"]->query($sql);
 				}
 				else {
@@ -59,6 +58,30 @@
 			return false;
 		}
 		
+		// creation d'un contact
+		public function create() {
+			if (isConnectMySql()) {
+				// creation de la personne
+				$sqlPersonne = 'INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES (\'' . sanitize_string($this->_personne->getNom()) . '\', \'' . sanitize_string($this->_personne->getPrenom()) . '\', \'' . sanitize_string($this->_personne->getAdresse()) . '\', \'' . sanitize_string($this->_personne->getTelephone()) . '\', \'' . sanitize_string($this->_personne->getMail()) . '\');';
+				if ($_SESSION["link"]->query($sqlPersonne) === true) {
+					// creer le contact liée à la personne creer
+					$persId = $_SESSION["link"]->insert_id;
+					$sqlContact = 'INSERT INTO projetGL_contact(client, personne, etat) VALUES (' . $this->_client . ', ' . $persId . ', 1);'; 
+					if ($_SESSION["link"]->query($sqlContact) === true) {
+						return $persId;
+					}
+					else {
+						return 0;
+					}
+				}
+				else {
+					return 0;
+				}
+			}
+			else {
+				return 0;
+			}
+		}
 	}
     
     // test si le contact existe
@@ -83,10 +106,12 @@
 		if (isConnectMySql()) {
 			// creation de la personne
 			$sqlPersonne = 'INSERT INTO projetGL_personne(nom, prenom, adresse, telephone, mail) VALUES (\'' . sanitize_string($nom) . '\', \'' . sanitize_string($prenom) . '\', \'' . sanitize_string($adresse) . '\', \'' . sanitize_string($telephone) . '\', \'' . sanitize_string($mail) . '\');';
+			echo $sqlPersonne;
 			if ($_SESSION["link"]->query($sqlPersonne) === true) {
 				// creer le compte utilisateur liée à la personne creer
 				$persId = $_SESSION["link"]->insert_id;
 				$sqlContact = 'INSERT INTO projetGL_contact(client, personne, etat) VALUES (' . sanitize_string($client) . ', ' . $persId . ', 1);';
+				echo $sqlContact;
 				if ($_SESSION["link"]->query($sqlUser) === true) {
 					return $persId;
 				}

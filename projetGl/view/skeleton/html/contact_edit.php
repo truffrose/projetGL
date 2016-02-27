@@ -63,7 +63,6 @@
                     
                     <div id="contact_company">Societe : </div>
                     <select id="contact_company_select" name="contact_company_select">
-                      <option value="0"></option>
                       <?php
                         foreach(getListActiveClient() as $value) {
                           if ($value->getId() == $selectClient->getId()) {
@@ -76,15 +75,15 @@
                       ?>
                     </select>
                     <div id="contact_name">Nom : </div>
-                    <input id="contact_name_field" type="text" value=""/>
+                    <input id="contact_name_field" name="contact_name_field" type="text" value=""/>
                     <div id="contact_firstname">Prenom : </div>
-                    <input id="contact_firstname_field" type="text" value=""/>
+                    <input id="contact_firstname_field" name="contact_firstname_field" type="text" value=""/>
                     <div id="contact_address">Adresse : </div>
-                    <input id="contact_address_field" type="text" value=""/>
+                    <input id="contact_address_field" name="contact_address_field" type="text" value=""/>
                     <div id="contact_tel">Telephone : </div>
-                    <input id="contact_tel_field" type="text" value=""/>
+                    <input id="contact_tel_field" name="contact_tel_field" type="text" value=""/>
                     <div id="contact_email">Email : </div>
-                    <input id="contact_email_field" type="text" value=""/>
+                    <input id="contact_email_field" name="contact_email_field" type="text" value=""/>
                     <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
                     <input id="save_btn" type="submit" value="Creer"/>
                   </FORM>
@@ -112,15 +111,15 @@
                       ?>
                     </select>
                     <div id="contact_name">Nom : </div>
-                    <input id="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getNom(); ?>"/>
+                    <input id="contact_name_field" name="contact_name_field" type="text" value="<?php echo $selectContact->getPersonne()->getNom(); ?>"/>
                     <div id="contact_firstname">Prenom : </div>
-                    <input id="contact_firstname_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom(); ?>"/>
+                    <input id="contact_firstname_field" name="contact_firstname_field" type="text" value="<?php echo $selectContact->getPersonne()->getPrenom(); ?>"/>
                     <div id="contact_address">Adresse : </div>
-                    <input id="contact_address_field" type="text" value="<?php echo $selectContact->getPersonne()->getAdresse(); ?>"/>
+                    <input id="contact_address_field" name="contact_address_field" type="text" value="<?php echo $selectContact->getPersonne()->getAdresse(); ?>"/>
                     <div id="contact_tel">Telephone : </div>
-                    <input id="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
+                    <input id="contact_tel_field" name="contact_tel_field" type="text" value="<?php echo $selectContact->getPersonne()->getTelephone(); ?>"/>
                     <div id="contact_email">Email : </div>
-                    <input id="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
+                    <input id="contact_email_field" name="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
                     <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
                     <input id="save_btn" type="submit" value="Sauvegarder"/>
                   </FORM>

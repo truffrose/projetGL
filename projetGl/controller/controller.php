@@ -39,8 +39,31 @@
 				}
 				break;
 			case $ACTION_contactSave:
-				$contact = new Contact($_POST["contact_company_select"], new Personne($_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"], $_POST["contact"]));
-				// $id, $nom, $prenom, $mail, $telephone, $adresse
+				$contact = new Contact($_POST["contact_company_select"], new Personne($_POST["contact"], $_POST["contact_name_field"], $_POST["contact_firstname_field"], $_POST["contact_email_field"], $_POST["contact_tel_field"], $_POST["contact_address_field"]));
+				$_SESSION["client"] = $_POST["contact_company_select"];
+				if ($contact->save()) {
+					$_SESSION["contact"] = $_POST["contact"];
+					// TO DO: affiché une réussite
+				}
+				else {
+					$_SESSION["contact"] = -1;
+					// TO DO: gestion des erreurs
+				}
+				break;
+			case $ACTION_contactCreate:
+				$contact = new Contact($_POST["contact_company_select"], new Personne(-1, $_POST["contact_name_field"], $_POST["contact_firstname_field"], $_POST["contact_email_field"], $_POST["contact_tel_field"], $_POST["contact_address_field"]));
+				$_SESSION["client"] = $_POST["contact_company_select"];
+				$idContact = $contact->create();
+				echo 'id contact = ' . $idContact;
+				if ($idContact != 0) {
+					$_SESSION["contact"] = $idContact;
+					// TO DO: affiché une réussite
+				}
+				else {
+					$_SESSION["contact"] = -1;
+					// TO DO: gestion des erreurs
+				}
+				break;
 				break;
 			case $ACTION_collaboView:
 				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {

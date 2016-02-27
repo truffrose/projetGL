@@ -114,8 +114,7 @@
 		// sauvegarde une personne
 		public function save() {
 			if (isConnectMySql()) {
-				$sql = 'update projetGL_personne p set p.nom = "' . sanitize_string($this->_nom) .'", p.prenom = "' . sanitize_string($this->_prenom) .'",  p.adresse = "' . sanitize_string($this->_adresse) .'", p.telephone = "' . sanitize_string($this->_telephone) . '", p.mail = "' . sanitize_string($this->_mail) .'" where personne = ' . sanitize_string($this->_id) . ';';
-				echo 'sql : ' . $sql;
+				$sql = 'update projetGL_personne p set p.nom = "' . sanitize_string($this->_nom) .'", p.prenom = "' . sanitize_string($this->_prenom) .'",  p.adresse = "' . sanitize_string($this->_adresse) .'", p.telephone = "' . sanitize_string($this->_telephone) . '", p.mail = "' . sanitize_string($this->_mail) .'" where p.id = ' . sanitize_string($this->_id) . ';';
 				return $_SESSION["link"]->query($sql);
 			}
 			else {
