@@ -51,7 +51,7 @@ INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, et
     INSERT INTO projetGL_tache(nom, description, dateDebut, dateFinTot, dateFinTard, charge, avancement, tempsPasse, tempsRestant, detruitALaCompletion, niveau, tacheMere, predecesseur, projet, responssable, contact, etat)
     VALUES("Couper les fleurs", "il faut couper les fleurs", ADDDATE(now(), 5), ADDDATE(now(), 10), ADDDATE(now(), 12), 5, 0, 0, 5, true, 0, null, 1, 1, 5, 8, 1);
     INSERT INTO projetGL_tache(nom, description, dateDebut, dateFinTot, dateFinTard, charge, avancement, tempsPasse, tempsRestant, detruitALaCompletion, niveau, tacheMere, predecesseur, projet, responssable, contact, etat)
-    VALUES("Assembler les fleurs", "il faut assembler les fleurs", ADDDATE(now(), 15), ADDDATE(now(), 20), ADDDATE(now(), 22), 5, 0, 0, 5, true, 0, null, 1, 1, 5, 8, 1);
+    VALUES("Assembler les fleurs", "il faut assembler les fleurs", ADDDATE(now(), 15), ADDDATE(now(), 20), ADDDATE(now(), 22), 5, 0, 0, 5, true, 0, null, 2, 1, 4, 8, 1);
     
     
     
