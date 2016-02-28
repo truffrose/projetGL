@@ -44,7 +44,7 @@ INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 7, 1);
 INSERT INTO projetGL_contact(client, personne, etat) VALUES (1, 8, 1);
 
 /* ajout des projets */
-INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, etat) VALUES("Bouquet de fleur", "Creation d’un bouquet de fleur", 1, 35, 1, 1);
+INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, responsable, etat) VALUES("Bouquet de fleur", "Creation d’un bouquet de fleur", 1, 35, 1, 3, 1);
     /* ajout des taches */
     INSERT INTO projetGL_tache(nom, description, dateDebut, dateFinTot, dateFinTard, charge, avancement, tempsPasse, tempsRestant, detruitALaCompletion, niveau, tacheMere, predecesseur, projet, responssable, contact, etat)
     VALUES("Ceuillir les fleurs", "il faut ceuillir les fleurs", now(), ADDDATE(now(), 5), ADDDATE(now(), 7), 5, 50, 3, 2, true, 0, null, null, 1, 4, 7, 1);

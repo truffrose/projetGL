@@ -54,7 +54,6 @@
 				$contact = new Contact($_POST["contact_company_select"], new Personne(-1, $_POST["contact_name_field"], $_POST["contact_firstname_field"], $_POST["contact_email_field"], $_POST["contact_tel_field"], $_POST["contact_address_field"]));
 				$_SESSION["client"] = $_POST["contact_company_select"];
 				$idContact = $contact->create();
-				echo 'id contact = ' . $idContact;
 				if ($idContact != 0) {
 					$_SESSION["contact"] = $idContact;
 					// TO DO: affiché une réussite
@@ -180,6 +179,40 @@
 				if (isset($_GET["role"])) {
 					$_SESSION["systemData"]->setUserRole($_GET["role"]);
 				}
+				break;
+			case $ACTION_showResult:
+				$listeResultat = null;
+				if (isset($_POST["search_type_select"])) {
+					if ($_POST["search_type_select"] == 0) {
+						$listeResultat[0] = 0;
+						$active = false;
+						if (isset($_POST["checkbox_filter_state_ongoing"]) && $_POST["checkbox_filter_state_ongoing"] == "check") {
+							$active = true;
+						}
+						$termine = false;
+						if (isset($_POST["checkbox_filter_state_finished"]) && $_POST["checkbox_filter_state_finished"] == "check") {
+							$termine = true;
+						}
+						$archive = false;
+						if (isset($_POST["checkbox_filter_state_archived"]) && $_POST["checkbox_filter_state_archived"] == "check") {
+							$archive = true;
+						}
+						$listeResultat[1] = requeteProjet($_POST["field_project_filter_name"], $_POST["project_filter_client_select"], $_POST["project_filter_respo_select"], $active, $termine, $archive);
+					}
+					elseif ($_POST["search_type_select"] == 1) {
+						// TODO: client
+					}
+					elseif ($_POST["search_type_select"] == 2) {
+						// TODO: contact
+					}
+					elseif ($_POST["search_type_select"] == 3) {
+						// TODO: collaborateur
+					}
+				}
+				else {
+					// TODO: Pas de recherche
+				}
+				$_SESSION["resultat"] = $listeResultat;
 				break;
 			default:
 				// TO DO: default action (nothing to do)

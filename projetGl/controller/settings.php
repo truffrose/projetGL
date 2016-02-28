@@ -26,6 +26,7 @@
 		$ACTION_collaboSave = 10;
 		$ACTION_collaboNew = 11;
 		$ACTION_accountSave = 12;
+		$ACTION_showResult = 13;
 	
 		// getting the action
 		function getCurrentAction() {

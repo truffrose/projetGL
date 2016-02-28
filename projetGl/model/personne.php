@@ -144,5 +144,27 @@
 			return null;
 		}
 	}
+	
+	// retourne tous les  responssable de projet actifs
+	function getRespoList() {
+		if (isConnectMySql()) {
+			$sql = 'select distinct p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne_role pr join projetGL_personne p on pr.personne = p.id join projetGL_user u on u.personne = p.id where pr.role = 3 and u.etat = 1;';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"], $row["adresse"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
 
 ?>

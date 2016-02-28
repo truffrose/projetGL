@@ -102,11 +102,13 @@ CREATE TABLE projetGL_projet (
 	uniteTemps int NOT NULL,
 	avancement int NOT NULL,
 	client int NOT NULL,
+    responsable int NOT NULL,
 	etat int NOT NULL,
 	PRIMARY KEY (id),
 	CONSTRAINT uc_projet_nom UNIQUE (nom),
 	CONSTRAINT fk_projet_uniteTemps FOREIGN KEY(uniteTemps) REFERENCES projetGL_uniteTemps(id),
 	CONSTRAINT fk_projet_client FOREIGN KEY(client) REFERENCES projetGL_client(id),
+	CONSTRAINT fk_projet_responsable FOREIGN KEY(responsable) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_projet_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
 
@@ -166,7 +168,7 @@ CREATE TABLE projetGL_alerte (
     /* add the different role */
     INSERT INTO projetGL_role(nom, description) VALUES('SuperAdmin', 'Ne peut pas être supprimé de la base de donné.');
     INSERT INTO projetGL_role(nom, description) VALUES('Administrateur', 'A un droit de vision sur l integralié des projets. Il peeut aussi modifier des droit utilisateurs.');
-    INSERT INTO projetGL_role(nom, description) VALUES('Chef projet', 'A le droit d interragir sur un projet');
+    INSERT INTO projetGL_role(nom, description) VALUES('Responssable projet', 'A le droit d interragir sur un projet');
     INSERT INTO projetGL_role(nom, description) VALUES('Collaborateur', 'Peut uniquement travailler sur ces projets');
     
     /* add the default etat */

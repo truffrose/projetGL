@@ -1,4 +1,5 @@
 <html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/search.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="search.js"></script>
@@ -57,77 +58,90 @@
           <div id="main_box">
 
             <div id="title">Recherche</div>
-            <div id="search_type_label">Rechercher :</div>
-            <select id="search_type_select" onChange="changeFilters()">
-              <option selected="selected">Projet</option>
-              <option>Client</option>
-              <option>Contact</option>
-              <option>Collaborateur</option>
-            </select>
-            <div id="project_filters">
-              <div id="label_project_filter_name">Nom :</div>
-              <input id="field_project_filter_name" type="text"  value="Azur" maxlength="20"/>
-              <div id="label_project_filter_client">Client :</div>
-              <select id="project_filter_client_select">
-                <option selected="selected">Tous les clients</option>
-                <option>Altec</option>
-                <option>Thales</option>
+            <FORM method="POST" action="./">
+              
+              <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_research; ?>">
+              <input type="hidden"  name="action"  value="<?php echo $ACTION_showResult; ?>">
+              
+              <div id="search_type_label">Rechercher :</div>
+              <select id="search_type_select" name="search_type_select" onChange="changeFilters()">
+                <option selected="selected" value="0">Projet</option>
+                <option value="1">Client</option>
+                <option value="2">Contact</option>
+                <option value="3">Collaborateur</option>
               </select>
-              <div id="label_project_filter_respo_select">Responsable :</div>
-              <select id="project_filter_respo_select" >
-                <option>Tous les responsables</option>
-                <option selected="selected" >Cyril Roussot</option>
-              </select>
-              <div id="group_project_filter_state">
-                <input id="checkbox_filter_state_ongoing" type="checkbox" checked="checked"/>
-                <div id="label_filter_state_ongoing">En Cours</div>
-                <input id="checkbox_filter_state_finished" type="checkbox"/>
-                <div id="label_filter_state_finished">Termines</div>
-                <input id="checkbox_filter_state_archived" type="checkbox"/>
-                <div id="label_filter_state_archived">Archives</div>
+              <div id="project_filters">
+                <div id="label_project_filter_name">Nom :</div>
+                <input id="field_project_filter_name" name="field_project_filter_name" type="text"  value="" maxlength="20"/>
+                <div id="label_project_filter_client">Client :</div>
+                <select id="project_filter_client_select" name="project_filter_client_select">
+                  <option selected="selected" value="-1">Tous les clients</option>
+                  <?php
+                    foreach(getListActiveClient() as $value) {
+                      echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+                    }
+                  ?>
+                </select>
+                <div id="label_project_filter_respo_select">Responsable :</div>
+                <select id="project_filter_respo_select" name="project_filter_respo_select">
+                  <option selected="selected" value="-1">Tous les responsables</option>
+                  <?php
+                    foreach(getRespoList() as $value) {
+                      echo '<option value="' . $value->getId() . '">' . $value->getNom() . ' ' . $value->getPrenom() . '</option>';
+                    }
+                  ?>
+                </select>
+                <div id="group_project_filter_state">
+                  <input id="checkbox_filter_state_ongoing" name="checkbox_filter_state_ongoing" value="check" type="checkbox" checked="checked"/>
+                  <div id="label_filter_state_ongoing">En Cours</div>
+                  <input id="checkbox_filter_state_finished" name="checkbox_filter_state_finished" value="check" type="checkbox"/>
+                  <div id="label_filter_state_finished">Termines</div>
+                  <input id="checkbox_filter_state_archived" name="checkbox_filter_state_archived" value="check" type="checkbox"/>
+                  <div id="label_filter_state_archived">Archives</div>
+                </div>
               </div>
-            </div>
-            <div id="client_filters">
-              <div id="label_client_filter_name">Nom :</div>
-              <input id="field_client_filter_name" type="text"  value="" maxlength="20"/>
-              <div id="label_client_filter_address">Adresse :</div>
-              <input id="field_client_filter_address" type="text"  value="" maxlength="40"/>
-              <div id="label_client_filter_project_select">Projet :</div>
-              <select id="client_filter_project_select" >
-                <option selected="selected">Tous les projets</option>
-                <option>Projet Azure</option>
-                <option>Spartacus</option>
-              </select>
-            </div>
-            <div id="contact_filters">
-              <div id="label_contact_filter_name">Nom :</div>
-              <input id="field_contact_filter_name" type="text"  value="" maxlength="20"/>
-              <div id="label_contact_filter_firstname">Prenom :</div>
-              <input id="field_contact_filter_firstname" type="text"  value="" maxlength="20"/>
-              <div id="label_contact_filter_tel">Telephone :</div>
-              <input id="field_contact_filter_tel" type="text"  value="" maxlength="15"/>
-              <div id="label_contact_filter_client_select">Client :</div>
-              <select id="contact_filter_client_select" >
-                <option selected="selected">Tous les clients</option>
-                <option>Altec</option>
-                <option>Thales</option>
-              </select>
-            </div>
-            <div id="collabo_filters">
-              <div id="label_collabo_filter_name">Nom :</div>
-              <input id="field_collabo_filter_name" type="text"  value="" maxlength="20"/>
-              <div id="label_collabo_filter_firstname">Prenom :</div>
-              <input id="field_collabo_filter_firstname" type="text"  value="" maxlength="20"/>
-              <div id="label_collabo_filter_tel">Telephone :</div>
-              <input id="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
-              <div id="label_collabo_filter_project_select">Projet :</div>
-              <select id="collabo_filter_project_select" >
-                <option selected="selected">Tous les projets</option>
-                <option>Projet Azure</option>
-                <option>Spartacus</option>
-              </select>
-            </div>
-            <input id="btn_search" type="button" value="Rechercher" />
+              <div id="client_filters">
+                <div id="label_client_filter_name">Nom :</div>
+                <input id="field_client_filter_name" type="text"  value="" maxlength="20"/>
+                <div id="label_client_filter_address">Adresse :</div>
+                <input id="field_client_filter_address" type="text"  value="" maxlength="40"/>
+                <div id="label_client_filter_project_select">Projet :</div>
+                <select id="client_filter_project_select" >
+                  <option selected="selected">Tous les projets</option>
+                  <option>Projet Azure</option>
+                  <option>Spartacus</option>
+                </select>
+              </div>
+              <div id="contact_filters">
+                <div id="label_contact_filter_name">Nom :</div>
+                <input id="field_contact_filter_name" type="text"  value="" maxlength="20"/>
+                <div id="label_contact_filter_firstname">Prenom :</div>
+                <input id="field_contact_filter_firstname" type="text"  value="" maxlength="20"/>
+                <div id="label_contact_filter_tel">Telephone :</div>
+                <input id="field_contact_filter_tel" type="text"  value="" maxlength="15"/>
+                <div id="label_contact_filter_client_select">Client :</div>
+                <select id="contact_filter_client_select" >
+                  <option selected="selected">Tous les clients</option>
+                  <option>Altec</option>
+                  <option>Thales</option>
+                </select>
+              </div>
+              <div id="collabo_filters">
+                <div id="label_collabo_filter_name">Nom :</div>
+                <input id="field_collabo_filter_name" type="text"  value="" maxlength="20"/>
+                <div id="label_collabo_filter_firstname">Prenom :</div>
+                <input id="field_collabo_filter_firstname" type="text"  value="" maxlength="20"/>
+                <div id="label_collabo_filter_tel">Telephone :</div>
+                <input id="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
+                <div id="label_collabo_filter_project_select">Projet :</div>
+                <select id="collabo_filter_project_select" >
+                  <option selected="selected">Tous les projets</option>
+                  <option>Projet Azure</option>
+                  <option>Spartacus</option>
+                </select>
+              </div>
+             <input id="btn_search" type="submit" value="Rechercher" />
+            </FORM>
 
           </div>
 
@@ -135,7 +149,20 @@
 
             <div id="title_results">Resultat</div>
             <div id="results">
-              <a href="">Projet Azure</a>
+              <?php
+                if (isset($_SESSION["resultat"]) && $_SESSION["resultat"] != NULL && $_SESSION["resultat"][1] != NULL) {
+                  foreach($_SESSION["resultat"][1] as $value) {
+                    if($_SESSION["resultat"][0] == 0) {
+                      // projet
+                      echo '<a href="">' . $value->getNom() . '</a>';
+                    }
+                  }
+                  unset($_SESSION["resultat"]);
+                }
+                else {
+                  echo 'Pas d résultat';
+                }
+              ?>
               <br>
             </div>  
 
