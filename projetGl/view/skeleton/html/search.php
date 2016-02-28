@@ -65,11 +65,46 @@
               
               <div id="search_type_label">Rechercher :</div>
               <select id="search_type_select" name="search_type_select" onChange="changeFilters()">
-                <option selected="selected" value="0">Projet</option>
-                <option value="1">Client</option>
-                <option value="2">Contact</option>
-                <option value="3">Collaborateur</option>
+                <?php
+                  if (isset($_SESSION["resultat"]) && $_SESSION["resultat"] != NULL && $_SESSION["resultat"][1] != NULL) {
+                    if ($_SESSION["resultat"][0] == 0) {
+                      // projet
+                      echo '<option selected="selected" value="0">Projet</option>';
+                      echo '<option value="1">Client</option>';
+                      echo '<option value="2">Contact</option>';
+                      echo '<option value="3">Collaborateur</option>';
+                    }
+                    elseif ($_SESSION["resultat"][0] == 1) {
+                      // client
+                      echo '<option value="0">Projet</option>';
+                      echo '<option selected="selected" value="1">Client</option>';
+                      echo '<option value="2">Contact</option>';
+                      echo '<option value="3">Collaborateur</option>';
+                    }
+                    elseif ($_SESSION["resultat"][0] == 2) {
+                      // contact
+                      echo '<option value="0">Projet</option>';
+                      echo '<option value="1">Client</option>';
+                      echo '<option selected="selected" value="2">Contact</option>';
+                      echo '<option value="3">Collaborateur</option>';
+                    }
+                    elseif ($_SESSION["resultat"][0] == 3) {
+                      // collaborateur
+                      echo '<option value="0">Projet</option>';
+                      echo '<option value="1">Client</option>';
+                      echo '<option value="2">Contact</option>';
+                      echo '<option selected="selected" value="3">Collaborateur</option>';
+                    }
+                  }
+                  else {
+                    echo '<option selected="selected" value="0">Projet</option>';
+                    echo '<option value="1">Client</option>';
+                    echo '<option value="2">Contact</option>';
+                    echo '<option value="3">Collaborateur</option>';
+                  }
+                ?>
               </select>
+              
               <div id="project_filters">
                 <div id="label_project_filter_name">Nom :</div>
                 <input id="field_project_filter_name" name="field_project_filter_name" type="text"  value="" maxlength="20"/>
@@ -102,28 +137,34 @@
               </div>
               <div id="client_filters">
                 <div id="label_client_filter_name">Nom :</div>
-                <input id="field_client_filter_name" type="text"  value="" maxlength="20"/>
+                <input id="field_client_filter_name" name="field_client_filter_name" type="text"  value="" maxlength="20"/>
                 <div id="label_client_filter_address">Adresse :</div>
-                <input id="field_client_filter_address" type="text"  value="" maxlength="40"/>
+                <input id="field_client_filter_address" name="field_client_filter_address" type="text"  value="" maxlength="40"/>
                 <div id="label_client_filter_project_select">Projet :</div>
-                <select id="client_filter_project_select" >
-                  <option selected="selected">Tous les projets</option>
-                  <option>Projet Azure</option>
-                  <option>Spartacus</option>
+                <select id="client_filter_project_select" name="client_filter_project_select" >
+                  <option selected="selected" value="-1">Tous les projets</option>
+                  <?php
+                    foreach(getListProjectActif() as $value) {
+                      echo '<option value="' . $value->getId() . ' ">' . $value->getNom() . '</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div id="contact_filters">
                 <div id="label_contact_filter_name">Nom :</div>
-                <input id="field_contact_filter_name" type="text"  value="" maxlength="20"/>
+                <input id="field_contact_filter_name" name="field_contact_filter_name" type="text"  value="" maxlength="20"/>
                 <div id="label_contact_filter_firstname">Prenom :</div>
-                <input id="field_contact_filter_firstname" type="text"  value="" maxlength="20"/>
+                <input id="field_contact_filter_firstname" name="field_contact_filter_firstname" type="text"  value="" maxlength="20"/>
                 <div id="label_contact_filter_tel">Telephone :</div>
-                <input id="field_contact_filter_tel" type="text"  value="" maxlength="15"/>
+                <input id="field_contact_filter_tel" name="field_contact_filter_tel" type="text"  value="" maxlength="15"/>
                 <div id="label_contact_filter_client_select">Client :</div>
-                <select id="contact_filter_client_select" >
-                  <option selected="selected">Tous les clients</option>
-                  <option>Altec</option>
-                  <option>Thales</option>
+                <select id="contact_filter_client_select" name="contact_filter_client_select">
+                  <option selected="selected" value="-1">Tous les clients</option>
+                  <?php
+                    foreach(getListActiveClient() as $value) {
+                      echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div id="collabo_filters">
@@ -135,9 +176,12 @@
                 <input id="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
                 <div id="label_collabo_filter_project_select">Projet :</div>
                 <select id="collabo_filter_project_select" >
-                  <option selected="selected">Tous les projets</option>
-                  <option>Projet Azure</option>
-                  <option>Spartacus</option>
+                  <option selected="selected" value="-1">Tous les projets</option>
+                  <?php
+                    foreach(getListProjectActif() as $value) {
+                      echo '<option value="' . $value->getId() . ' ">' . $value->getNom() . '</option>';
+                    }
+                  ?>
                 </select>
               </div>
              <input id="btn_search" type="submit" value="Rechercher" />
@@ -152,9 +196,17 @@
               <?php
                 if (isset($_SESSION["resultat"]) && $_SESSION["resultat"] != NULL && $_SESSION["resultat"][1] != NULL) {
                   foreach($_SESSION["resultat"][1] as $value) {
-                    if($_SESSION["resultat"][0] == 0) {
+                    if ($_SESSION["resultat"][0] == 0) {
                       // projet
-                      echo '<a href="">' . $value->getNom() . '</a>';
+                      echo '<a href="">' . $value->getNom() . '</a><br/>'; // pas encore les id pour redirection
+                    }
+                    elseif ($_SESSION["resultat"][0] == 1) {
+                      // client
+                      echo '<a href="">' . $value->getNom() . '</a><br/>'; // pas encore les id pour redirection
+                    }
+                    elseif ($_SESSION["resultat"][0] == 2) {
+                      // client
+                      echo '<a href="">' . $value->getPersonne()->getNom() . ' ' . $value->getPersonne()->getPrenom() . '</a><br/>'; // pas encore les id pour redirection
                     }
                   }
                   unset($_SESSION["resultat"]);

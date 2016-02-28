@@ -128,4 +128,30 @@
 		}
 	}
 	
+	// requete sur les contacts
+	function requeteContact($nom, $prenom, $telephone, $client) {
+		if (isConnectMySql()) {
+			$sql = 'select c.client, p.id, p.nom, p.prenom , p.mail , p.telephone from projetGL_contact c join projetGL_personne p  on c.personne = p.id where p.nom like \'%' . sanitize_string($nom) . '%\' and p.prenom like \'%' . sanitize_string($prenom) . '%\' and p.telephone like \'%' . sanitize_string($telephone) . '%\'';
+			if ($client != -1) {
+				$sql .= ' and c.client = ' . sanitize_string($client);
+			}
+			$sql .= ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0) {
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Contact($row["client"], new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"]));
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
 ?>

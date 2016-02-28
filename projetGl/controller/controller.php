@@ -200,12 +200,15 @@
 						$listeResultat[1] = requeteProjet($_POST["field_project_filter_name"], $_POST["project_filter_client_select"], $_POST["project_filter_respo_select"], $active, $termine, $archive);
 					}
 					elseif ($_POST["search_type_select"] == 1) {
-						// TODO: client
+						$listeResultat[0] = 1;
+						$listeResultat[1] = requeteClient($_POST["field_client_filter_name"], $_POST["field_client_filter_address"], $_POST["client_filter_project_select"]);
 					}
 					elseif ($_POST["search_type_select"] == 2) {
-						// TODO: contact
+						$listeResultat[0] = 2;
+						$listeResultat[1] = requeteContact($_POST["field_contact_filter_name"], $_POST["field_contact_filter_firstname"], $_POST["field_contact_filter_tel"], $_POST["contact_filter_client_select"]);
 					}
 					elseif ($_POST["search_type_select"] == 3) {
+						$listeResultat[0] = 3;
 						// TODO: collaborateur
 					}
 				}

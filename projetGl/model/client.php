@@ -155,5 +155,31 @@
 			return false;
 		}
 	}
+	
+	// requete sur les clients
+	function requeteClient($nom, $adresse, $projet) {
+		if (isConnectMySql()) {
+			$sql = 'select c.id, c.nom, c.adresse from projetGL_client c left join projetGL_projet p  on c.id = p.client where c.nom like \'%' . sanitize_string($nom) . '%\' and c.adresse like \'%' . sanitize_string($adresse) . '%\'';
+			if ($projet != -1) {
+				$sql .= ' and p.id = ' . sanitize_string($projet);
+			}
+			$sql .= ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0) {
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Client($row["id"], $row["nom"], $row["adresse"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
     
 ?>

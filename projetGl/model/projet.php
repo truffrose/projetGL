@@ -83,6 +83,28 @@
 		}
     }
 	
+	// retourne la liste des projets
+	function getListProjectActif() {
+		if (isConnectMySql()) {
+			$sql = 'select id, nom from projetGL_projet where etat = 1;';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Projet($row["id"], $row["nom"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
 	// requete sur les projets
 	function requeteProjet($nom, $client, $respo, $active, $termine, $archive) {
 		if (isConnectMySql()) {

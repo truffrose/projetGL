@@ -192,26 +192,6 @@
 		}
 	}
 	
-	/*
-	// retourne l'id d'un utilisateur via un id de personne
-	function getUserIdFromPers($idPers) {
-		if (isConnectMySql()) {
-			$sql = 'select id from projetGL_user where personne = ' . $idPers . ';';
-			$result = $_SESSION["link"]->query($sql);
-			if ($result->num_rows == 0){
-				return null;
-			}
-			else {
-				$row = $result->fetch_array(MYSQLI_ASSOC);
-				return $row["id"];
-			}
-		}
-		else {
-			return null;
-		}
-	}
-	*/
-	
 	// change l'état d'un collaborateur pour le mettre dans l'état supprime
 	function deleteCollabo($idCollabo) {
 		if (isConnectMySql()) {
