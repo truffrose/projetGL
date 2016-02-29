@@ -15,7 +15,7 @@
     }    
   </script>
   
-  <body>
+  <body onLoad="changeFilters()">
     <div class="search_page">
        <div id="search_box">
        
@@ -169,13 +169,13 @@
               </div>
               <div id="collabo_filters">
                 <div id="label_collabo_filter_name">Nom :</div>
-                <input id="field_collabo_filter_name" type="text"  value="" maxlength="20"/>
+                <input id="field_collabo_filter_name" name="field_collabo_filter_name" type="text"  value="" maxlength="20"/>
                 <div id="label_collabo_filter_firstname">Prenom :</div>
-                <input id="field_collabo_filter_firstname" type="text"  value="" maxlength="20"/>
+                <input id="field_collabo_filter_firstname" name="field_collabo_filter_firstname" type="text"  value="" maxlength="20"/>
                 <div id="label_collabo_filter_tel">Telephone :</div>
-                <input id="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
+                <input id="field_collabo_filter_tel" name="field_collabo_filter_tel" type="text"  value="" maxlength="15"/>
                 <div id="label_collabo_filter_project_select">Projet :</div>
-                <select id="collabo_filter_project_select" >
+                <select id="collabo_filter_project_select" name="collabo_filter_project_select" >
                   <option selected="selected" value="-1">Tous les projets</option>
                   <?php
                     foreach(getListProjectActif() as $value) {
@@ -202,11 +202,15 @@
                     }
                     elseif ($_SESSION["resultat"][0] == 1) {
                       // client
-                      echo '<a href="">' . $value->getNom() . '</a><br/>'; // pas encore les id pour redirection
+                      echo '<a href="./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $value->getId() . '">' . $value->getNom() . '</a><br/>';
                     }
                     elseif ($_SESSION["resultat"][0] == 2) {
-                      // client
-                      echo '<a href="">' . $value->getPersonne()->getNom() . ' ' . $value->getPersonne()->getPrenom() . '</a><br/>'; // pas encore les id pour redirection
+                      // contact
+                      echo '<a href="./index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getNom() . ' ' . $value->getPersonne()->getPrenom() . '</a><br/>';
+                    }
+                    else if ($_SESSION["resultat"][0] == 3) {
+                      // collaborateur
+                      echo '<a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $value->getId() . '">' . $value->getNom() . ' ' . $value->getPrenom() . '</a><br/>'; // pas encore les id pour redirection
                     }
                   }
                   unset($_SESSION["resultat"]);

@@ -209,7 +209,7 @@
 					}
 					elseif ($_POST["search_type_select"] == 3) {
 						$listeResultat[0] = 3;
-						// TODO: collaborateur
+						$listeResultat[1] = requeteCollabo($_POST["field_collabo_filter_name"], $_POST["field_collabo_filter_firstname"], $_POST["field_collabo_filter_tel"], $_POST["collabo_filter_project_select"]);
 					}
 				}
 				else {

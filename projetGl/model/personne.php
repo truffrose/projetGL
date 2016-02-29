@@ -166,5 +166,31 @@
 			return null;
 		}
 	}
+	
+	// requete sur les collabo
+	function requeteCollabo($nom, $prenom, $telephone, $projet) {
+		if (isConnectMySql()) {
+			$sql = 'select distinct p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne p join projetGL_user u on u.personne = p.id left join projetGL_projet pj on pj.responsable = p.id left join projetGL_tache t on t.responssable = p.id where p.id <> 1 and u.etat = 1 and p.nom like \'%' . sanitize_string($nom) . '%\' and p.prenom like \'%' . sanitize_string($prenom) . '%\' and p.telephone like \'%' . sanitize_string($telephone) . '%\' ' ;
+			if ($projet != -1) {
+				$sql .= ' and (pj.id = ' . sanitize_string($projet) . ' or t.projet = ' . sanitize_string($projet) . ' )';
+			}
+			$sql .= ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0) {
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
 
 ?>
