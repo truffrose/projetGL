@@ -10,6 +10,8 @@
 		private $_uniteTemps;
 		private $_avancement;
 		private $_client;
+		private $_listeTache;
+		private $_responsable;
 		
 		// getters and setters
 		function getId() {
@@ -18,6 +20,19 @@
         function getNom() {
             return $this->_nom;
         }
+        function getDescription() {
+            return $this->_description;
+        }
+		function getClient() {
+			return $this->_client;
+		}
+		function getResponsable() {
+			return $this->_responsable;
+		}
+		function getAvancement() {
+			return $this->_avancement;
+		}
+		
 
 		// manager of the constructor
 		public function __construct() {
@@ -46,6 +61,8 @@
             $this->_uniteTemps = $uniteTemps;
             $this->_avancement = $avancement;
             $this->_client = $client;
+            $this->_listeTache = null;
+			$this->_responsable = null;
 		}
 		private function constructor2Args($id, $nom) {
 			$this->_id = $id;
@@ -54,14 +71,33 @@
             $this->_uniteTemps = null;
             $this->_avancement = null;
             $this->_client = null;
+            $this->_listeTache = null;
+			$this->_responsable = null;
 		}
 		private function constructor1Args($id) {
 			$this->_id = $id;
-            $this->_nom = null;
-            $this->_description = null;
-            $this->_uniteTemps = null;
-            $this->_avancement = null;
-            $this->_client = null;
+			if (isConnectMySql()) {
+				$sql = 'select p.id as pid, p.nom as pnom, p.description, p.avancement, c.id as cid, c.nom as cnom, c.adresse, pe.id as peid, pe.nom as penom, pe.prenom as peprenom from projetGL_projet p join projetGL_client c on p.client = c.id join projetGL_personne pe on pe.id = p.responsable where p.id = ' . sanitize_string($id) . ';';
+				$result = $_SESSION["link"]->query($sql);
+				if ($result->num_rows == 0){
+					return false;
+				}
+				else {
+					
+					$row = $result->fetch_array(MYSQLI_ASSOC);
+					$this->_nom = $row["pnom"];
+					$this->_description = $row["description"];
+					$this->_uniteTemps = "";
+					$this->_avancement = $row["avancement"];
+					$this->_client = new Client($row["cid"], $row["cnom"], $row["adresse"]);
+					$this->_listeTache = "";
+					$this->_responsable = new Personne($row["peid"], $row["penom"], $row["peprenom"]);
+					return true;
+				}
+			}
+			else {
+				return false;
+			}
 		}
 		
 	}

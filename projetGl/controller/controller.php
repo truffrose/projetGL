@@ -217,6 +217,14 @@
 				}
 				$_SESSION["resultat"] = $listeResultat;
 				break;
+			case $ACTION_projetView:
+				if (isset($_GET["projet"]) && $_GET["projet"] != -1) {
+					$_SESSION["projet"] = $_GET["projet"];
+				}
+				elseif (isset($_GET["projet"]) && $_GET["projet"] == -1) {
+					$_SESSION["projet"] = -1;
+				}
+				break;
 			default:
 				// TO DO: default action (nothing to do)
 		}

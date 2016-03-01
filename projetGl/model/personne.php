@@ -62,6 +62,9 @@
 				case 4:
 					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
+				case 3:
+					$this->constructor3Args($args[0],$args[1],$args[2]);
+					break;
 				case 1:
 					$this->constructor1Args($args[0]);
 					break;
@@ -93,6 +96,14 @@
 			$this->_prenom = $prenom;
 			$this->_mail = $mail;
 			$this->_telephone = $telephone;
+			$this->_adresse = "";
+		}
+		private function constructor3Args($id, $nom, $prenom) {
+			$this->_id = $id;
+			$this->_nom = $nom;
+			$this->_prenom = $prenom;
+			$this->_mail = "";
+			$this->_telephone = "";
 			$this->_adresse = "";
 		}
 		private function constructor1Args($id) {
@@ -182,7 +193,7 @@
 			else {
 				$i = 0;
 				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-					$retVal[$i] = new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"]);
+					$retVal[$i] = new Personne($row["id"], $row["nom"], $row["prenom"], $row["mail"], $row["telephone"], $row["adresse"]);
 					$i++;
 				}
 				return $retVal;

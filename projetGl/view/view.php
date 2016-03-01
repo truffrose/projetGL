@@ -27,7 +27,12 @@
 					foreach ($listeContact as $value) {
 						if ($idContact == $value->getPersonne()->getId()) {
 							$selectContact = $value;
+							break;
 						}
+					}
+					if ($selectContact == null) {
+						$selectContact = getContactById($idContact);
+						$selectClient = new Client($selectContact->getClient());
 					}
 					require_once($path . "html/contact.php");
 					break;
@@ -45,6 +50,7 @@
 					foreach ($listeContact as $value) {
 						if ($idContact == $value->getPersonne()->getId()) {
 							$selectContact = $value;
+							break;
 						}
 					}
 					require_once($path . "html/contact_edit.php");
@@ -105,9 +111,20 @@
 					$listeCollabo = getCollaboList();
 					require_once($path . "html/collabo_edit_admin.php");
 					break;
+				case $CURSOR_projetView:
+					if (isset($_SESSION["projet"])) {
+						$idProjet = $_SESSION["projet"];
+					}
+					else {
+						$idProjet = -1;
+					}
+					$projectSelected = new Projet($idProjet);
+					require_once($path . "html/projet.php");
+					break;
 				// use as default page
 				default:
-					require_once($path . "html/tableau_collabo.php");
+					$projectSelected = new Projet(1);
+					require_once($path . "html/projet.php");
 			}
 		}
 		else {

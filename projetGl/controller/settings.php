@@ -27,6 +27,8 @@
 		$ACTION_collaboNew = 11;
 		$ACTION_accountSave = 12;
 		$ACTION_showResult = 13;
+		$ACTION_projetView = 14;
+		
 	
 		// getting the action
 		function getCurrentAction() {
@@ -74,6 +76,7 @@
 		$CURSOR_tableau = 7;
 		$CURSOR_collabo = 8;
 		$CURSOR_collaboEditView = 9;
+		$CURSOR_projetView = 10;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {
