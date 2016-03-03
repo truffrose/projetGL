@@ -77,6 +77,7 @@
 		$CURSOR_collabo = 8;
 		$CURSOR_collaboEditView = 9;
 		$CURSOR_projetView = 10;
+		$CURSOR_projetEdit = 11;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

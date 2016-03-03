@@ -121,6 +121,16 @@
 					$projectSelected = new Projet($idProjet);
 					require_once($path . "html/projet.php");
 					break;
+				case $CURSOR_projetEdit:
+					if (isset($_SESSION["projet"])) {
+						$idProjet = $_SESSION["projet"];
+					}
+					else {
+						$idProjet = -1;
+					}
+					$projectSelected = new Projet($idProjet);
+					require_once($path . "html/projet_edit.php");
+					break;
 				// use as default page
 				default:
 					$projectSelected = new Projet(1);

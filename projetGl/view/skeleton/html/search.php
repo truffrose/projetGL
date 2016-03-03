@@ -198,7 +198,7 @@
                   foreach($_SESSION["resultat"][1] as $value) {
                     if ($_SESSION["resultat"][0] == 0) {
                       // projet
-                      echo '<a href="">' . $value->getNom() . '</a><br/>'; // pas encore les id pour redirection
+                      echo '<a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">' . $value->getNom() . '</a><br/>';
                     }
                     elseif ($_SESSION["resultat"][0] == 1) {
                       // client
@@ -210,7 +210,7 @@
                     }
                     else if ($_SESSION["resultat"][0] == 3) {
                       // collaborateur
-                      echo '<a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $value->getId() . '">' . $value->getNom() . ' ' . $value->getPrenom() . '</a><br/>'; // pas encore les id pour redirection
+                      echo '<a href="./index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $value->getId() . '">' . $value->getNom() . ' ' . $value->getPrenom() . '</a><br/>';
                     }
                   }
                   unset($_SESSION["resultat"]);

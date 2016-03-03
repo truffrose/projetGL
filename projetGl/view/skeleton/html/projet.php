@@ -4,15 +4,15 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/progress.js' ?>"></script>
   <script type="text/javascript">
-  function changeRole(element)
-  {
-    var idx=element.selectedIndex;
-    var val=element.options[idx].value;
-    var strPos = "<?php echo './index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_changeRole . '&role='; ?>";
-    strPos = strPos + "" + val;
-    window.location.assign(strPos);
-  }    
-</script>
+    function changeRole(element)
+    {
+      var idx=element.selectedIndex;
+      var val=element.options[idx].value;
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      strPos = strPos + "" + val;
+      window.location.assign(strPos);
+    }    
+  </script>
   <body onload="setProgress();">
     <div class="project_page">
          <div id="project_box">
@@ -82,7 +82,7 @@
               }
               else {
                 if ($_SESSION["systemData"]->getUserRole() != 4) {
-                  echo '<input id="edit_btn" type="button" value="Editer"/>';
+                  echo '<input id="edit_btn" type="button" value="Editer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetEdit . '&action=' . $ACTION_projetView . '&projet=' . $projectSelected->getId() . '\'"/>';
                 }
                 ?>
                 
