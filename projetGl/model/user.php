@@ -193,7 +193,8 @@
 	// met à jour la base de donnée avec les valeurs de la session utilisé
 	function majUserInformation($idUser, $password, $receiveMail, $receiveNotif, $defaultUser, $adresse, $mail, $telephone) {
 		if (isConnectMySql()) {
-			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.id set u.password = md5("' . sanitize_string($password) . '"), up.receiveMail = ' . sanitize_string($receiveMail) . ', up.receiveAlert = ' . sanitize_string($receiveNotif) . ', up.defaultRole = ' . sanitize_string($defaultUser) . ', p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where u.personne = ' . sanitize_string($idUser) . ';';
+			$sql = 'update projetGL_personne p join projetGL_user u on p.id = u.personne join projetGL_user_parameters up on up.userId = u.personne set u.password = md5("' . sanitize_string($password) . '"), up.receiveMail = ' . sanitize_string($receiveMail) . ', up.receiveAlert = ' . sanitize_string($receiveNotif) . ', up.defaultRole = ' . sanitize_string($defaultUser) . ', p.adresse = "' . sanitize_string($adresse) .'", p.telephone = "' . sanitize_string($telephone) . '", p.mail = "' . sanitize_string($mail) .'" where u.personne = ' . sanitize_string($idUser) . ';';
+			echo $sql;
 			return $_SESSION["link"]->query($sql);
 		}
 		else {

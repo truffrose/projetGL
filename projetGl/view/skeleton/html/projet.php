@@ -161,11 +161,12 @@
             <div id="projects_list">
               <ul class="href_list">
                 <?php
-                  foreach(getListProjectActif() as $value) {
-                    if ($projectSelected->getId() != $value->getId()) {
-                      echo '<li><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                  if (getListProjectActif() != null)
+                    foreach(getListProjectActif() as $value) {
+                      if ($projectSelected->getId() != $value->getId()) {
+                        echo '<li><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                      }
                     }
-                  }
                 ?>
               </ul>
             </div> 
