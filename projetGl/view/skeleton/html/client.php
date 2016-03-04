@@ -1,4 +1,5 @@
 <html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/client.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>

@@ -1,4 +1,5 @@
 <html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/login.css'; ?>" />
   <body>
     <div class="login_page">
