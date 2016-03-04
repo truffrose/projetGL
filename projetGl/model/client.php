@@ -68,7 +68,7 @@
 		
 		// additional function
 			// retoune la liste des contact via un client
-			function getContact() {
+			public function getContact() {
 				if (isConnectMySql()) {
                     $sql = 'select c.client, p.id, p.nom, p.prenom, p.mail, p.telephone, p.adresse from projetGL_personne p join projetGL_contact c on p.id = c.personne where etat = 1 and c.client = ' . sanitize_string($this->_id) . ';';
                     $result = $_SESSION["link"]->query($sql);
@@ -89,7 +89,7 @@
 				}
 			}
 			// retourne la liste des projets via un client
-			function getProjet() {
+			public function getProjet() {
 				if (isConnectMySql()) {
 					$sql = 'select p.id, p.nom, p.description, u.typeUnite, p.avancement from projetGL_projet p join projetGL_uniteTemps u on u.id = p.uniteTemps where etat = 1 and client = ' . sanitize_string($this->_id) . ';';
                     $result = $_SESSION["link"]->query($sql);
@@ -108,6 +108,22 @@
 				else {
 					return null;
 				}
+			}
+			
+			// retourne le nombre de contact du client
+			public function nbContact() {
+				if (isConnectMySql()) {
+					$sql = 'select count(personne) as nb from projetGL_contact where client = ' . sanitize_string($this->_id) . ' and etat = 1;';
+                    $result = $_SESSION["link"]->query($sql);
+					if ($result->num_rows == 0){
+						return -1;
+					}
+					else {
+						$row = $result->fetch_array(MYSQLI_ASSOC);
+						return $row["nb"];
+					}
+				}
+				return -1;
 			}
 			
             // supprime un client de la base de donnée (passe en inactif)

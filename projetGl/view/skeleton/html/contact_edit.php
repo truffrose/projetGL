@@ -121,7 +121,12 @@
                     <div id="contact_email">Email : </div>
                     <input id="contact_email_field" name="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
                     <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
-                    <input id="delete_btn" type="button" value="Supprimer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactDelete . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
+                    <?php
+					  if ($selectClient->nbContact() > 1) {
+						echo '<input id="delete_btn" type="button" value="Supprimer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactDelete . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId() . '\'"/>';
+					  }
+					?>
+					
 					<input id="save_btn" type="submit" value="Sauvegarder"/>
 				  </FORM>
                 <?php
