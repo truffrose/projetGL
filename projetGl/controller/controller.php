@@ -200,6 +200,11 @@
 				$tempClient = new Client($_POST["client"], $_POST["client_name_field"], $_POST["client_address_field"]);
 				$tempClient->save();
 				break;
+			case $ACTION_clientDelete:
+				$tempClient = new Client($_GET["client"]);
+				$tempClient->delete();
+				$_SESSION["client"] = -1;
+				break;
 			case $ACTION_changeRole:
 				// besoin des faire des verif savoir si l'utilisateur a bien le droit de change de ce role
 				if (isset($_GET["role"])) {

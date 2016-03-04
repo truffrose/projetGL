@@ -3,6 +3,7 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/client_edit.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/client_edit_admin.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -97,6 +98,13 @@
               <input id="add_projects_btn" type="button" value="+"/>
   
               <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
+              
+              <?php
+                if ($_SESSION["systemData"]->getUserRole() != 4) {
+                  echo '<input id="delete_btn" type="button" value="Supprimer" onclick="confirmDelete(); window.location.href=\'./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientDelete . '&client=' . $selectClient->getId() . '\'"/>';
+                }
+              ?>
+              
               <input id="save_btn" type="submit" value="Sauvegarder"/>
             </FORM>
           </div>

@@ -137,6 +137,29 @@
 				}
 			}
 		
+			// supprime le client avec les projet et les tache ainsiq ue les contacts
+			public function delete() {
+				if (isConnectMySql()) {
+					$sqlContact = 'update projetGL_contact set etat = 2 where client = ' . sanitize_string($this->_id) . ';';
+					if ($_SESSION["link"]->query($sqlContact) === TRUE) {
+						$sqlTache = 'update projetGL_tache t join projetGL_projet p on t.projet = p.id set t.etat = 2, p.etat = 2 where p.client = ' . sanitize_string($this->_id) . ';';
+						if ($_SESSION["link"]->query($sqlTache) === TRUE)  {
+							$sqlClient = 'update projetGL_client set etat = 2 where id = ' . sanitize_string($this->_id) . ';';
+							return $_SESSION["link"]->query($sqlClient);
+						}
+						else {
+							return false;
+						}
+					}
+					else {
+						return false;
+					}
+				}
+				else {
+					return false;
+				}
+			}
+			
 	}
     
 	// recupere la liste des clients
