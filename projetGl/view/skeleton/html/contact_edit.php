@@ -55,7 +55,7 @@
             <div id="main_box_title">Edition de Contact</div>
             
             <?php
-              if ($idContact == -1 ) {
+              if ($idContact == -1) {
                 ?>
                   <FORM method=post action="./">
 					<input type="hidden"  name="cursor"  value="<?php echo $CURSOR_contactView; ?>">
@@ -121,8 +121,9 @@
                     <div id="contact_email">Email : </div>
                     <input id="contact_email_field" name="contact_email_field" type="text" value="<?php echo $selectContact->getPersonne()->getMail(); ?>"/>
                     <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
-                    <input id="save_btn" type="submit" value="Sauvegarder"/>
-                  </FORM>
+                    <input id="delete_btn" type="button" value="Supprimer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactDelete . '&action=' . $ACTION_contactView . '&contact=' . $selectContact->getPersonne()->getId(); ?>'"/>
+					<input id="save_btn" type="submit" value="Sauvegarder"/>
+				  </FORM>
                 <?php
               }
             ?>

@@ -67,7 +67,7 @@ CREATE TABLE projetGL_user (
 	CONSTRAINT fk_user_personne FOREIGN KEY(personne) REFERENCES projetGL_personne(id)
 );
 
--- in an other table (in case of the evolution of the parameters)
+/* in an other table (in case of the evolution of the parameters) */
 CREATE TABLE projetGL_user_parameters (
 	userId int NOT NULL ,
 	autoAlert boolean NOT NULL,

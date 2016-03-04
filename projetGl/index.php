@@ -35,7 +35,7 @@
 
         
         // utile uniquement pour le debug
-        /* */
+        /* *
         echo '</br></br></br></br>';
         echo '</br></br></br></br>';
         if (isset($_SESSION))

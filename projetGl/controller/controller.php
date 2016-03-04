@@ -63,6 +63,15 @@
 					// TO DO: gestion des erreurs
 				}
 				break;
+			case $ACTION_contactDelete:
+				for($i = 0; $i < $_POST["nbCahnge"]; $i ++) {
+					changeContact($_POST['tacheId' . $i], $_POST['select_new_contact' . $i]);
+				}
+				$tempContact = new Contact(new Personne($_POST["deleteID"]));
+				$tempContact->remove();
+				if (isset($_POST["client"])) {
+					$_SESSION["client"] = $_POST["client"];
+				}
 				break;
 			case $ACTION_collaboView:
 				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {

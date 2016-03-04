@@ -55,6 +55,25 @@
 					}
 					require_once($path . "html/contact_edit.php");
 					break;
+				case $CURSOR_contactDelete:
+					$idClient = $_SESSION["client"];
+					if (isset($_SESSION["contact"])) {
+						$idContact = $_SESSION["contact"];
+					}
+					else {
+						$idContact = -1;
+					}
+					$selectClient = new Client($idClient);
+					$listeContact = $selectClient->getContact();
+					$selectContact = null;
+					foreach ($listeContact as $value) {
+						if ($idContact == $value->getPersonne()->getId()) {
+							$selectContact = $value;
+							break;
+						}
+					}
+					require_once($path . "html/contact_delete_admin.php");
+					break;
 				case $CURSOR_clientView:
 					if (isset($_SESSION["client"])) {
 						$idClient = $_SESSION["client"];

@@ -46,7 +46,7 @@
 		
 		// sauvegarde un contact
 		public function save() {
-			if($this->_personne->save()) { // projetGL_contact(client, personne, etat)
+			if($this->_personne->save()) {
 				if (isConnectMySql()) {
 					$sql = 'update projetGL_contact c set c.client = ' . sanitize_string($this->_client) .' where c.personne = ' . sanitize_string($this->_personne->getId()) . ';';
 					return $_SESSION["link"]->query($sql);
@@ -82,6 +82,43 @@
 				return 0;
 			}
 		}
+		
+		// liste des tache à réallouer
+		public function tacheListeDelete() {
+			if (isConnectMySql()) {
+				$sql = 'select p.id as pid, p.nom as pnom, t.id as tid, t.nom as tnom from projetGL_tache t join projetGL_projet p on t.projet = p.id where t.etat = 1 and t.contact = ' . $this->_personne->getId() . ';';
+				$result = $_SESSION["link"]->query($sql);
+				if ($result->num_rows == 0) {
+					return null;
+				}
+				else {
+					$i = 0;
+					while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+						$retVal[$i]["pid"] = $row["pid"];
+						$retVal[$i]["pnom"] = $row["pnom"];
+						$retVal[$i]["tid"] = $row["tid"];
+						$retVal[$i]["tnom"] = $row["tnom"];
+						$i++;
+					}
+					return $retVal;
+				}
+			}
+			else {
+				return null;
+			}
+		}
+		
+		// supprime le contact de la base en mettant son état à 2 (supprimé)
+		public function remove() {
+			if (isConnectMySql()) {
+				$sql = 'update projetGL_contact set etat = 2 where personne = ' . $this->_personne->getId() . ';';
+				return $_SESSION["link"]->query($sql);
+			}
+			else {
+				return false;
+			}
+		}
+		
 	}
     
     // test si le contact existe
@@ -170,6 +207,17 @@
 		}
 		else {
 			return null;
+		}
+	}
+	
+	// reatribut une tache a un autre contact
+	function changeContact($idTache, $idNewContact) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_tache set contact = ' . sanitize_string($idNewContact) .' where id = ' . sanitize_string($idTache) . ';';
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
 		}
 	}
 	

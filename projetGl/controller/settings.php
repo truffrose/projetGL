@@ -19,7 +19,7 @@
 		$ACTION_contactView = 3;
 		$ACTION_contactCreate = 4;
 		$ACTION_contactSave = 5;
-		$ACTION_clientView = 6;
+		$ACTION_contactDelete = 6;
 		$ACTION_changeRole = 7;
 		$ACTION_collaboView = 8;
 		$ACTION_collaboDelete = 9;
@@ -28,6 +28,7 @@
 		$ACTION_accountSave = 12;
 		$ACTION_showResult = 13;
 		$ACTION_projetView = 14;
+		$ACTION_clientView = 15;
 		
 	
 		// getting the action
@@ -68,9 +69,9 @@
 		// la liste de navigation possible
 		$CURSOR_home = 0;
 		$CURSOR_contactView = 1;
-		$CURSOR_clientView = 2;
-		$CURSOR_clientEditView = 3;
-		$CURSOR_compteView = 4;
+		$CURSOR_contactDelete = 2;
+		$CURSOR_clientView = 3;
+		$CURSOR_clientEditView = 4;
 		$CURSOR_contactEditView = 5;
 		$CURSOR_research = 6;
 		$CURSOR_tableau = 7;
@@ -78,6 +79,7 @@
 		$CURSOR_collaboEditView = 9;
 		$CURSOR_projetView = 10;
 		$CURSOR_projetEdit = 11;
+		$CURSOR_compteView = 12;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {
