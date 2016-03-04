@@ -126,11 +126,17 @@
 				return -1;
 			}
 			
-            // supprime un client de la base de donnée (passe en inactif)
-            
-            // modifie un client de la base de donnée
-            
-            // créer un client au sein de la base de donnee
+			// sauvegarde les modification du client dans la base de donné
+			public function save() {
+				if (isConnectMySql()) {
+					$sql = 'update projetGL_client p set p.nom = "' . sanitize_string($this->_nom) .'", p.adresse = "' . sanitize_string($this->_adresse) .'" where p.id = ' . sanitize_string($this->_id) . ';';
+					return $_SESSION["link"]->query($sql);
+				}
+				else {
+					return false;
+				}
+			}
+		
 	}
     
 	// recupere la liste des clients

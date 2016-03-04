@@ -54,48 +54,51 @@
           </div>
            
           <div id="main_box">
-
-            <div id="main_box_title">Edition de Client</div>
-            <div id="client_name">Nom : </div>
-            <input id="client_name_field" type="text" value="<?php echo $selectClient->getNom(); ?>" />
-            <div id="client_address">Adresse : </div>
-            <input id="client_address_field" type="text" value="<?php echo $selectClient->getAdresse(); ?>" />
-
-            <div id="client_contacts_title">Contacts</div>
-            <div id="client_contacts">
-              <ul class="href_list">
-                <?php
-                  if ($idClient != -1 && isset($listeContact)) {
-                    foreach ($listeContact as $value) {
-                      echo '<li><a href="./index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getPrenom() . ' ' . $value->getPersonne()->getNom() . '</a></li>';
+            <FORM method=post action="./">
+              <input type="hidden"  name="client"  value="<?php echo $selectClient->getId(); ?>">    
+              <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_clientView; ?>">    
+              <input type="hidden"  name="action"  value="<?php echo $ACTION_clientSave; ?>">              
+              <div id="main_box_title">Edition de Client</div>
+              <div id="client_name">Nom : </div>
+              <input id="client_name_field" name="client_name_field" type="text" value="<?php echo $selectClient->getNom(); ?>" />
+              <div id="client_address">Adresse : </div>
+              <input id="client_address_field" name="client_address_field" type="text" value="<?php echo $selectClient->getAdresse(); ?>" />
+  
+              <div id="client_contacts_title">Contacts</div>
+              <div id="client_contacts">
+                <ul class="href_list">
+                  <?php
+                    if ($idClient != -1 && isset($listeContact)) {
+                      foreach ($listeContact as $value) {
+                        echo '<li><a href="./index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getPrenom() . ' ' . $value->getPersonne()->getNom() . '</a></li>';
+                      }
                     }
-                  }
-                ?>
-              </ul>
-            </div> 
-            <select id="client_contacts_select">
-            </select>
-            <input id="add_contacts_btn" type="button" value="+"/>
-             
-            <div id="client_projects_title">Projets</div>
-            <div id="client_projects">
-              <ul class="href_list">
-                <?php
-                  if ($idClient != -1 && isset($listeProjet)) {
-                    foreach ($listeProjet as $value) {
-                      echo '<li><a href="">' . $value->getNom() . '</a></li>';
+                  ?>
+                </ul>
+              </div> 
+              <select id="client_contacts_select">
+              </select>
+              <input id="add_contacts_btn" type="button" value="+" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1\'"'; ?>/>
+               
+              <div id="client_projects_title">Projets</div>
+              <div id="client_projects">
+                <ul class="href_list">
+                  <?php
+                    if ($idClient != -1 && isset($listeProjet)) {
+                      foreach ($listeProjet as $value) {
+                        echo '<li><a href="">' . $value->getNom() . '</a></li>';
+                      }
                     }
-                  }
-                ?>
-              </ul>
-            </div> 
-            <select id="client_projects_select">
-            </select>
-            <input id="add_projects_btn" type="button" value="+"/>
-
-            <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
-            <input id="save_btn" type="button" value="Sauvegarder"/>
-
+                  ?>
+                </ul>
+              </div> 
+              <select id="client_projects_select">
+              </select>
+              <input id="add_projects_btn" type="button" value="+"/>
+  
+              <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
+              <input id="save_btn" type="submit" value="Sauvegarder"/>
+            </FORM>
           </div>
 
           <div id="clients_list_box">

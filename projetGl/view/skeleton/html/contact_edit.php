@@ -66,14 +66,16 @@
                     <div id="contact_company">Societe : </div>
                     <select id="contact_company_select" name="contact_company_select">
                       <?php
-                        foreach(getListActiveClient() as $value) {
-                          if ($value->getId() == $selectClient->getId()) {
-                            echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
-                          }
-                          else {
-                            echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
-                          }
-                        }
+						foreach(getListActiveClient() as $value) {
+						  if ($value->getId() == $selectClient->getId()) {
+							echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
+						  }
+						  else {
+							if ($selectClient->nbContact() > 1) {
+							  echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+							}
+						  }
+						}
                       ?>
                     </select>
                     <div id="contact_name">Nom : </div>
@@ -107,7 +109,9 @@
                             echo '<option value="' . $value->getId() . '" selected="selected">' . $value->getNom() . '</option>';
                           }
                           else {
-                            echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+							if ($selectClient->nbContact() > 1) {
+							  echo '<option value="' . $value->getId() . '">' . $value->getNom() . '</option>';
+							}
                           }
                         }
                       ?>

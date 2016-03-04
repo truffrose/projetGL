@@ -192,6 +192,14 @@
 					$_SESSION["client"] = $_GET["client"];
 				}
 				break;
+			case $ACTION_clientSave:
+				
+				if (isset($_POST["client"])) {
+					$_SESSION["client"] = $_POST["client"];
+				}
+				$tempClient = new Client($_POST["client"], $_POST["client_name_field"], $_POST["client_address_field"]);
+				$tempClient->save();
+				break;
 			case $ACTION_changeRole:
 				// besoin des faire des verif savoir si l'utilisateur a bien le droit de change de ce role
 				if (isset($_GET["role"])) {
