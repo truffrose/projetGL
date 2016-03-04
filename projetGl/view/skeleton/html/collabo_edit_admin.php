@@ -61,7 +61,6 @@
             }
           ?>
 
-
             <div id="main_box_title">Edition Collaborateur</div>
             
             <FORM method=post action="./">
@@ -127,7 +126,7 @@
 					</div>
 					
 					<input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $idCollabo; ?>'"/>
-					<input id="delete_btn" type="button" value="Supprimer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboDelete . '&collabo=' . $idCollabo; ?>'"/>
+					<input id="delete_btn" type="button" value="Supprimer" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_collaboDelete . '&action=' . $ACTION_collaboView . '&collabo=' . $idCollabo; ?>'"/>
 					<input id="save_btn" type="submit" value="Sauvegarder"/>
 			  
 				  <?php

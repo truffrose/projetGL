@@ -150,9 +150,18 @@
 					}
 				break;
 			case $ACTION_collaboDelete:
-				if (isset($_GET["collabo"]) && $_GET["collabo"] != -1) {
+				// commence par réalouer les
+					// les projets
+				for($i = 0; $i < $_POST["nbRespo"]; $i ++) {
+					changeRespo($_POST['projetId' . $i], $_POST['select_new_respo' . $i]);
+				}
+					// les taches
+				for($i = 0; $i < $_POST["nbCollabo"]; $i ++) {
+					changeCollabo($_POST['tacheId' . $i], $_POST['select_new_collabo' . $i]);
+				}
+				if (isset($_POST["deleteID"]) && $_POST["deleteID"] != -1) {
 					$_SESSION["collabo"] = -1;
-					if (deleteCollabo($_GET["collabo"])) {
+					if (deleteCollabo($_POST["deleteID"])) {
 						// TO DO: affiché une réussite
 					}
 					else {

@@ -77,9 +77,10 @@
 		$CURSOR_tableau = 7;
 		$CURSOR_collabo = 8;
 		$CURSOR_collaboEditView = 9;
-		$CURSOR_projetView = 10;
-		$CURSOR_projetEdit = 11;
-		$CURSOR_compteView = 12;
+		$CURSOR_collaboDelete = 10;
+		$CURSOR_projetView = 11;
+		$CURSOR_projetEdit = 12;
+		$CURSOR_compteView = 13;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

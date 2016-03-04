@@ -215,4 +215,29 @@
 		}
 	}
 	
+	
+	// reatribut un projet a un autre responsable
+	function changeRespo($idProjet, $idNewRespo) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_projet set responsable = ' . sanitize_string($idNewRespo) .' where id = ' . sanitize_string($idProjet) . ';';
+			echo 'sql Respo : ' . $sql;
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	// reatribut une tache a un autre collaborateur
+	function changeCollabo($idTache, $idNewCollabo) {
+		if (isConnectMySql()) {
+			$sql = 'update projetGL_tache set responsable = ' . sanitize_string($idNewCollabo) .' where id = ' . sanitize_string($idTache) . ';';
+			echo 'sql collabo : ' . $sql;
+			return $_SESSION["link"]->query($sql);
+		}
+		else {
+			return false;
+		}
+	}
+	
 ?>

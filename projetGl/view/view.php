@@ -130,6 +130,16 @@
 					$listeCollabo = getCollaboList();
 					require_once($path . "html/collabo_edit_admin.php");
 					break;
+				case $CURSOR_collaboDelete:
+					if (isset($_SESSION["collabo"])) {
+						$idCollabo = $_SESSION["collabo"];
+					}
+					else {
+						$idCollabo = -1;
+					}
+					$listeCollabo = getCollaboList();
+					require_once($path . "html/collabo_delete_admin.php");
+					break;
 				case $CURSOR_projetView:
 					if (isset($_SESSION["projet"])) {
 						$idProjet = $_SESSION["projet"];

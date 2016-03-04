@@ -39,6 +39,9 @@
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
 					break;
+				case 2:
+					$this->constructor1Args($args[0]);
+					break;
 				 default:
 					break;
 			}
@@ -57,12 +60,18 @@
 			$this->_personne = -1;
 			$this->_parameters = null;
 		}
+		private function constructor1Args($idPers) {
+			$this->_mail = "";
+			$this->_password = "";
+			$this->_personne = $idPers;
+			$this->_parameters = null;
+		}
 		
 		// additional function
 			// permet de ce connecter au systeme
 			function login() {
 				if (isConnectMySql()) {
-					$sql = 'select mail, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\');';
+					$sql = 'select mail, personne from projetGL_user where mail = \'' . sanitize_string($this->_mail) . '\' && password = md5(\'' . sanitize_string($this->_password) . '\') and etat = 1;';
 					$result = $_SESSION["link"]->query($sql);
 					if ($result->num_rows == 0){
 						return false;
@@ -272,4 +281,5 @@
 			return false;
 		}
 	}
+	
 ?>

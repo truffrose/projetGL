@@ -136,14 +136,14 @@ CREATE TABLE projetGL_tache (
 	tacheMere int,
 	predecesseur int,
 	projet int NOT NULL,
-	responssable int NOT NULL,
+	responsable int NOT NULL,
 	contact int NOT NULL,
 	etat int NOT NULL,
 	PRIMARY KEY (id),
 	CONSTRAINT fk_tache_tacheMere FOREIGN KEY(tacheMere) REFERENCES projetGL_tache(id),
 	CONSTRAINT fk_tache_predecesseur FOREIGN KEY(predecesseur) REFERENCES projetGL_tache(id),
 	CONSTRAINT fk_tache_projet FOREIGN KEY(projet) REFERENCES projetGL_projet(id),
-	CONSTRAINT fk_tache_responssable FOREIGN KEY(responssable) REFERENCES projetGL_personne(id),
+	CONSTRAINT fk_tache_responssable FOREIGN KEY(responsable) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_tache_contact FOREIGN KEY(contact) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_tache_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
