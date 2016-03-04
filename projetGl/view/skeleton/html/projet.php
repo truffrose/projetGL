@@ -3,6 +3,7 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/projet.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/progress.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -145,7 +146,7 @@
 
           <div id="projects_list_box">
 
-            <input id="search_field" type="text" value="Rechercher"/>
+            <input id="search_field" type="text" value="Rechercher" onblur="resetField('projects_list');" onclick="emptyField('projects_list');" oninput="search('projects_list');"/>
 
             <div id="projects_list_title">Projets</div>
 

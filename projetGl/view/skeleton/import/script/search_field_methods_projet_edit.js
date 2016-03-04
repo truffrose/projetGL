@@ -2,8 +2,8 @@
 /* onblur="resetField();" onclick="emptyField();" oninput="search();" */
 
 // A mettre sur le 'oninput' event
-function search(nameOfList){
-	var searchBox = document.getElementById("search_field");
+function searchTask(nameOfList){
+	var searchBox = document.getElementById("search_field_task");
 	var list = document.getElementById(nameOfList).getElementsByTagName("li");
 	var searchValue = searchBox.value;
 
@@ -28,8 +28,8 @@ function cleanString(string){
 }
 
 // A mettre sur le 'onblur' event
-function resetField(nameOfList){
-	var searchBox = document.getElementById("search_field").value = "Rechercher";
+function resetFieldTask(nameOfList){
+	var searchBox = document.getElementById("search_field_task").value = "Rechercher";
 
 	var list = document.getElementById(nameOfList).getElementsByTagName("li");
 
@@ -39,8 +39,8 @@ function resetField(nameOfList){
 }
 
 // A mettre sur le 'onclick' event
-function emptyField(){
-	var searchBox = document.getElementById("search_field").value = "";
+function emptyFieldTask(){
+	var searchBox = document.getElementById("search_field_task").value = "";
 }
 
 

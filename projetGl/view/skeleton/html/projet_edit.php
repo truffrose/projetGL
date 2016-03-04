@@ -2,6 +2,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/projet_edit.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods_projet_edit.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -83,7 +85,7 @@
               </select>
               
               <div id="list_title">Liste de tâches</div>
-              <input id="search_field_task" type="text" value="Rechercher"/>
+              <input id="search_field_task" type="text" value="Rechercher" onblur="resetFieldTask('div_tasks');" onclick="emptyFieldTask('div_tasks');" oninput="searchTask('div_tasks');"/>
   
               <div id="div_tasks">
                 <ul class="href_list">
@@ -110,7 +112,7 @@
 
           <div id="projects_list_box">
 
-            <input id="search_field" type="text" value="Rechercher"/>
+            <input id="search_field" type="text" value="Rechercher" onblur="resetField('projects_list');" onclick="emptyField('projects_list');" oninput="search('projects_list');"/>
 
             <div id="projects_list_title">Projets</div>
 

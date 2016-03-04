@@ -1,6 +1,7 @@
 <html>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/client.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -101,7 +102,7 @@
 
           <div id="clients_list_box">
 
-            <input id="search_field" type="text" value="Rechercher"/>
+            <input id="search_field" type="text" value="Rechercher" onblur="resetField('clients_list');" onclick="emptyField('clients_list');" oninput="search('clients_list');"/>
 
             <div id="clients_list_title">Clients</div>
 

@@ -58,7 +58,7 @@
             <div id="label_task_previous">Tâche précédente : </div>
             <a id="href_task_previous" href="">Tâche 1.2</a>
 
-            <input id="search_field_task_previous" type="text" value="Rechercher"/>
+            <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
 
             <div id="div_tasks_previous">
               <ul class="href_list">
@@ -79,7 +79,7 @@
             <div id="label_task_mother">Tâche mère : </div>
             <a id="href_task_mother" href="">Aucune</a>  
 
-            <input id="search_field_task_mother" type="text" value="Rechercher"/>
+            <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
 
             <div id="div_tasks_mother">
               <ul class="href_list">

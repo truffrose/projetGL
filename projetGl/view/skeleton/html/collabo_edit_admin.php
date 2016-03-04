@@ -2,6 +2,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/collabo_edit_admin.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -173,7 +174,7 @@
 
           <div id="collabos_list_box">
 
-            <input id="search_field" type="text" value="Rechercher"/>
+            <input id="search_field" type="text" value="Rechercher" onblur="resetField('collabos_list');" onclick="emptyField('collabos_list');" oninput="search('collabos_list');"/>
 
             <div id="collabos_list_title">Collaborateurs</div>
 
