@@ -162,7 +162,7 @@ CREATE TABLE projetGL_alerte (
 
 /* propre au system (a ne surtout pas change ni même modifier l'ordre) */
     /* add the default unite of time */
-    INSERT INTO projetGL_uniteTemps(typeUnite) VALUES('jour homme');
+    INSERT INTO projetGL_uniteTemps(typeUnite) VALUES('jours');
     INSERT INTO projetGL_uniteTemps(typeUnite) VALUES('heure');
     
     /* add the different role */

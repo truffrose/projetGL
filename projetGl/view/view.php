@@ -162,6 +162,8 @@
 					break;
 				// use as default page
 				default:
+					$tacheId = 1;
+					$selectedTache = new Tache($tacheId);
 					require_once($path . "html/task.php");
 			}
 		}

@@ -75,7 +75,6 @@
 			$this->_responsable = null;
 		}
 		private function constructor1Args($id) {
-			$this->_id = $id;
 			if (isConnectMySql()) {
 				$sql = 'select p.id as pid, p.nom as pnom, p.description, p.avancement, c.id as cid, c.nom as cnom, c.adresse, pe.id as peid, pe.nom as penom, pe.prenom as peprenom from projetGL_projet p join projetGL_client c on p.client = c.id join projetGL_personne pe on pe.id = p.responsable where p.id = ' . sanitize_string($id) . ';';
 				$result = $_SESSION["link"]->query($sql);
@@ -83,8 +82,8 @@
 					return false;
 				}
 				else {
-					
 					$row = $result->fetch_array(MYSQLI_ASSOC);
+					$this->_id = $id;
 					$this->_nom = $row["pnom"];
 					$this->_description = $row["description"];
 					$this->_uniteTemps = "";
@@ -99,6 +98,59 @@
 				return false;
 			}
 		}
+		
+		// retourne la liste des taches
+		public function getListTache() {
+			if (isConnectMySql()) {
+				$sql = 'select id from projetGL_tache where etat = 1 and projet = ' . sanitize_string($this->_id) . ';';
+				$result = $_SESSION["link"]->query($sql);
+				if ($result->num_rows == 0){
+					return null;
+				}
+				else {
+					$i = 0;
+					while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+						$retVal[$i] = new Tache($row["id"]);
+						$i++;
+					}
+					return $retVal;
+				}
+			}
+			else {
+				return null;
+			}
+		}
+		
+		// retourne un arbre de tache
+		/*
+		public function getTreeTache() {
+			$listeTaches = $this->getListTache();
+			$listeRestante = null;
+			$listeMere = null;
+			$i = 0;
+			$j = 0;
+			if ($listeTaches != null) {
+				foreach($listeTaches as $value) {
+					if ($value->getTacheMere() == null) {
+						$listeMere[$i] = $value;
+						$i ++;
+					}
+					else {
+						$listeRestante[$j] = $value;
+						$j ++;
+					}
+				}
+				while ($listeRestante != null) {
+					foreach($listeRestante as $vRest) {
+						foreach($listeMere as $vMere) {
+							if ($vMere->getId() == $vRest)
+						}
+					}
+				}
+			}
+			return $listeMere;
+		}
+		*/
 		
 	}
     
