@@ -1,8 +1,8 @@
 <html>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link type="text/css" rel="stylesheet" href="./task.css"/>
-  <link type="text/css" rel="stylesheet" href="./menu.css"/>
-  <script type="text/javascript" src="progress_task.js"></script>
+  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/task.css' ?>"/>
+  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/progress_task.js' ?>"></script>
   <body onload="setProgress();">
     <div class="task_page">
          <div id="task_box">

@@ -162,8 +162,7 @@
 					break;
 				// use as default page
 				default:
-					$projectSelected = new Projet(1);
-					require_once($path . "html/projet.php");
+					require_once($path . "html/task.php");
 			}
 		}
 		else {

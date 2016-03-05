@@ -83,6 +83,7 @@
 		$CURSOR_projetView = 11;
 		$CURSOR_projetEdit = 12;
 		$CURSOR_compteView = 13;
+		$CURSOR_tacheView = 14;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

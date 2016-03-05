@@ -24,6 +24,7 @@
 		require_once("./model/client.php");
 		require_once("./model/contact.php");
 		require_once("./model/systemData.php");
+		require_once("./model/tache.php");
 		require_once("./model/projet.php");
         
 		
