@@ -143,7 +143,7 @@ CREATE TABLE projetGL_tache (
 	CONSTRAINT fk_tache_tacheMere FOREIGN KEY(tacheMere) REFERENCES projetGL_tache(id),
 	CONSTRAINT fk_tache_predecesseur FOREIGN KEY(predecesseur) REFERENCES projetGL_tache(id),
 	CONSTRAINT fk_tache_projet FOREIGN KEY(projet) REFERENCES projetGL_projet(id),
-	CONSTRAINT fk_tache_responssable FOREIGN KEY(responsable) REFERENCES projetGL_personne(id),
+	CONSTRAINT fk_tache_responsable FOREIGN KEY(responsable) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_tache_contact FOREIGN KEY(contact) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_tache_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
@@ -168,7 +168,7 @@ CREATE TABLE projetGL_alerte (
     /* add the different role */
     INSERT INTO projetGL_role(nom, description) VALUES('SuperAdmin', 'Ne peut pas être supprimé de la base de donné.');
     INSERT INTO projetGL_role(nom, description) VALUES('Administrateur', 'A un droit de vision sur l integralié des projets. Il peeut aussi modifier des droit utilisateurs.');
-    INSERT INTO projetGL_role(nom, description) VALUES('Responssable projet', 'A le droit d interragir sur un projet');
+    INSERT INTO projetGL_role(nom, description) VALUES('Responsable projet', 'A le droit d interragir sur un projet');
     INSERT INTO projetGL_role(nom, description) VALUES('Collaborateur', 'Peut uniquement travailler sur ces projets');
     
     /* add the default etat */

@@ -121,6 +121,45 @@
 			}
 		}
 		
+		// retourne un arbre des taches du projet
+		public function getTreeTache() {
+			$listeTache = $this->getListTache();
+			$tree = null;
+			$count = 0;
+			while($listeTache != null) {
+				$tempListe = null;
+				foreach($listeTache as $value) {
+					if ($value->getNiveau() == $count) {
+						$tree = $this->addToTree($tree, $value);
+					}
+					else
+						$tempListe[count($tempListe)] = $value;
+				}
+				$listeTache = $tempListe;
+				$count ++;
+			}
+			return $tree;
+		}
+		
+		// ajoute un element a notre arbre en fct de l'arborescence
+		private function addToTree($tree, $node) {
+			if ($node->getTacheMere() == null) {
+				$tree[count($tree)] = $node;
+			}
+			else {
+				for ($i = 0; $i < count($tree); $i++) {
+					if ($tree[$i]->getId() == $node->getTacheMere()->getId()) {
+						$tree[$i]->addFille($node);
+						break;
+					}
+					else if ($tree[$i]->getFille() != null) {
+						$tree[$i]->setFille($this->addToTree($tree[$i]->getFille(), $node));
+					}
+				}
+			}
+			return $tree;
+		}
+		
 	}
     
     // test si le contact existe

@@ -30,6 +30,9 @@
 		public function getNom() {
 			return $this->_nom;
 		}
+		public function getNiveau() {
+			return $this->_niveau;
+		}
 		public function getDescription() {
 			return $this->_description;
 		}
@@ -76,6 +79,9 @@
 			$this->_fille[$this->_nbFille] = $el;
 			$this->_nbFille ++;
 		}
+		public function setFille($fille) {
+			$this->_fille = $fille;
+		}
 		
         // manager of the constructor
 		public function __construct() {
@@ -114,7 +120,7 @@
 					else {
 						$this->_tacheMere = null;
 					}
-					if ($row["tacheMere"] != null){
+					if ($row["predecesseur"] != null){
 						$this->_predecesseur = new Tache($row["predecesseur"]);
 					}
 					else {
