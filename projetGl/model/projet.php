@@ -152,6 +152,15 @@
 		}
 		*/
 		
+		// ajoute un element à un arbre
+		/*
+		private function addToTree($tree, $val) {
+			foreach($tree as $element) {
+				if ($element->getId() == $val->get)
+			}
+		}
+		*/
+		
 	}
     
     // test si le contact existe
