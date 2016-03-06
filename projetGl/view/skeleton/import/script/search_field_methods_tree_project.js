@@ -2,7 +2,7 @@
 /* onblur="resetField();" onclick="emptyField();" oninput="search();" */
 
 // A mettre sur le 'oninput' event
-function search(nameOfList){
+function searchTask(nameOfList){
   var searchBox = document.getElementById("search_field_task");
   var list = document.getElementById(nameOfList).getElementsByTagName("li");
   var searchValue = searchBox.value;
@@ -28,7 +28,7 @@ function cleanString(string){
 }
 
 // A mettre sur le 'onblur' event
-function resetField(nameOfTree, nameOfList){
+function resetFieldTask(nameOfTree, nameOfList){
   var searchBox = document.getElementById("search_field_task").value = "Rechercher";
 
   var list = document.getElementById(nameOfList).getElementsByTagName("li");
@@ -41,7 +41,7 @@ function resetField(nameOfTree, nameOfList){
 }
 
 // A mettre sur le 'onclick' event
-function emptyField(nameOfTree, nameOfList){
+function emptyFieldTask(nameOfTree, nameOfList){
   var searchBox = document.getElementById("search_field_task").value = "";
   document.getElementById(nameOfTree).style.display = "none";
   document.getElementById(nameOfList).style.display = "block";

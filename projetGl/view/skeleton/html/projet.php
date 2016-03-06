@@ -4,6 +4,7 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/progress.js' ?>"></script>
   <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods_tree_project.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -103,7 +104,7 @@
                   </div>
                   
                   <div id="list_title">Liste de tâches</div>
-                  <input id="search_field_task" type="text" value="Rechercher"/>
+                  <input id="search_field_task" type="text" value="Rechercher" onblur="resetFieldTask('div_tree','tasks_list_search');" onclick="emptyFieldTask('div_tree','tasks_list_search');" oninput="searchTask('tasks_list_search');"/>
       
                   <div id="div_tree">
                     <ol id="menutree">
@@ -145,6 +146,15 @@
                       <li class="page"><a href="#">Tâche 5</a></li>
                   -->
                     </ol>
+                  </div>
+
+                  <div id="tasks_list_search">
+                    <ul class="href_list">
+                      <li><a href="">Ceuillir les fleurs</a></li>
+                      <li><a href="">Couper les fleurs</a></li>
+                      <li><a href="">Assembler les fleurs</a></li>
+                      <li><a href="">Tâche X.X</a></li>
+                    </ul>
                   </div>
       
                 </div>
