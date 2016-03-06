@@ -107,6 +107,13 @@
       
                   <div id="div_tree">
                     <ol id="menutree">
+                      <?php
+                        if ($projectSelected->getId() != -1)
+                          foreach($projectSelected->getListTache() as $value) {
+                            echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                          }
+                      ?>
+                  <!--
                       <li>
                         <input type="checkbox"/>
                         <label class="tree_label"><a href="#">Tâche 1</a></label>
@@ -136,7 +143,8 @@
                       <li class="page"><a href="#">Tâche 3</a></li>
                       <li class="page"><a href="#">Tâche 4</a></li>
                       <li class="page"><a href="#">Tâche 5</a></li>
-                    </ul>
+                  -->
+                    </ol>
                   </div>
       
                 </div>

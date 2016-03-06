@@ -75,6 +75,7 @@
 			$this->_responsable = null;
 		}
 		private function constructor1Args($id) {
+			$this->_id = $id;
 			if (isConnectMySql()) {
 				$sql = 'select p.id as pid, p.nom as pnom, p.description, p.avancement, c.id as cid, c.nom as cnom, c.adresse, pe.id as peid, pe.nom as penom, pe.prenom as peprenom from projetGL_projet p join projetGL_client c on p.client = c.id join projetGL_personne pe on pe.id = p.responsable where p.id = ' . sanitize_string($id) . ';';
 				$result = $_SESSION["link"]->query($sql);
@@ -83,7 +84,6 @@
 				}
 				else {
 					$row = $result->fetch_array(MYSQLI_ASSOC);
-					$this->_id = $id;
 					$this->_nom = $row["pnom"];
 					$this->_description = $row["description"];
 					$this->_uniteTemps = "";
@@ -120,46 +120,6 @@
 				return null;
 			}
 		}
-		
-		// retourne un arbre de tache
-		/*
-		public function getTreeTache() {
-			$listeTaches = $this->getListTache();
-			$listeRestante = null;
-			$listeMere = null;
-			$i = 0;
-			$j = 0;
-			if ($listeTaches != null) {
-				foreach($listeTaches as $value) {
-					if ($value->getTacheMere() == null) {
-						$listeMere[$i] = $value;
-						$i ++;
-					}
-					else {
-						$listeRestante[$j] = $value;
-						$j ++;
-					}
-				}
-				while ($listeRestante != null) {
-					foreach($listeRestante as $vRest) {
-						foreach($listeMere as $vMere) {
-							if ($vMere->getId() == $vRest)
-						}
-					}
-				}
-			}
-			return $listeMere;
-		}
-		*/
-		
-		// ajoute un element à un arbre
-		/*
-		private function addToTree($tree, $val) {
-			foreach($tree as $element) {
-				if ($element->getId() == $val->get)
-			}
-		}
-		*/
 		
 	}
     

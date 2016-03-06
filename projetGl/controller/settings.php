@@ -31,6 +31,7 @@
 		$ACTION_clientView = 15;
 		$ACTION_clientSave = 16;
 		$ACTION_clientDelete = 17;
+		$ACTION_tacheView = 18;
 		
 	
 		// getting the action

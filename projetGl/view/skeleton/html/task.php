@@ -58,11 +58,11 @@
             <div id="task_description"><?php echo $selectedTache->getDescription(); ?></div>
             
             <div id="label_task_respo">Responsable : </div>
-            <a id="href_task_respo" href=""><?php echo $selectedTache->getResponsable()->getNom() . ' ' . $selectedTache->getResponsable()->getPrenom(); ?></a>
+            <a id="href_task_respo" href="<?php echo './index.php?cursor=' . $CURSOR_collabo . '&action=' . $ACTION_collaboView . '&collabo=' . $selectedTache->getResponsable()->getId(); ?>"><?php echo $selectedTache->getResponsable()->getNom() . ' ' . $selectedTache->getResponsable()->getPrenom(); ?></a>
             <div id="label_task_contact">Contact : </div>
-            <a id="href_task_contact" href=""><?php echo $selectedTache->getContact()->getNom() . ' ' . $selectedTache->getContact()->getPrenom(); ?></a>
+            <a id="href_task_contact" href="<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=' . $selectedTache->getContact()->getId(); ?>"><?php echo $selectedTache->getContact()->getNom() . ' ' . $selectedTache->getContact()->getPrenom(); ?></a>
             <div id="label_task_previous">Tâche précédente : </div>
-            <a id="href_task_previous" href=""><?php if($selectedTache->getPredecesseur() != null) echo $selectedTache->getPredecesseur()->getNom(); ?></a>
+            <a id="href_task_previous" href="<?php if($selectedTache->getPredecesseur() != null) echo './index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getPredecesseur()->getId() . ''; ?>"><?php if($selectedTache->getPredecesseur() != null) echo $selectedTache->getPredecesseur()->getNom(); ?></a>
             <!--
               <div id="label_task_next">Tâche suivante : </div>
               <a id="href_task_next" href="">Tâche 3</a>
@@ -103,10 +103,12 @@
               <div id="div_tree">
                 <ol id="menutree">
                   <?php
-                    foreach($selectedTache->getProjet()->getTreeTache() as $value) {
-                      // if ()
+                    foreach($selectedTache->getProjet()->getListTache() as $value) {
+                      if ($value->getId() != $selectedTache->getId())
+                        echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                     }
                   ?>
+                  <!--
                   <li>
                     <input type="checkbox"/>
                     <label class="tree_label"><a href="#">Tâche 1</a></label>
@@ -135,6 +137,7 @@
                   <li class="page"><a href="#">Tâche 3</a></li>
                   <li class="page"><a href="#">Tâche 4</a></li>
                   <li class="page"><a href="#">Tâche 5</a></li>
+                  -->
                 </ol>
               </div>
             </div> 

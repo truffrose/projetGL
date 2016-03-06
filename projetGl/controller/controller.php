@@ -256,6 +256,14 @@
 					$_SESSION["projet"] = -1;
 				}
 				break;
+			case $ACTION_tacheView:
+				if (isset($_GET["tache"]) && $_GET["tache"] != -1) {
+					$_SESSION["tache"] = $_GET["tache"];
+				}
+				elseif (isset($_GET["tache"]) && $_GET["tache"] == -1) {
+					$_SESSION["tache"] = -1;
+				}
+				break;
 			default:
 				// TO DO: default action (nothing to do)
 		}

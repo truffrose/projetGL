@@ -160,6 +160,17 @@
 					$projectSelected = new Projet($idProjet);
 					require_once($path . "html/projet_edit.php");
 					break;
+				case $CURSOR_tacheView:
+					if (isset($_SESSION["tache"])) {
+						$tacheId = $_SESSION["tache"];
+					}
+					else {
+						$tacheId = -1;
+					}
+					$selectedTache = new Tache($tacheId);
+					$_SESSION["client"] = $selectedTache->getProjet()->getClient()->getId();
+					require_once($path . "html/task.php");
+					break;
 				// use as default page
 				default:
 					$tacheId = 1;
