@@ -20,6 +20,12 @@
 		function getReceiveAlerte() {
 			return $this->_receiveAlerte;
 		}
+		function getAutoAlert() {
+			if ($this->_autoAlert == 1) {
+				return true;
+			}
+			return false;
+		}
 		
 		// manager of the constructor
 		public function __construct() {

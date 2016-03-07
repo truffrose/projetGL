@@ -12,7 +12,7 @@
 			  <input id="password" type="password" name="password" value="Password" maxlength="20"/>
 			  <input id="btn_connect" type="submit" value="Connexion"/>
 		  </FORM>
-          <div id="forget"><a href="url">Mot de passe oubli&eacute;</a></div>
+          <div id="forget"><a href="">Mot de passe oubli&eacute;</a></div>
       </div>  
     </div>
   </body>

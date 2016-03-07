@@ -82,12 +82,24 @@
 		public function setFille($fille) {
 			$this->_fille = $fille;
 		}
+		public function setTempsPasse($temp) {
+			$this->_tempsPasse = $temp;
+		}
+		public function setTempsRestant($temp) {
+			$this->_tempsRestant = $temp;
+		}
+		public function setAvacnement($avanc) {
+			$this->_avancement = $avanc;
+		}
 		
         // manager of the constructor
 		public function __construct() {
 			$ctp = func_num_args();
 			$args = func_get_args();
 			switch($ctp) {
+				case 4:
+					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
+					break;
 				case 1:
 					$this->constructor1Args($args[0]);
 					break;
@@ -135,6 +147,53 @@
 				}
 			}
 		}
+		private function constructor4Args($id, $tempPasse, $tempRestant, $avancement) {
+			$this->constructor1Args($id);
+			$this->_tempsPasse = $tempPasse;
+			$this->_tempsRestant = $tempRestant;
+			$this->_avancement = $avancement;
+		}
+		
+		private function constructor4Args($id, $nom, $description, $responsable, $contact, $predecesseur, $tacheMere, $dateFinTot, $dateFinTard, $tempPasse, $tempRestant, $avancement) {
+			$this->constructor1Args($id);
+			$this->_tempsPasse = $tempPasse;
+			$this->_tempsRestant = $tempRestant;
+			$this->_avancement = $avancement;
+		}
+		
+		
+		// met a jour la tache en la synchronisant avec la base de donnée
+		public function save() {
+			if (isConnectMySql()) {
+				$lvl = 0;
+				$tm = "null";
+				$pred = "null";
+				if ($this->_tacheMere != null) {
+					$lvl = $this->_tacheMere->getNiveau() + 1;
+					$tm = $this->_tacheMere->getId();
+				}
+				if ($this->_predecesseur != null) {
+					$pred = $this->_predecesseur->getId();
+				}
+				$sql = 'update projetGL_tache t set t.nom = "' .  sanitize_string($this->_nom) . '", t.description = "' .  sanitize_string($this->_description) . '", t.dateFinTot = "' .  sanitize_string($this->_dateFinTot) . '", t.dateFinTard = "' .  sanitize_string($this->_dateFinTard) . '", t.avancement = ' .  sanitize_string($this->_avancement) . ', t.tempsPasse = ' .  sanitize_string($this->_tempsPasse) . ', t.tempsRestant = ' .  sanitize_string($this->_tempsRestant) . ', t.niveau = ' .  $lvl . ', t.tacheMere = ' .  sanitize_string($tm) . ', t.predecesseur = ' .  sanitize_string($pred) . ', t.responsable = ' .  sanitize_string($this->_responsable->getId()) . ', t.contact = ' .  sanitize_string($this->_contact->getId()) . ' where id = ' . sanitize_string($this->_id) . ';';
+				return $_SESSION["link"]->query($sql);
+			}
+			else {
+				return false;
+			}
+		}
+		
+		// supprime artificiellement la tache en passant l'état à 2
+		public function delete() {
+			if (isConnectMySql()) {
+				$sqlTache = 'update projetGL_tache set etat = 2 where id = ' . sanitize_string($this->_id) . ';';
+				return $_SESSION["link"]->query($sqlTache);
+			}
+			else {
+				return false;
+			}
+		}
+		
         
     }
 

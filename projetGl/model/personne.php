@@ -183,7 +183,7 @@
 		
 		// retourne la liste des utilisateur du system encore actif
 			// 4 == collabo et 3 == chef de projet
-		function getListActiveUserByRole($idRole) {
+		public function getListActiveUserByRole($idRole) {
 			if (isConnectMySql()) {
 				$sql = 'select p.id, p.nom, p.prenom from projetGL_role r join projetGL_personne_role pr on r.id = pr.role join projetGL_personne p on p.id = pr.personne join projetGL_user u on u.personne = p.id where r.id = ' . sanitize_string($idRole) . ' and p.id <> 1 and p.id <> ' . sanitize_string($this->getId()) . ' and u.etat = 1;';
 				$result = $_SESSION["link"]->query($sql);
@@ -205,6 +205,7 @@
 				return null;
 			}
 		}
+		
 	}
 	
 	// retoune tous les collaborateur actifs

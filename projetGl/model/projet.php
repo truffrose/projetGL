@@ -215,8 +215,6 @@
 			}
 		}
 		
-
-		
 	}
     
     // test si le contact existe

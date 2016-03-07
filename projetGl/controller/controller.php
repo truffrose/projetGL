@@ -283,6 +283,23 @@
 					$_SESSION["tache"] = -1;
 				}
 				break;
+			case $ACTION_tacheDelete:
+				if (isset($_GET["tache"]) && $_GET["tache"] != -1) {
+					$tacheTemp = new Tache($_GET["tache"]);
+					$tacheTemp->delete();
+				}
+				break;
+			case $ACTION_tacheSave:
+				if ($_SESSION["systemData"]->getUserRole() == 4) {
+					$tempTache = new Tache($_POST["tache"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
+					$tempTache->save();
+				}
+				else {
+					// $tempTache = new Tache($_POST["tache"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
+					// $tempTache->save();
+					// require_once($path . "html/task_edit_respo.php");
+				}
+				break;
 			default:
 				// TO DO: default action (nothing to do)
 		}

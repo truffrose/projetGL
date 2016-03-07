@@ -4,6 +4,16 @@
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
   <script type="text/javascript" src="<?php echo $path . 'import/script/progress_task.js' ?>"></script>
   <script type="text/javascript" src="<?php echo $path . 'import/script/search_field_methods_tree.js' ?>"></script>
+  <script type="text/javascript">
+    function changeRole(element)
+    {
+      var idx=element.selectedIndex;
+      var val=element.options[idx].value;
+      var strPos = "<?php echo './index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_changeRole . '&role='; ?>";
+      strPos = strPos + "" + val;
+      window.location.assign(strPos);
+    }    
+  </script>
   <body onload="setProgress();">
     <div class="task_page">
          <div id="task_box">
@@ -48,9 +58,9 @@
 
             <!-- BOUTON A CACHER SELON LE ROLE-->
             <?php
-              if ($_SESSION["systemData"]->getUserRole() != 4) {
-                echo '<input id="edit_btn" type="button" value="Editer"/>';
-              }
+             //  if ($_SESSION["systemData"]->getUserRole() != 4) { //$CURSOR_tacheEdit
+                echo '<input id="edit_btn" type="button" value="Editer" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"/>';
+            // }
             ?>
 
             <div id="main_box_title"><?php echo $selectedTache->getNom(); ?></div>

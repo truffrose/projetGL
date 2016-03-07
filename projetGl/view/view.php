@@ -171,6 +171,22 @@
 					$_SESSION["client"] = $selectedTache->getProjet()->getClient()->getId();
 					require_once($path . "html/task.php");
 					break;
+				case $CURSOR_tacheEdit:
+					if (isset($_SESSION["tache"])) {
+						$tacheId = $_SESSION["tache"];
+					}
+					else {
+						$tacheId = -1;
+					}
+					$selectedTache = new Tache($tacheId);
+					$_SESSION["client"] = $selectedTache->getProjet()->getClient()->getId();
+					if ($_SESSION["systemData"]->getUserRole() == 4) {
+						require_once($path . "html/task_edit_collabo.php");
+					}
+					else {
+						require_once($path . "html/task_edit_respo.php");
+					}
+					break;
 				// use as default page
 				default:
 					$tacheId = 1;

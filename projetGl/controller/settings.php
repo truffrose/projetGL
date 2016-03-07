@@ -32,9 +32,12 @@
 		$ACTION_clientSave = 16;
 		$ACTION_clientDelete = 17;
 		$ACTION_tacheView = 18;
-		$ACTION_projetDelete = 19;
-		$ACTION_projetSave = 20;
-		$ACTION_projetCreate = 21;
+		$ACTION_tacheDelete = 19;
+		$ACTION_tacheCreate = 20;
+		$ACTION_tacheSave = 21;
+		$ACTION_projetDelete = 22;
+		$ACTION_projetSave = 23;
+		$ACTION_projetCreate = 24;
 		
 	
 		// getting the action
@@ -88,6 +91,7 @@
 		$CURSOR_projetEdit = 12;
 		$CURSOR_compteView = 13;
 		$CURSOR_tacheView = 14;
+		$CURSOR_tacheEdit = 15;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {
