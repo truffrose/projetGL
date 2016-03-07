@@ -57,15 +57,21 @@
           <div id="main_box">
 
             <div id="main_box_title">Edition de projet</div>
+            
             <FORM method=post action="./">
+              
+			  <input type="hidden"  name="action"  value="<?php echo $ACTION_projetSave; ?>">
+			  <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_projetView; ?>">
+			  <input type="hidden"  name="projet"  value="<?php echo $projectSelected->getId(); ?>">
+              
               <div id="label_project_name">Nom du projet : </div>
-              <input type="text" id="project_name" value="<?php echo $projectSelected->getNom(); ?>" maxlength="20"/>
+              <input type="text" id="project_name" name="project_name" value="<?php echo $projectSelected->getNom(); ?>" maxlength="20"/>
   
               <div id="label_project_description">Description : </div>
-              <textarea id="project_description" cols="40" rows="5" maxlength="500"><?php echo $projectSelected->getDescription(); ?></textarea>
+              <textarea id="project_description" name="project_description" cols="40" rows="5" maxlength="500"><?php echo $projectSelected->getDescription(); ?></textarea>
               
               <div id="label_project_client">Client : </div>
-              <select id="select_project_client">
+              <select id="select_project_client" name="select_project_client">
                 <?php
                   foreach(getListActiveClient() as $value) {
                     if ($value->getId() == $projectSelected->getClient()->getId()) {
@@ -79,7 +85,7 @@
                 
               </select>
               <div id="label_project_respo">Responsable : </div>
-              <select id="select_project_respo">
+              <select id="select_project_respo" name="select_project_respo">
                 <?php
                   echo '<option selected="selected" value="' . $projectSelected->getResponsable()->getId() . '">' . $projectSelected->getResponsable()->getNom() . ' ' . $projectSelected->getResponsable()->getPrenom() . '</option>';
                   if ($projectSelected->getResponsable()->getListActiveUserByRole(3) != null)
@@ -106,7 +112,7 @@
   
               <input id="cancel_btn" type="button" value="Annuler" <?php echo ' onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $projectSelected->getId() . '\'"'; ?>/>
               <input id="delete_btn" type="button" value="Supprimer" <?php echo ' onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetDelete . '&projet=' . $projectSelected->getId() . '\'"'; ?>/>
-              <input id="save_btn" type="button" value="Sauvegarder"/>
+              <input id="save_btn" type="submit" value="Sauvegarder"/>
             </FORM>
           </div>
 

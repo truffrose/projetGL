@@ -42,6 +42,9 @@
 				case 6:
 					$this->constructor6Args($args[0],$args[1],$args[2],$args[3],$args[4],$args[5]);
 					break;
+				case 5:
+					$this->constructor5Args($args[0],$args[1],$args[2],$args[3],$args[4]);
+					break;
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
 					break;
@@ -63,6 +66,16 @@
             $this->_client = $client;
             $this->_listeTache = null;
 			$this->_responsable = null;
+		}
+		private function constructor5Args($id, $nom, $description, $client, $responsable) {
+			$this->_id = $id;
+            $this->_nom = $nom;
+            $this->_description = $description;
+            $this->_uniteTemps = null;
+            $this->_avancement = null;
+            $this->_client = $client;
+            $this->_listeTache = null;
+			$this->_responsable = $responsable;
 		}
 		private function constructor2Args($id, $nom) {
 			$this->_id = $id;
@@ -163,14 +176,24 @@
 		// passe un préjet en mode supprimer (eleve le projet ainsi que les taches en les passant à l'état 2)
 		public function delete() {
 			if (isConnectMySql()) {
-				$sqlTache = 'update projetGL_tache t join projetGL_projet p on t.projet = p.id set t.etat = 2, p.etat = 2 where p.id = ' . sanitize_string($this->_id) . ';';
-				return $_SESSION["link"]->query($sqlTache);
+				$sql = 'update projetGL_tache t join projetGL_projet p on t.projet = p.id set t.etat = 2, p.etat = 2 where p.id = ' . sanitize_string($this->_id) . ';';
+				return $_SESSION["link"]->query($sql);
 			}
 			else {
 				return false;
 			}
 		}
 		
+		// met à jour les information de modification du projet sur la base de donée
+		public function save() {
+			if (isConnectMySql()) {
+				$sql = 'update projetGL_projet p set p.nom = "' . sanitize_string($this->_nom) . '", p.description = "' . sanitize_string($this->_description) . '", p.client = ' . sanitize_string($this->_client->getId()) . ', p.responsable = ' . sanitize_string($this->_responsable->getId()) . ' where p.id = ' . sanitize_string($this->_id) . ';';
+				return $_SESSION["link"]->query($sql);
+			}
+			else {
+				return false;
+			}
+		}
 		
 	}
     

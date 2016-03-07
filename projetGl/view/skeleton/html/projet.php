@@ -56,7 +56,7 @@
           </div>
            
           <div id="main_box">
-
+          
             <?php
               if ($projectSelected->getId() == -1) {
                 ?>
@@ -187,7 +187,6 @@
               }
             ?>
             
-
             <div id="projects_list">
               <ul class="href_list">
                 <?php

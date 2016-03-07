@@ -266,6 +266,11 @@
 					$_SESSION["projet"] = -1;
 				}
 				break;
+			case $ACTION_projetSave: // ($id, $nom, $description, $client, $responsable)
+				$tempProjet = new Projet($_POST["projet"], $_POST["project_name"], $_POST["project_description"], new Client($_POST["select_project_client"]), new Personne($_POST["select_project_respo"]));
+				$tempProjet->save();
+				$_SESSION["projet"] = $tempProjet->getId();
+				break;
 			case $ACTION_tacheView:
 				if (isset($_GET["tache"]) && $_GET["tache"] != -1) {
 					$_SESSION["tache"] = $_GET["tache"];
