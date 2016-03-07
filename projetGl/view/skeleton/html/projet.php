@@ -110,6 +110,7 @@
                     <ol id="menutree">
                       
                   <?php
+                  if ($projectSelected->getTreeTache() != null)
                     foreach($projectSelected->getTreeTache() as $value) {
                       if($value->getFille() == null) {
                         echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
@@ -163,7 +164,7 @@
                       <?php
                         if ($projectSelected->getId() != -1)
                           foreach($projectSelected->getListTache() as $value) {
-                            // echo '<li><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                            echo '<li><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                           }
                       ?>
                     </ul>
@@ -183,7 +184,7 @@
             <!-- BOUTON A CACHER SELON LE ROLE-->
             <?php
               if ($_SESSION["systemData"]->getUserRole() != 4) {
-                echo '<input id="new_project_btn" type="button" value="Nouveau Projet"/>';
+                echo '<input id="new_project_btn" type="button" value="Nouveau Projet"  onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetEdit . '&action=' . $ACTION_projetView . '&projet=-1\'"/>';
               }
             ?>
             

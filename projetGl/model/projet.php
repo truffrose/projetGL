@@ -195,6 +195,22 @@
 			}
 		}
 		
+		// création d'un projet dans la base de donnée
+		public function create() {
+			if (isConnectMySql()) {
+				$sql = 'INSERT INTO projetGL_projet(nom, description, uniteTemps, avancement, client, responsable, etat) VALUES("' . sanitize_string($this->_nom) . '", "' . sanitize_string($this->_description) . '", 1, 0, ' . sanitize_string($this->_client->getId()) . ', '.sanitize_string($this->_responsable->getId()).', 1);';
+				if ($_SESSION["link"]->query($sql) == true)
+					return $_SESSION["link"]->insert_id;
+				else
+					return false;
+			}
+			else {
+				return false;
+			}
+		}
+		
+
+		
 	}
     
     // test si le contact existe

@@ -266,7 +266,11 @@
 					$_SESSION["projet"] = -1;
 				}
 				break;
-			case $ACTION_projetSave: // ($id, $nom, $description, $client, $responsable)
+			case $ACTION_projetCreate:
+				$tempProjet = new Projet(0, $_POST["project_name"], $_POST["project_description"], new Client($_POST["select_project_client"]), new Personne($_POST["select_project_respo"]));
+				$_SESSION["projet"] = $tempProjet->create();
+				break;
+			case $ACTION_projetSave:
 				$tempProjet = new Projet($_POST["projet"], $_POST["project_name"], $_POST["project_description"], new Client($_POST["select_project_client"]), new Personne($_POST["select_project_respo"]));
 				$tempProjet->save();
 				$_SESSION["projet"] = $tempProjet->getId();
