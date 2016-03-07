@@ -215,6 +215,8 @@
 			}
 		}
 		
+		// retounr la liste des via un projet
+		
 	}
     
     // test si le contact existe

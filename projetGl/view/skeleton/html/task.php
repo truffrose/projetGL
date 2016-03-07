@@ -105,7 +105,7 @@
             <!-- BOUTON A CACHER SELON LE ROLE-->
             <?php
               if ($_SESSION["systemData"]->getUserRole() != 4) {
-                echo '<input id="new_task_btn" type="button" value="Nouvelle Tâche"/>';
+                echo '<input id="new_task_btn" type="button" value="Nouvelle Tâche" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=-1&projet=' . $selectedTache->getProjet()->getId() . '\'"/>';
               }
             ?>
 

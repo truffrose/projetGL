@@ -179,7 +179,13 @@
 						$tacheId = -1;
 					}
 					$selectedTache = new Tache($tacheId);
-					$_SESSION["client"] = $selectedTache->getProjet()->getClient()->getId();
+					if ($tacheId == -1) {
+						$_SESSION["projet"] = new Projet($_GET["projet"]);
+					}
+					else {
+						$_SESSION["client"] = $selectedTache->getProjet()->getClient()->getId();
+						$_SESSION["projet"] = $selectedTache->getProjet();
+					}
 					if ($_SESSION["systemData"]->getUserRole() == 4) {
 						require_once($path . "html/task_edit_collabo.php");
 					}

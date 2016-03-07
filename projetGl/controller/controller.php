@@ -299,6 +299,10 @@
 					$tempTache->save();
 				}
 				break;
+			case $ACTION_tacheCreate:
+				$tempTache = new Tache($_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], null, null, $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_remain_value"], $_POST["projet"]);
+				$_SESSION["tache"] = $tempTache->create();
+				break;
 			default:
 				// TO DO: default action (nothing to do)
 		}

@@ -100,6 +100,9 @@
 				case 12:
 					$this->constructor12Args($args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7], $args[8], $args[9], $args[10], $args[11]);
 					break;
+				case 10:
+					$this->constructor10Args($args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7], $args[8], $args[9]);
+					break;
 				case 4:
 					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
@@ -171,6 +174,22 @@
 			$this->_tempsRestant = $tempRestant;
 			$this->_avancement = $avancement;
 		}
+		private function constructor10Args($nom, $description, $responsable, $contact, $predecesseur, $tacheMere, $dateFinTot, $dateFinTard, $tempRestant, $projet) {
+			$this->_id = -1;
+			$this->_nom = $nom;
+			$this->_description = $description;
+			$this->_responsable = new Personne($responsable);
+			$this->_contact = new Personne($contact);
+			$this->_predecesseur = $predecesseur;
+			$this->_tacheMere = $tacheMere;
+			$this->_dateFinTot = $dateFinTot;
+			$this->_dateFinTard = $dateFinTard;
+			$this->_tempsPasse = 0;
+			$this->_tempsRestant = $tempRestant;
+			$this->_avancement = 0;
+			$this->_charge = $tempRestant;
+			$this->_projet = new Projet($projet);
+		}
 		
 		
 		// met a jour la tache en la synchronisant avec la base de donnée
@@ -191,6 +210,31 @@
 			}
 			else {
 				return false;
+			}
+		}
+		
+		// créer une nouvelle tache dans la base de donnée et retourne l'id de la tache
+		public function create() {
+			if (isConnectMySql()) {
+				$sql = 'INSERT INTO projetGL_tache(nom, description, dateDebut, dateFinTot, dateFinTard, charge, avancement, tempsPasse, tempsRestant, detruitALaCompletion, niveau, tacheMere, predecesseur, projet, responsable, contact, etat)';
+				$lvl = 0;
+				$tm = "null";
+				$pred = "null";
+				if ($this->_tacheMere != null) {
+					$lvl = $this->_tacheMere->getNiveau() + 1;
+					$tm = $this->_tacheMere->getId();
+				}
+				if ($this->_predecesseur != null) {
+					$pred = $this->_predecesseur->getId();
+				}
+				$sql .= 'VALUES("' . sanitize_string($this->_nom) . '", "' .  sanitize_string($this->_description) . '", now(), "' .  sanitize_string($this->_dateFinTot) . '", "' .  sanitize_string($this->_dateFinTard) . '", ' . sanitize_string($this->_charge) . ', 0, ' .  sanitize_string($this->_tempsPasse) . ', ' .  sanitize_string($this->_tempsRestant) . ', true, ' . $lvl . ', ' . sanitize_string($tm) . ', ' .  sanitize_string($pred) . ', ' .  sanitize_string($this->_projet->getId()) . ', ' .  sanitize_string($this->_responsable->getId()) . ', ' .  sanitize_string($this->_contact->getId()) . ', 1);';
+				if ($_SESSION["link"]->query($sql) == true)
+					return $_SESSION["link"]->insert_id;
+				else
+					return -1;
+			}
+			else {
+				return -1;
 			}
 		}
 		

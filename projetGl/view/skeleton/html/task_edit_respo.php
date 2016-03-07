@@ -55,130 +55,225 @@
           </div>
            
           <div id="main_box">
+            <?php
+              if ($tacheId != -1) {
+            ?>
             
-            <FORM method=post action="./">
-              <input type="hidden"  name="tache"  value="<?php echo $selectedTache->getId(); ?>">
-              <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_tacheView; ?>">
-              <input type="hidden"  name="action"  value="<?php echo $ACTION_tacheSave; ?>">
-
-              <div id="main_box_title">Edition de tâche</div>
-  
-              <div id="label_task_name">Nom : </div>
-              <input type="text" id="task_name" name="task_name" value="<?php echo $selectedTache->getNom(); ?>" maxlength="20"/>
-  
-              <div id="label_task_description">Description : </div>
-              <textarea id="task_description" name="task_description" cols="40" rows="5" maxlength="500"><?php echo $selectedTache->getDescription(); ?></textarea>
-              
-              <div id="label_task_respo">Responsable : </div>
-              <select id="select_task_respo" name="select_task_respo">
-                <?php
-                  echo '<option selected="selected" value="' . $selectedTache->getResponsable()->getId() . '">' . $selectedTache->getResponsable()->getNom() . ' ' . $selectedTache->getResponsable()->getPrenom() . '</option>';
-                  if ($selectedTache->getResponsable()->getListActiveUserByRole(4) != null)
-                    foreach($selectedTache->getResponsable()->getListActiveUserByRole(4) as $pers) {
-                      echo '<option value="' . $pers["id"] . '">' . $pers["nom"] . ' ' . $pers["prenom"] . '</option>';
-                    }
-                ?>
-              </select>
-              <div id="label_task_contact">Contact : </div>
-              <select id="select_task_contact" name="select_task_contact">
-                <?php
-                  echo '<option selected="selected" value="' . $selectedTache->getContact()->getId() . '">' . $selectedTache->getContact()->getNom() . ' ' . $selectedTache->getContact()->getPrenom() . '</option>';
-                  if ($selectedTache->getProjet()->getClient()->getContact() != null)
-                    foreach($selectedTache->getProjet()->getClient()->getContact() as $contact) {
-                      if ($contact->getPersonne()->getId() != $selectedTache->getContact()->getId())
-                        echo '<option value="' . $contact->getPersonne()->getId() . '">' . $contact->getPersonne()->getNom() . ' ' . $contact->getPersonne()->getPrenom() . '</option>';
-                    }
-                ?>
-              </select>
-  
-              <div id="label_task_previous">Tâche précédente : </div>
-              <?php
-                if($selectedTache->getPredecesseur() != null) {
-                  echo '<a id="href_task_previous" href="">' . $selectedTache->getPredecesseur()->getNom() . '</a>';
-                }
-                else {
-                  echo '<a id="href_task_previous" href="">Aucune</a>';
-                }
-              ?>
-              
-  
-              <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
-  
-              <div id="div_tasks_previous">
-                <ul class="href_list">
+                <FORM method=post action="./">
+                  <input type="hidden"  name="tache"  value="<?php echo $selectedTache->getId(); ?>">
+                  <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_tacheView; ?>">
+                  <input type="hidden"  name="action"  value="<?php echo $ACTION_tacheSave; ?>">
+    
+                  <div id="main_box_title">Edition de tâche</div>
+      
+                  <div id="label_task_name">Nom : </div>
+                  <input type="text" id="task_name" name="task_name" value="<?php echo $selectedTache->getNom(); ?>" maxlength="20"/>
+      
+                  <div id="label_task_description">Description : </div>
+                  <textarea id="task_description" name="task_description" cols="40" rows="5" maxlength="500"><?php echo $selectedTache->getDescription(); ?></textarea>
+                  
+                  <div id="label_task_respo">Responsable : </div>
+                  <select id="select_task_respo" name="select_task_respo">
+                    <?php
+                      echo '<option selected="selected" value="' . $selectedTache->getResponsable()->getId() . '">' . $selectedTache->getResponsable()->getNom() . ' ' . $selectedTache->getResponsable()->getPrenom() . '</option>';
+                      if ($selectedTache->getResponsable()->getListActiveUserByRole(4) != null)
+                        foreach($selectedTache->getResponsable()->getListActiveUserByRole(4) as $pers) {
+                          echo '<option value="' . $pers["id"] . '">' . $pers["nom"] . ' ' . $pers["prenom"] . '</option>';
+                        }
+                    ?>
+                  </select>
+                  <div id="label_task_contact">Contact : </div>
+                  <select id="select_task_contact" name="select_task_contact">
+                    <?php
+                      echo '<option selected="selected" value="' . $selectedTache->getContact()->getId() . '">' . $selectedTache->getContact()->getNom() . ' ' . $selectedTache->getContact()->getPrenom() . '</option>';
+                      if ($selectedTache->getProjet()->getClient()->getContact() != null)
+                        foreach($selectedTache->getProjet()->getClient()->getContact() as $contact) {
+                          if ($contact->getPersonne()->getId() != $selectedTache->getContact()->getId())
+                            echo '<option value="' . $contact->getPersonne()->getId() . '">' . $contact->getPersonne()->getNom() . ' ' . $contact->getPersonne()->getPrenom() . '</option>';
+                        }
+                    ?>
+                  </select>
+      
+                  <div id="label_task_previous">Tâche précédente : </div>
                   <?php
-                    $idPred = -1;
                     if($selectedTache->getPredecesseur() != null) {
-                      $idPred = $selectedTache->getPredecesseur()->getId();
+                      echo '<a id="href_task_previous" href="">' . $selectedTache->getPredecesseur()->getNom() . '</a>';
                     }
                     else {
-                      echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                      echo '<a id="href_task_previous" href="">Aucune</a>';
                     }
-                    if ($selectedTache->getProjet()->getListTache() != null)
-                      foreach($selectedTache->getProjet()->getListTache() as $value) {
-                        if ($idPred == $value->getId())
-                          echo '<li onclick="changeTeskPrevious(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                        else
-                          echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                      }
                   ?>
-                </ul>
-              </div>
-                
-              <div id="label_task_mother">Tâche mère : </div>
-              
-              <?php
-                if($selectedTache->getTacheMere() != null) {
-                  echo '<a id="href_task_mother" href="">' . $selectedTache->getTacheMere()->getNom() . '</a>';
-                }
-                else {
-                  echo '<a id="href_task_mother" href="">Aucune</a>';
-                }
-              ?>
-  
-              <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
-  
-              <div id="div_tasks_mother">
-                <ul class="href_list">
+                  
+      
+                  <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
+      
+                  <div id="div_tasks_previous">
+                    <ul class="href_list">
+                      <?php
+                        $idPred = -1;
+                        if($selectedTache->getPredecesseur() != null) {
+                          $idPred = $selectedTache->getPredecesseur()->getId();
+                        }
+                        else {
+                          echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                        }
+                        if ($selectedTache->getProjet()->getListTache() != null)
+                          foreach($selectedTache->getProjet()->getListTache() as $value) {
+                            if ($idPred == $value->getId())
+                              echo '<li onclick="changeTeskPrevious(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            else
+                              echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                          }
+                      ?>
+                    </ul>
+                  </div>
+                    
+                  <div id="label_task_mother">Tâche mère : </div>
+                  
                   <?php
-                    $idMere = -1;
                     if($selectedTache->getTacheMere() != null) {
-                      $idMere = $selectedTache->getTacheMere()->getId();
+                      echo '<a id="href_task_mother" href="">' . $selectedTache->getTacheMere()->getNom() . '</a>';
                     }
                     else {
-                      echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                      echo '<a id="href_task_mother" href="">Aucune</a>';
                     }
-                    if ($selectedTache->getProjet()->getListTache() != null)
-                      foreach($selectedTache->getProjet()->getListTache() as $value) {
-                        if ($idMere == $value->getId())
-                          echo '<li onclick="changeTeskMother(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                        else
-                          echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                      }
                   ?>
-                </ul>
-              </div>
-   
-              <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
-              <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
-              <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
-              <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
-  
-              <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
-  
-              <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
-              
-              <?php
-                if ($_SESSION["user"]->getParameters()->getAutoAlert()) {
-                  echo '<div id="label_generate"><input id="generate_check" type="checkbox" checked="checked"/>Générer alerte</div>';
-                }
-                else {
-                  echo '<div id="label_generate"><input id="generate_check" type="checkbox" />Générer alerte</div>';
-                }
-              ?>
-              <input id="delete_btn" type="button" value="Supprimer"  <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheDelete . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
-              <input id="save_btn" type="submit" value="Sauvegarder"/>
-            </FORM>
+      
+                  <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
+      
+                  <div id="div_tasks_mother">
+                    <ul class="href_list">
+                      <?php
+                        $idMere = -1;
+                        if($selectedTache->getTacheMere() != null) {
+                          $idMere = $selectedTache->getTacheMere()->getId();
+                        }
+                        else {
+                          echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                        }
+                        if ($selectedTache->getProjet()->getListTache() != null)
+                          foreach($selectedTache->getProjet()->getListTache() as $value) {
+                            if ($idMere == $value->getId())
+                              echo '<li onclick="changeTeskMother(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            else
+                              echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                          }
+                      ?>
+                    </ul>
+                  </div>
+       
+                  <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
+                  <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
+                  <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
+                  <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
+      
+                  <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
+      
+                  <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
+                  
+                  <?php
+                    if ($_SESSION["user"]->getParameters()->getAutoAlert()) {
+                      echo '<div id="label_generate"><input id="generate_check" type="checkbox" checked="checked"/>Générer alerte</div>';
+                    }
+                    else {
+                      echo '<div id="label_generate"><input id="generate_check" type="checkbox" />Générer alerte</div>';
+                    }
+                  ?>
+                  <input id="delete_btn" type="button" value="Supprimer"  <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheDelete . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
+                  <input id="save_btn" type="submit" value="Sauvegarder"/>
+                </FORM>
+            <?php
+              }
+              else {
+            ?>
+                <FORM method=post action="./">
+                  <input type="hidden"  name="projet"  value="<?php echo $_SESSION["projet"]->getId(); ?>">
+                  <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_tacheView; ?>">
+                  <input type="hidden"  name="action"  value="<?php echo $ACTION_tacheCreate; ?>">
+    
+                  <div id="main_box_title">Edition de tâche</div>
+      
+                  <div id="label_task_name">Nom : </div>
+                  <input type="text" id="task_name" name="task_name" value="" maxlength="20"/>
+      
+                  <div id="label_task_description">Description : </div>
+                  <textarea id="task_description" name="task_description" cols="40" rows="5" maxlength="500"></textarea>
+                  
+                  <div id="label_task_respo">Responsable : </div>
+                  <select id="select_task_respo" name="select_task_respo">
+                    <?php
+                      if (getCollaboList() != null)
+                        foreach(getCollaboList() as $pers) {
+                          echo '<option value="' . $pers->getId() . '">' . $pers->getNom() . ' ' . $pers->getPrenom() . '</option>';
+                        }
+                    ?>
+                  </select>
+                  <div id="label_task_contact">Contact : </div>
+                  <select id="select_task_contact" name="select_task_contact">
+                    <?php
+                      if (requeteContact("", "", "", $_SESSION["projet"]->getClient()->getId()) != null)
+                        foreach(requeteContact("", "", "", $_SESSION["projet"]->getClient()->getId()) as $contact) {
+                          echo '<option value="' . $contact->getPersonne()->getId() . '">' . $contact->getPersonne()->getNom() . ' ' . $contact->getPersonne()->getPrenom() . '</option>';
+                        }
+                    ?>
+                  </select>
+      
+                  <div id="label_task_previous">Tâche précédente : </div>
+                  
+                  <a id="href_task_previous" href="">Aucune</a>
+                  
+      
+                  <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
+      
+                  <div id="div_tasks_previous">
+                    <ul class="href_list">
+                      <li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>
+                      <?php
+                        if ($_SESSION["projet"]->getListTache() != null)
+                          foreach($_SESSION["projet"]->getListTache() as $value) {
+                            echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                          }
+                      ?>
+                    </ul>
+                  </div>
+                    
+                  <div id="label_task_mother">Tâche mère : </div>
+                  
+                  <a id="href_task_mother" href="">Aucune</a>
+      
+                  <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
+      
+                  <div id="div_tasks_mother">
+                    <ul class="href_list">
+                      <li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>
+                      <?php
+                        if ($_SESSION["projet"]->getListTache() != null)
+                          foreach($_SESSION["projet"]->getListTache() as $value) {
+                            echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                          }
+                      ?>
+                    </ul>
+                  </div>
+       
+                  <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="" maxlength="8"/></div>
+                  <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="" maxlength="8"/></div>
+                  <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="" maxlength="3"/></div>   
+      
+                  <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=-1\'"'; ?>/>
+                  
+                  <?php
+                    if ($_SESSION["user"]->getParameters()->getAutoAlert()) {
+                      echo '<div id="label_generate"><input id="generate_check" type="checkbox" checked="checked"/>Générer alerte</div>';
+                    }
+                    else {
+                      echo '<div id="label_generate"><input id="generate_check" type="checkbox" />Générer alerte</div>';
+                    }
+                  ?>
+                  <input id="save_btn" type="submit" value="Creer"/>
+                </FORM>
+            <?php
+              }
+            ?>
           </div>
 
           <div id="tasks_list_box">
@@ -188,13 +283,13 @@
             <div id="tasks_list_title">Projet Azure</div>
 
             <!-- BOUTON A CACHER SELON LE ROLE-->
-            <input id="new_task_btn" type="button" value="Nouvelle Tâche"/>
+            <input id="new_task_btn" type="button" value="Nouvelle Tâche" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=-1&projet=' . $_SESSION["projet"]->getId() . '\'"'; ?>/>
 
             <div id="tasks_list">
               <div id="div_tree">
                 <ol id="menutree">
                   <?php
-                    foreach($selectedTache->getProjet()->getTreeTache() as $value) {
+                    foreach($_SESSION["projet"]->getTreeTache() as $value) {
                       if($value->getFille() == null) {
                         echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                       }
@@ -246,7 +341,7 @@
             <div id="tasks_list_search">
               <ul class="href_list">
                 <?php
-                  foreach($selectedTache->getProjet()->getListTache() as $value)
+                  foreach($_SESSION["projet"]->getListTache() as $value)
                   {
                     echo '<li><a href="./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                   }
