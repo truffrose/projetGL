@@ -103,16 +103,6 @@
               <div id="div_tree">
                 <ol id="menutree">
                   <?php
-                  /* *
-                    foreach($selectedTache->getProjet()->getListTache() as $value) {
-                      if ($value->getId() != $selectedTache->getId())
-                        echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
-                    }
-                  /* */
-                  
-                  // print_r($selectedTache->getProjet()->getTreeTache());
-                  
-                  /* */
                     foreach($selectedTache->getProjet()->getTreeTache() as $value) {
                       if($value->getFille() == null) {
                         echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
@@ -157,65 +147,19 @@
                         echo '</ol></li>';
                       }
                      }
-                  /* */  
-                    
-                    
-                    
-                    
                   ?>
-                  <!--
-                  
-                      
-                      <li class="page"><a href="#">Tâche 2.2</a></li>
-                    
-            
-                  <li>
-                    <input type="checkbox"/>
-                    <label class="tree_label"><a href="#">Tâche 1</a></label>
-                    <ol>
-                      <li>
-                        <input type="checkbox"/>
-                        <label class="tree_label"><a href="#">Tâche 1.1</a></label>
-                        <ol>
-                          <li class="page"><a href="#">Tâche 1.1.1</a></li>
-                          <li class="page"><a href="#">Tâche 1.1.2</a></li>
-                          <li class="page"><a href="#">Tâche 1.1.3</a></li>
-                        </ol>
-                      </li>
-                      <li class="page"><a href="#">Tâche 1.2</a></li>
-                    </ol>
-                  </li>
-
-                  <li>
-                    <input type="checkbox"/>
-                    <label class="tree_label"><a href="#">Tâche 2</a></label>
-                    <ol>
-                      <li class="page"><a href="#">Tâche 2.1</a></li>
-                      <li class="page"><a href="#">Tâche 2.2</a></li>
-                    </ol>
-                  </li>
-                  <li class="page"><a href="#">Tâche 3</a></li>
-                  <li class="page"><a href="#">Tâche 4</a></li>
-                  <li class="page"><a href="#">Tâche 5</a></li>
-                  -->
                 </ol>
               </div>
             </div> 
 
             <div id="tasks_list_search">
               <ul class="href_list">
-                <li><a href="">Tâche 1</a></li>
-                <li><a href="">Tâche 1.1</a></li>
-                <li><a href="">Tâche 1.1.1</a></li>
-                <li><a href="">Tâche 1.1.2</a></li>
-                <li><a href="">Tâche 1.1.3</a></li>
-                <li><a href="">Tâche 1.2</a></li>
-                <li><a href="">Tâche 2</a></li>
-                <li><a href="">Tâche 2.1</a></li>
-                <li><a href="">Tâche 2.2</a></li>
-                <li><a href="">Tâche 3</a></li>
-                <li><a href="">Tâche 4</a></li>
-                <li><a href="">Tâche 5</a></li>
+                <?php
+                  foreach($selectedTache->getProjet()->getListTache() as $value)
+                  {
+                    echo '<li><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                  }
+                ?>
               </ul>
             </div> 
             

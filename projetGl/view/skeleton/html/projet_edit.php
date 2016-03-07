@@ -72,7 +72,7 @@
                       echo '<option selected="selected" value="' . $projectSelected->getClient()->getId() . '">' . $projectSelected->getClient()->getNom() . '</option>';
                     }
                     else {
-                      echo '<option  value="' . $projectSelected->getClient()->getId() . '"****>' . $projectSelected->getClient()->getNom() . '</option>';
+                      echo '<option  value="' . $value->getId() . '">' . $value->getNom() . '</option>';
                     }
                   }
                 ?>
@@ -80,8 +80,13 @@
               </select>
               <div id="label_project_respo">Responsable : </div>
               <select id="select_project_respo">
-                <option>Marc Dasilvette</option>
-                <option selected="selected">Cyril Roussot</option>
+                <?php
+                  echo '<option selected="selected" value="' . $projectSelected->getResponsable()->getId() . '">' . $projectSelected->getResponsable()->getNom() . ' ' . $projectSelected->getResponsable()->getPrenom() . '</option>';
+                  if ($projectSelected->getResponsable()->getListActiveUserByRole(3) != null)
+                    foreach($projectSelected->getResponsable()->getListActiveUserByRole(3) as $pers) {
+                      echo '<option value="' . $pers["id"] . '">' . $pers["nom"] . ' ' . $pers["prenom"] . '</option>';
+                    }
+                ?>
               </select>
               
               <div id="list_title">Liste de tâches</div>
@@ -89,23 +94,18 @@
   
               <div id="div_tasks">
                 <ul class="href_list">
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 1</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 1.1</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 1.2</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 1.3</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 2</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 2.1</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 2.2</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 3</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 4</a></li>
-                  <li>&nbsp;&nbsp;&nbsp;<a href="">Tâche 5</a></li>
+                  <?php
+                    foreach($projectSelected->getListTache() as $value) {
+                      echo '<li>&nbsp;&nbsp;&nbsp;<a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                    }
+                  ?>
                 </ul>
               </div>
   
               <input id="task_btn" type="button" value="Créer une nouvelle tâche"/>
   
               <input id="cancel_btn" type="button" value="Annuler" <?php echo ' onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $projectSelected->getId() . '\'"'; ?>/>
-              <input id="delete_btn" type="button" value="Supprimer"/>
+              <input id="delete_btn" type="button" value="Supprimer" <?php echo ' onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetDelete . '&projet=' . $projectSelected->getId() . '\'"'; ?>/>
               <input id="save_btn" type="button" value="Sauvegarder"/>
             </FORM>
           </div>
@@ -121,8 +121,14 @@
 
             <div id="projects_list">
               <ul class="href_list">
-                <li><a href="">Azure</a></li>
-                <li><a href="">Spartacus</a></li>
+                <?php
+                  if (getListProjectActif() != null)
+                    foreach(getListProjectActif() as $value) {
+                      if ($projectSelected->getId() != $value->getId()) {
+                        echo '<li><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                      }
+                    }
+                ?>
               </ul>
             </div> 
 

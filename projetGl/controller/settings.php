@@ -32,6 +32,8 @@
 		$ACTION_clientSave = 16;
 		$ACTION_clientDelete = 17;
 		$ACTION_tacheView = 18;
+		$ACTION_projetDelete = 19;
+		$ACTION_projetSave = 20;
 		
 	
 		// getting the action

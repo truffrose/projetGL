@@ -108,52 +108,64 @@
       
                   <div id="div_tree">
                     <ol id="menutree">
-                      <?php
-                        if ($projectSelected->getId() != -1)
-                          foreach($projectSelected->getListTache() as $value) {
-                            echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                      
+                  <?php
+                    foreach($projectSelected->getTreeTache() as $value) {
+                      if($value->getFille() == null) {
+                        echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                      }
+                      else {
+                        echo '<li><input type="checkbox"/><label class="tree_label"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></label><ol>';
+                        foreach($value->getFille() as $lvl1) {
+                          if ($lvl1->getFille() == null) {
+                            echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl1->getId() . '">' . $lvl1->getNom() . '</a></li>';
                           }
-                      ?>
-                  <!--
-                      <li>
-                        <input type="checkbox"/>
-                        <label class="tree_label"><a href="#">Tâche 1</a></label>
-                        <ol>
-                          <li>
-                            <input type="checkbox"/>
-                            <label class="tree_label"><a href="#">Tâche 1.1</a></label>
-                            <ol>
-                              <li class="page"><a href="#">Tâche 1.1.1</a></li>
-                              <li class="page"><a href="#">Tâche 1.1.2</a></li>
-                              <li class="page"><a href="#">Tâche 1.1.3</a></li>
-                            </ol>
-                          </li>
-                          <li>
-                            <li class="page"><a href="#">Tâche 1.2</a></li>
-                        </ol>
-                      </li>
-      
-                      <li>
-                        <input type="checkbox"/>
-                        <label class="tree_label"><a href="#">Tâche 2</a></label>
-                        <ol>
-                          <li class="page"><a href="#">Tâche 2.1</a></li>
-                          <li class="page"><a href="#">Tâche 2.2</a></li>
-                        </ol>
-                      </li>
-                      <li class="page"><a href="#">Tâche 3</a></li>
-                      <li class="page"><a href="#">Tâche 4</a></li>
-                      <li class="page"><a href="#">Tâche 5</a></li>
-                  -->
+                          else {
+                            echo '<li><input type="checkbox"/><label class="tree_label"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl1->getId() . '">' . $lvl1->getNom() . '</a></label><ol>';
+                            foreach($lvl1->getFille() as $lvl2) {
+                              if ($lvl2->getFille() == null) {
+                                echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl2->getId() . '">' . $lvl2->getNom() . '</a></li>';
+                              }
+                              else {
+                                echo '<li><input type="checkbox"/><label class="tree_label"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl2->getId() . '">' . $lvl2->getNom() . '</a></label><ol>';
+                                foreach($lvl2->getFille() as $lvl3) {
+                                  if ($lvl3->getFille() == null) {
+                                    echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl3->getId() . '">' . $lvl3->getNom() . '</a></li>';
+                                  }
+                                  else {
+                                    echo '<li><input type="checkbox"/><label class="tree_label"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl3->getId() . '">' . $lvl3->getNom() . '</a></label><ol>';
+                                    foreach($lvl3->getFille() as $lvl4) {
+                                      if ($lvl4->getFille() == null) {
+                                        echo '<li class="page"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $lvl4->getId() . '">' . $lvl4->getNom() . '</a></li>';
+                                      }
+                                      else {
+                                        // trop profond pour devoir l'afficher
+                                      }
+                                    }
+                                    echo '</ol></li>';
+                                  }
+                                }
+                                echo '</ol></li>';
+                              }
+                            }
+                            echo '</ol></li>';
+                          }
+                        }
+                        echo '</ol></li>';
+                      }
+                     }
+                  ?>
                     </ol>
                   </div>
 
                   <div id="tasks_list_search">
                     <ul class="href_list">
-                      <li><a href="">Ceuillir les fleurs</a></li>
-                      <li><a href="">Couper les fleurs</a></li>
-                      <li><a href="">Assembler les fleurs</a></li>
-                      <li><a href="">Tâche X.X</a></li>
+                      <?php
+                        if ($projectSelected->getId() != -1)
+                          foreach($projectSelected->getListTache() as $value) {
+                            // echo '<li><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+                          }
+                      ?>
                     </ul>
                   </div>
       

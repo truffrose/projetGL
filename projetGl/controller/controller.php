@@ -256,6 +256,16 @@
 					$_SESSION["projet"] = -1;
 				}
 				break;
+			case $ACTION_projetDelete:
+				if (isset($_GET["projet"]) && $_GET["projet"] != -1) {
+					$tempProjet = new Projet($_GET["projet"]);
+					$tempProjet->delete();
+					$_SESSION["projet"] = -1;
+				}
+				elseif (isset($_GET["projet"]) && $_GET["projet"] == -1) {
+					$_SESSION["projet"] = -1;
+				}
+				break;
 			case $ACTION_tacheView:
 				if (isset($_GET["tache"]) && $_GET["tache"] != -1) {
 					$_SESSION["tache"] = $_GET["tache"];

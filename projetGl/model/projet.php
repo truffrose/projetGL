@@ -160,6 +160,18 @@
 			return $tree;
 		}
 		
+		// passe un préjet en mode supprimer (eleve le projet ainsi que les taches en les passant à l'état 2)
+		public function delete() {
+			if (isConnectMySql()) {
+				$sqlTache = 'update projetGL_tache t join projetGL_projet p on t.projet = p.id set t.etat = 2, p.etat = 2 where p.id = ' . sanitize_string($this->_id) . ';';
+				return $_SESSION["link"]->query($sqlTache);
+			}
+			else {
+				return false;
+			}
+		}
+		
+		
 	}
     
     // test si le contact existe
