@@ -295,9 +295,8 @@
 					$tempTache->save();
 				}
 				else {
-					// $tempTache = new Tache($_POST["tache"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
-					// $tempTache->save();
-					// require_once($path . "html/task_edit_respo.php");
+					$tempTache = new Tache($_POST["tache"], $_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], null, null, $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
+					$tempTache->save();
 				}
 				break;
 			default:

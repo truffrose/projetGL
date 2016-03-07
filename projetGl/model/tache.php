@@ -97,6 +97,9 @@
 			$ctp = func_num_args();
 			$args = func_get_args();
 			switch($ctp) {
+				case 12:
+					$this->constructor12Args($args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7], $args[8], $args[9], $args[10], $args[11]);
+					break;
 				case 4:
 					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
@@ -154,8 +157,16 @@
 			$this->_avancement = $avancement;
 		}
 		
-		private function constructor4Args($id, $nom, $description, $responsable, $contact, $predecesseur, $tacheMere, $dateFinTot, $dateFinTard, $tempPasse, $tempRestant, $avancement) {
+		private function constructor12Args($id, $nom, $description, $responsable, $contact, $predecesseur, $tacheMere, $dateFinTot, $dateFinTard, $tempPasse, $tempRestant, $avancement) {
 			$this->constructor1Args($id);
+			$this->_nom = $nom;
+			$this->_description = $description;
+			$this->_responsable = new Personne($responsable);
+			$this->_contact = new Personne($contact);
+			$this->_predecesseur = $predecesseur;
+			$this->_tacheMere = $tacheMere;
+			$this->_dateFinTot = $dateFinTot;
+			$this->_dateFinTard = $dateFinTard;
 			$this->_tempsPasse = $tempPasse;
 			$this->_tempsRestant = $tempRestant;
 			$this->_avancement = $avancement;

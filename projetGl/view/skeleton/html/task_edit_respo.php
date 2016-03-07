@@ -64,13 +64,13 @@
               <div id="main_box_title">Edition de tâche</div>
   
               <div id="label_task_name">Nom : </div>
-              <input type="text" id="task_name" value="<?php echo $selectedTache->getNom(); ?>" maxlength="20"/>
+              <input type="text" id="task_name" name="task_name" value="<?php echo $selectedTache->getNom(); ?>" maxlength="20"/>
   
               <div id="label_task_description">Description : </div>
-              <textarea id="task_description" cols="40" rows="5" maxlength="500"><?php echo $selectedTache->getDescription(); ?></textarea>
+              <textarea id="task_description" name="task_description" cols="40" rows="5" maxlength="500"><?php echo $selectedTache->getDescription(); ?></textarea>
               
               <div id="label_task_respo">Responsable : </div>
-              <select id="select_task_respo">
+              <select id="select_task_respo" name="select_task_respo">
                 <?php
                   echo '<option selected="selected" value="' . $selectedTache->getResponsable()->getId() . '">' . $selectedTache->getResponsable()->getNom() . ' ' . $selectedTache->getResponsable()->getPrenom() . '</option>';
                   if ($selectedTache->getResponsable()->getListActiveUserByRole(4) != null)
@@ -80,7 +80,7 @@
                 ?>
               </select>
               <div id="label_task_contact">Contact : </div>
-              <select id="select_task_contact">
+              <select id="select_task_contact" name="select_task_contact">
                 <?php
                   echo '<option selected="selected" value="' . $selectedTache->getContact()->getId() . '">' . $selectedTache->getContact()->getNom() . ' ' . $selectedTache->getContact()->getPrenom() . '</option>';
                   if ($selectedTache->getProjet()->getClient()->getContact() != null)
@@ -159,12 +159,12 @@
                 </ul>
               </div>
    
-              <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
-              <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
-              <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
-              <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
+              <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
+              <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
+              <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
+              <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
   
-              <div id="label_progress">Avancement (%) : <input id="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
+              <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
   
               <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
               
