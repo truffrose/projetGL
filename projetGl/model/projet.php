@@ -176,8 +176,14 @@
 		// passe un préjet en mode supprimer (eleve le projet ainsi que les taches en les passant à l'état 2)
 		public function delete() {
 			if (isConnectMySql()) {
-				$sql = 'update projetGL_tache t join projetGL_projet p on t.projet = p.id set t.etat = 2, p.etat = 2 where p.id = ' . sanitize_string($this->_id) . ';';
-				return $_SESSION["link"]->query($sql);
+				$sqlProjet = 'update projetGL_projet set etat = 2 where id = ' . sanitize_string($this->_id) . ';';
+				if ($_SESSION["link"]->query($sqlProjet)) {
+					$sqlTache = 'update projetGL_tache set etat = 2 where id = ' . sanitize_string($this->_id) . ';';
+					return $_SESSION["link"]->query($sqlTache);
+				}
+				else {
+					return false;
+				}
 			}
 			else {
 				return false;

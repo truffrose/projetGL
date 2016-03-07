@@ -104,9 +104,10 @@
 				  <div id="div_tasks">
 					<ul class="href_list">
 					  <?php
-						foreach($projectSelected->getListTache() as $value) {
-						  echo '<li>&nbsp;&nbsp;&nbsp;<a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
-						}
+						if ($projectSelected->getListTache() != null)
+						  foreach($projectSelected->getListTache() as $value) {
+							echo '<li>&nbsp;&nbsp;&nbsp;<a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
+						  }
 					  ?>
 					</ul>
 				  </div>
