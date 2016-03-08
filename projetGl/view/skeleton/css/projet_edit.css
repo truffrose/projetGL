@@ -35,7 +35,7 @@
   left: 182px;
   padding-left: 31px;
   width: 473px;
-  height: 515px;
+  height: 545px;
   background-color: #F8F8F8;
   background-image: none;
   border: 1px;
@@ -151,9 +151,32 @@
   border-radius: 5px;
   padding-left: 5px;
 }
+#label_unit {
+  position: absolute;
+  top: 245px;
+  left: 20px;
+  width: auto;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+}
+#select_unit {
+  position: absolute;
+  top: 245px;
+  left: 130px;
+  width: 370px;
+  height: auto;
+  font-size: 11.0pt;
+  font-family: Arial;
+  border: 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  border-radius: 5px;
+  padding-left: 5px;
+}
 #list_title {
   position: absolute;
-  top: 255px;
+  top: 285px;
   left: 25px;
   width: auto;
   height: 35px;
@@ -164,7 +187,7 @@
 }
 #search_field_task {
   position: absolute;
-  top: 285px;
+  top: 315px;
   left: 16px;
   width: 486px;
   height: 29px;
@@ -181,7 +204,7 @@
 }
 #div_tasks{
   position: absolute;
-  top: 325px;
+  top: 355px;
   left: 16px;
   width: 486px;
   height: 134px;
@@ -193,7 +216,7 @@
 }
 #task_btn {
   position: absolute;
-  top: 470px;
+  top: 500px;
   left: 16px;
   width: 486px;
   height: 23px;
@@ -214,7 +237,7 @@
 }
 #cancel_btn {
   position: absolute;
-  top: 510px;
+  top: 540px;
   left: 16px;
   width: 80px;
   height: 23px;
@@ -235,7 +258,7 @@
 }
 #delete_btn {
   position: absolute;
-  top: 510px;
+  top: 540px;
   left: 293px;
   width: 100px;
   height: 23px;
@@ -256,7 +279,7 @@
 }
 #save_btn {
   position: absolute;
-  top: 510px;
+  top: 540px;
   left: 403px;
   width: 100px;
   height: 23px;
@@ -277,7 +300,7 @@
 }
 #project_box > #projects_list_box {
   position: relative;
-  top: -489px;
+  top: -519px;
   left: 14px;
   padding-left: 26px;
   width: 120px;

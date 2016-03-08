@@ -77,9 +77,8 @@
                   ?>
                 </ul>
               </div> 
-              <select id="client_contacts_select">
-              </select>
-              <input id="add_contacts_btn" type="button" value="+" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1\'"'; ?>/>
+              
+              <input id="add_contacts_btn" type="button" value="Nouveau" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=-1\'"'; ?>/>
                
               <div id="client_projects_title">Projets</div>
               <div id="client_projects">
@@ -93,9 +92,8 @@
                   ?>
                 </ul>
               </div> 
-              <select id="client_projects_select">
-              </select>
-              <input id="add_projects_btn" type="button" value="+"/>
+              
+              <input id="add_projects_btn" type="button" value="Nouveau"/>
   
               <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
               

@@ -8,7 +8,8 @@ function changeTeskPrevious(selectedLi){
 
 	selectedLi.className = "selected_li";
 
-	document.getElementById("href_task_previous").innerHTML = cleanString(selectedLi.innerHTML);
+	document.getElementById("href_task_previous").innerHTML = cleanTaskString(selectedLi.innerHTML);
+	document.getElementById("task_previous_id").value = selectedLi.value;
 }
 
 function changeTeskMother(selectedLi){
@@ -21,10 +22,11 @@ function changeTeskMother(selectedLi){
 
 	selectedLi.className = "selected_li";
 
-	document.getElementById("href_task_mother").innerHTML = cleanString(selectedLi.innerHTML);
+	document.getElementById("href_task_mother").innerHTML = cleanTaskString(selectedLi.innerHTML);
+	document.getElementById("task_mother_id").value = selectedLi.value;
 }
 
-function cleanString(string){
+function cleanTaskString(string){
 	var cleaned = string.slice(string.indexOf(";")+1,string.length);
 	cleaned = cleaned.slice(cleaned.indexOf(";")+1,cleaned.length);
 	cleaned = cleaned.slice(cleaned.indexOf(";")+1,cleaned.length);
@@ -39,7 +41,7 @@ function searchTaskPrevious(nameOfList){
 
 	for(var i=0; i < list.length; i++){
 		if(searchValue != ""){
-			if (cleanString(list[i].innerHTML).toLowerCase().indexOf(searchValue.toLowerCase()) == -1) {
+			if (cleanTaskString(list[i].innerHTML).toLowerCase().indexOf(searchValue.toLowerCase()) == -1) {
 			    list[i].style.display = "none";
 			}
 			else{
@@ -76,7 +78,7 @@ function searchTaskMother(nameOfList){
 
 	for(var i=0; i < list.length; i++){
 		if(searchValue != ""){
-			if (cleanString(list[i].innerHTML).toLowerCase().indexOf(searchValue.toLowerCase()) == -1) {
+			if (cleanTaskString(list[i].innerHTML).toLowerCase().indexOf(searchValue.toLowerCase()) == -1) {
 			    list[i].style.display = "none";
 			}
 			else{

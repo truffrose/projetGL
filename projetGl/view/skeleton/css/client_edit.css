@@ -73,7 +73,7 @@
   position: absolute;
   top: 40px;
   left: 117px;
-  width: 209px;
+  width: 309px;
   height: 21px;
   padding-left: 8px;
   background-color: #FFFFFF;
@@ -96,7 +96,7 @@
   position: absolute;
   top: 70px;
   left: 117px;
-  width: 209px;
+  width: 309px;
   height: 21px;
   padding-left: 8px;
   background-color: #FFFFFF;
@@ -133,24 +133,11 @@
   font-size: 10.0pt;
   overflow: auto;
 }
-#client_contacts_select {
-  position: absolute;
-  top: 225px;
-  left: 37px;
-  padding-left: 8px;
-  width: 145px;
-  height: 21px;
-  text-align: left;
-  font-family: Arial;
-  font-size: 11.0pt;
-  vertical-align: middle;
-  border-radius: 4px;
-}
 #add_contacts_btn {
   position: absolute;
   top: 225px;
-  left: 194px;
-  width: 21px;
+  left: 37px;
+  width: 180px;
   height: 21px;
   background-color: #FFFFFF;
   background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);
@@ -196,24 +183,11 @@
   font-size: 10.0pt;
   overflow: auto;
 }
-#client_projects_select {
-  position: absolute;
-  top: 225px;
-  left: 274px;
-  padding-left: 8px;
-  width: 145px;
-  height: 21px;
-  text-align: left;
-  font-family: Arial;
-  font-size: 11.0pt;
-  vertical-align: middle;
-  border-radius: 4px;
-}
 #add_projects_btn {
   position: absolute;
   top: 225px;
-  left: 431px;
-  width: 21px;
+  left: 274px;
+  width: 180px;
   height: 21px;
   background-color: #FFFFFF;
   background-image: -moz-linear-gradient(top,#FFFFFF,#E6E6E6);

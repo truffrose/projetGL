@@ -97,6 +97,14 @@
 						}
 					?>
 				  </select>
+
+				  <div id="label_unit">Unité de temps : </div>
+				  <!-- ATTENTION ATTENTION ATTENTION -->
+				  <!-- A REMPLIR AVEC LES CHAMPS DE LA BASE -->
+				  <select id="select_unit" name="select_unit">
+					<option>Jours</option>
+					<option>Heure</option>
+				  </select>
 				  
 				  <div id="list_title">Liste de tâches</div>
 				  <input id="search_field_task" type="text" value="Rechercher" onblur="resetFieldTask('div_tasks');" onclick="emptyFieldTask('div_tasks');" oninput="searchTask('div_tasks');"/>
@@ -150,6 +158,14 @@
 						  echo '<option value="' . $pers->getId() . '">' . $pers->getNom() . ' ' . $pers->getPrenom() . '</option>';
 						}
 					?>
+				  </select>
+
+				  <div id="label_unit">Unité de temps : </div>
+				  <!-- ATTENTION ATTENTION ATTENTION -->
+				  <!-- A REMPLIR AVEC LES CHAMPS DE LA BASE -->
+				  <select id="select_unit" name="select_unit">
+					<option>Jours</option>
+					<option>Heure</option>
 				  </select>
 <!--
 				  <div id="list_title">Liste de tâches</div>

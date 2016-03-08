@@ -98,9 +98,11 @@
                   <?php
                     if($selectedTache->getPredecesseur() != null) {
                       echo '<a id="href_task_previous" href="">' . $selectedTache->getPredecesseur()->getNom() . '</a>';
+                      echo '<input type="hidden" id="task_previous_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
                     }
                     else {
                       echo '<a id="href_task_previous" href="">Aucune</a>';
+                      echo '<input type="hidden" id="task_previous_id" value="-1">';
                     }
                   ?>
                   
@@ -115,14 +117,14 @@
                           $idPred = $selectedTache->getPredecesseur()->getId();
                         }
                         else {
-                          echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                          echo '<li onclick="changeTeskPrevious(this);" class="selected_li" value="-1">&nbsp;&nbsp;&nbsp;Aucune</li>';
                         }
                         if ($selectedTache->getProjet()->getListTache() != null)
                           foreach($selectedTache->getProjet()->getListTache() as $value) {
                             if ($idPred == $value->getId())
-                              echo '<li onclick="changeTeskPrevious(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                              echo '<li onclick="changeTeskPrevious(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                             else
-                              echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                              echo '<li onclick="changeTeskPrevious(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
@@ -133,9 +135,11 @@
                   <?php
                     if($selectedTache->getTacheMere() != null) {
                       echo '<a id="href_task_mother" href="">' . $selectedTache->getTacheMere()->getNom() . '</a>';
+                      echo '<input type="hidden" id="task_mother_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
                     }
                     else {
                       echo '<a id="href_task_mother" href="">Aucune</a>';
+                      echo '<input type="hidden" id="task_mother_id" value="-1">';
                     }
                   ?>
       
@@ -149,23 +153,23 @@
                           $idMere = $selectedTache->getTacheMere()->getId();
                         }
                         else {
-                          echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>';
+                          echo '<li onclick="changeTeskMother(this);" class="selected_li" value="-1">&nbsp;&nbsp;&nbsp;Aucune</li>';
                         }
                         if ($selectedTache->getProjet()->getListTache() != null)
                           foreach($selectedTache->getProjet()->getListTache() as $value) {
                             if ($idMere == $value->getId())
-                              echo '<li onclick="changeTeskMother(this);">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                              echo '<li onclick="changeTeskMother(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                             else
-                              echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                              echo '<li onclick="changeTeskMother(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
                   </div>
        
-                  <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
-                  <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
-                  <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
-                  <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
+                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
+                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
+                  <div id="label_time_spend">Temps passé (<span id="unit_time">jours</span>) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
+                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
       
                   <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
       
@@ -221,17 +225,18 @@
                   <div id="label_task_previous">Tâche précédente : </div>
                   
                   <a id="href_task_previous" href="">Aucune</a>
+                  <input type="hidden" id="task_previous_id" value="-1">
                   
       
                   <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
       
                   <div id="div_tasks_previous">
                     <ul class="href_list">
-                      <li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>
+                      <li onclick="changeTeskPrevious(this);" class="selected_li" value="-1">&nbsp;&nbsp;&nbsp;Aucune</li>
                       <?php
                         if ($_SESSION["projet"]->getListTache() != null)
                           foreach($_SESSION["projet"]->getListTache() as $value) {
-                            echo '<li onclick="changeTeskPrevious(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            echo '<li onclick="changeTeskPrevious(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
@@ -240,24 +245,25 @@
                   <div id="label_task_mother">Tâche mère : </div>
                   
                   <a id="href_task_mother" href="">Aucune</a>
+                  <input type="hidden" id="task_mother_id" value="-1">
       
                   <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
       
                   <div id="div_tasks_mother">
                     <ul class="href_list">
-                      <li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;Aucune</li>
+                      <li onclick="changeTeskMother(this);" class="selected_li" value="-1">&nbsp;&nbsp;&nbsp;Aucune</li>
                       <?php
                         if ($_SESSION["projet"]->getListTache() != null)
                           foreach($_SESSION["projet"]->getListTache() as $value) {
-                            echo '<li onclick="changeTeskMother(this);" class="selected_li">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            echo '<li onclick="changeTeskMother(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
                   </div>
        
-                  <div id="label_date_end_soon">Date fin (plus tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="" maxlength="8"/></div>
-                  <div id="label_date_end_late">Date fin (plus tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="" maxlength="8"/></div>
-                  <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="" maxlength="3"/></div>   
+                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="" maxlength="8"/></div>
+                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="" maxlength="8"/></div>
+                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="" maxlength="3"/></div>   
       
                   <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=-1\'"'; ?>/>
                   

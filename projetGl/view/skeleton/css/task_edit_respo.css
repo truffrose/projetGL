@@ -264,11 +264,11 @@
   font-size: 11.0pt;
 }
 #date_end_soon_value{
-  width: 61px;
+  width: 78px;
   padding-left: 2px;
 }
 #date_end_late_value{
-  width: 59px;
+  width: 75px;
   padding-left: 2px;
 }
 #label_time_spend {
@@ -530,6 +530,13 @@ li input[type=checkbox]:checked + .tree_label + ol > li {
   border-bottom: 1px;
   border-bottom-style: solid;
   border-bottom-color: #EBEBEB;
+  cursor: pointer;
+}
+.href_list li:hover{
+  background-color: #D0E8FF;
+}
+.href_list .selected_li{
+  background-color: #7DBFFF;
 }
 .href_list li:nth-child(n+4):last-child{
   padding: 4px;
