@@ -122,9 +122,9 @@
                         if ($selectedTache->getProjet()->getListTache() != null)
                           foreach($selectedTache->getProjet()->getListTache() as $value) {
                             if ($idPred == $value->getId())
-                              echo '<li onclick="changeTeskPrevious(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                            else
                               echo '<li onclick="changeTeskPrevious(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            else
+                              echo '<li onclick="changeTeskPrevious(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
@@ -158,9 +158,9 @@
                         if ($selectedTache->getProjet()->getListTache() != null)
                           foreach($selectedTache->getProjet()->getListTache() as $value) {
                             if ($idMere == $value->getId())
-                              echo '<li onclick="changeTeskMother(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
-                            else
                               echo '<li onclick="changeTeskMother(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            else
+                              echo '<li onclick="changeTeskMother(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
@@ -236,7 +236,7 @@
                       <?php
                         if ($_SESSION["projet"]->getListTache() != null)
                           foreach($_SESSION["projet"]->getListTache() as $value) {
-                            echo '<li onclick="changeTeskPrevious(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            echo '<li onclick="changeTeskPrevious(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
@@ -255,7 +255,7 @@
                       <?php
                         if ($_SESSION["projet"]->getListTache() != null)
                           foreach($_SESSION["projet"]->getListTache() as $value) {
-                            echo '<li onclick="changeTeskMother(this);" class="selected_li" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
+                            echo '<li onclick="changeTeskMother(this);" value="'.$value->getId().'">&nbsp;&nbsp;&nbsp;' . $value->getNom() . '</li>';
                           }
                       ?>
                     </ul>
