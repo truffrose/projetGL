@@ -96,7 +96,7 @@
                   <?php
                     if ($idClient != -1 && isset($listeProjet)) {
                       foreach ($listeProjet as $value) {
-                        echo '<li><a href="">' . $value->getNom() . '</a></li>';
+                        echo '<li><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">' . $value->getNom() . '</a></li>';
                       }
                     }
                   ?>
