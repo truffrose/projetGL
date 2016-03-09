@@ -115,7 +115,7 @@
                     echo '<tr class="tr_1"> ';
                       echo '<td class="td1"><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">'.$value->getNom().'</a></td>';
                       echo '<td class="td2">'.$value->getAvancement().' %</td>';
-                      echo '<td class="td3"></td>';
+                      echo '<td class="td3">'.$value->getDateEnd().'</td>';
                     echo '</tr>';
                   }
               ?>

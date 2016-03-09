@@ -12,6 +12,7 @@
 		private $_client;
 		private $_listeTache;
 		private $_responsable;
+		private $_dateEnd;
 		
 		// getters and setters
 		function getId() {
@@ -32,6 +33,9 @@
 		function getAvancement() {
 			return $this->_avancement;
 		}
+		function getDateEnd() {
+			return $this->_dateEnd;
+		}
 		
 
 		// manager of the constructor
@@ -44,6 +48,9 @@
 					break;
 				case 5:
 					$this->constructor5Args($args[0],$args[1],$args[2],$args[3],$args[4]);
+					break;
+				case 4:
+					$this->constructor4Args($args[0],$args[1],$args[2],$args[3]);
 					break;
 				case 3:
 					$this->constructor3Args($args[0],$args[1],$args[2]);
@@ -69,6 +76,7 @@
             $this->_client = $client;
             $this->_listeTache = null;
 			$this->_responsable = null;
+			$this->_dateEnd = null;
 		}
 		private function constructor5Args($id, $nom, $description, $client, $responsable) {
 			$this->_id = $id;
@@ -79,6 +87,18 @@
             $this->_client = $client;
             $this->_listeTache = null;
 			$this->_responsable = $responsable;
+			$this->_dateEnd = null;
+		}
+		private function constructor4Args($id, $nom, $avancement, $dateEnd) {
+			$this->_id = $id;
+            $this->_nom = $nom;
+            $this->_description = null;
+            $this->_uniteTemps = null;
+            $this->_avancement = $avancement;
+            $this->_client = null;
+            $this->_listeTache = null;
+			$this->_responsable = null;
+			$this->_dateEnd = $dateEnd;
 		}
 		private function constructor3Args($id, $nom, $avancement) {
 			$this->_id = $id;
@@ -89,6 +109,7 @@
             $this->_client = null;
             $this->_listeTache = null;
 			$this->_responsable = null;
+			$this->_dateEnd = null;
 		}
 		private function constructor2Args($id, $nom) {
 			$this->_id = $id;
@@ -99,6 +120,7 @@
             $this->_client = null;
             $this->_listeTache = null;
 			$this->_responsable = null;
+			$this->_dateEnd = null;
 		}
 		private function constructor1Args($id) {
 			$this->_id = $id;
@@ -117,6 +139,7 @@
 					$this->_client = new Client($row["cid"], $row["cnom"], $row["adresse"]);
 					$this->_listeTache = "";
 					$this->_responsable = new Personne($row["peid"], $row["penom"], $row["peprenom"]);
+					$this->_dateEnd = null;
 					return true;
 				}
 			}
@@ -274,7 +297,7 @@
 	// retourne la liste des projets d'un rsponssable de projet precis
 	function getListProjectActifRespo($idRespo) {
 		if (isConnectMySql()) {
-			$sql = 'select id, nom, avancement from projetGL_projet where etat = 1 and responsable = ' . $idRespo . ' ;';
+			$sql = 'select p.id, p.nom, p.avancement, max(t.dateFinTot) as dateEnd from projetGL_projet p join projetGL_tache t on p.id = t.projet where p.etat = 1 and p.responsable = ' . $idRespo . ' group by p.id;';
 			$result = $_SESSION["link"]->query($sql);
 			if ($result->num_rows == 0){
 				return null;
@@ -282,7 +305,7 @@
 			else {
 				$i = 0;
 				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-					$retVal[$i] = new Projet($row["id"], $row["nom"], $row["avancement"]);
+					$retVal[$i] = new Projet($row["id"], $row["nom"], $row["avancement"], $row["dateEnd"]);
 					$i++;
 				}
 				return $retVal;
