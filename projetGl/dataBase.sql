@@ -150,13 +150,14 @@ CREATE TABLE projetGL_tache (
 
 CREATE TABLE projetGL_alerte (
 	id int NOT NULL AUTO_INCREMENT,
-	tache int NOT NULL,
+    destinataire int NOT NULL,
+	typeAlert int NOT NULL, /* 3 type: 1:alerte, 2:tache, 3:projet */
 	emition DATETIME NOT NULL,
 	contenue TEXT NOT NULL,
 	titre VARCHAR(255) NOT NULL,
 	etat int NOT NULL,
 	PRIMARY KEY (id),
-	CONSTRAINT fk_alerte_tache FOREIGN KEY(tache) REFERENCES projetGL_tache(id),
+	CONSTRAINT fk_alert_destinataire FOREIGN KEY(destinataire) REFERENCES projetGL_personne(id),
 	CONSTRAINT fk_alert_etat FOREIGN KEY(etat) REFERENCES projetGL_etat(id)
 );
 

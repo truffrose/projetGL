@@ -92,6 +92,7 @@
 		$CURSOR_compteView = 13;
 		$CURSOR_tacheView = 14;
 		$CURSOR_tacheEdit = 15;
+		$CURSOR_actu = 16;
 		
 		// grecupere le curseur courant
 		function getCurrentCursor() {

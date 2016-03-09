@@ -21,8 +21,8 @@
          
          <div id="menu_box">
             <ul id="menu">
-              <li class="single_line"><a href="">Actualite</a></li>
-              <li><a href="<?php echo './index.php?cursor=' . $CURSOR_tableau; ?>">Tableau de bord</a></li>
+              <?php if ($_SESSION["systemData"]->getUserRole() != 2) echo'<li class="single_line"><a href="./index.php?cursor=' . $CURSOR_actu . '">Actualite</a></li>'; ?>
+              <?php if ($_SESSION["systemData"]->getUserRole() != 2) echo'<li><a href="./index.php?cursor=' . $CURSOR_tableau . '">Tableau de bord</a></li>'; ?>
               <li class="single_line selected">
                 <a href="">Listes</a>
                 <ul>

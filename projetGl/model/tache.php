@@ -249,7 +249,51 @@
 			}
 		}
 		
-        
     }
+	
+	// retourne la liste des taches du collaborateur
+	function getListTacheCollabo($idCollabo) {
+		if (isConnectMySql()) {
+			$sql = 'select id from projetGL_tache where etat = 1 and responsable = ' . sanitize_string($idCollabo) . ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Tache($row["id"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
+	// retourne la liste des taches du responsable
+	function getListTacheRespo($idRespo) {
+		if (isConnectMySql()) {
+			$sql = 'select t.id from projetGL_tache t join projetGL_projet p on p.id = t.projet where t.etat = 1 and p.responsable = ' . sanitize_string($idRespo) . ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Tache($row["id"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
 
 ?>

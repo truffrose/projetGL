@@ -1,8 +1,8 @@
 <html>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/tableau_collabo.css' ?>"/>
+  <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/tableau_respo.css' ?>"/>
   <link type="text/css" rel="stylesheet" href="<?php echo $path . 'css/menu.css' ?>"/>
-  <script type="text/javascript" src="<?php echo $path . 'import/script/tableau_collabo.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo $path . 'import/script/tableau_respo.js' ?>"></script>
   <script type="text/javascript">
     function changeRole(element)
     {
@@ -65,11 +65,17 @@
             <select id="filter_two_select">
               <option selected="selected">Tous les projets</option>
               <?php
-                if (getListProjetCollabo($_SESSION["user"]->getPersonne()->getId()) != null)
-                  foreach(getListProjetCollabo($_SESSION["user"]->getPersonne()->getId()) as $value) {
-                    echo '<option>'.$value->getNom().'</option>';
-                  }
+              if (getListProjectActifRespo($_SESSION["user"]->getPersonne()->getId()) != null) {
+                foreach(getListProjectActifRespo($_SESSION["user"]->getPersonne()->getId()) as $value) {
+                  echo '<option>'.$value->getNom().'</option>';
+                }
+              }
               ?>
+            </select>
+            <div id="filter_three">Mode d'affichage : </div>
+            <select id="filter_three_select" onchange="changeTable();">
+              <option selected="selected">Projets</option>
+              <option>Tâches</option>
             </select>
           </div>
 
@@ -77,16 +83,16 @@
 
             <div id="title_account">Tableau de bord</div>
 
-            <table id="main_table">  
+            <table id="task_table">  
               <tr class="tr_0">
                 <th class="th1">Tâche</th>
                 <th class="th2">Projet</th>
                 <th class="th3">Avancement</th>
                 <th class="th4">Date de fin</th>
-              </tr>   
+              </tr>
               <?php
-                if (getListTacheCollabo($_SESSION["user"]->getPersonne()->getId()) != null)
-                  foreach(getListTacheCollabo($_SESSION["user"]->getPersonne()->getId()) as $value) {
+                if (getListTacheRespo($_SESSION["user"]->getPersonne()->getId()) != null)
+                  foreach(getListTacheRespo($_SESSION["user"]->getPersonne()->getId()) as $value) {
                     echo '<tr class="tr_1">';
                       echo '<td class="td1"><a href="./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $value->getId() . '">'.$value->getNom().'</a></td>';
                       echo '<td class="td2"><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getProjet()->getId() . '">'.$value->getProjet()->getNom().'</a></td>';
@@ -94,7 +100,25 @@
                       echo '<td class="td4">'.$value->getDateFinTot().'</td>';
                     echo '</tr>';
                   }
-              ?>             
+              ?>
+            </table>
+
+            <table id="project_table">
+              <tr class="tr_0">
+                <th class="th1">Projet</th>
+                <th class="th2">Avancement</th>
+                <th class="th3">Date de fin</th>
+              </tr>
+              <?php
+                if (getListProjectActifRespo($_SESSION["user"]->getPersonne()->getId()) != null)
+                  foreach(getListProjectActifRespo($_SESSION["user"]->getPersonne()->getId()) as $value) {
+                    echo '<tr class="tr_1"> ';
+                      echo '<td class="td1"><a href="./index.php?cursor=' . $CURSOR_projetView . '&action=' . $ACTION_projetView . '&projet=' . $value->getId() . '">'.$value->getNom().'</a></td>';
+                      echo '<td class="td2">'.$value->getAvancement().' %</td>';
+                      echo '<td class="td3"></td>';
+                    echo '</tr>';
+                  }
+              ?>
             </table>
 
             <div id="div_btns">

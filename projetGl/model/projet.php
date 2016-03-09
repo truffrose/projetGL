@@ -45,6 +45,9 @@
 				case 5:
 					$this->constructor5Args($args[0],$args[1],$args[2],$args[3],$args[4]);
 					break;
+				case 3:
+					$this->constructor3Args($args[0],$args[1],$args[2]);
+					break;
 				case 2:
 					$this->constructor2Args($args[0],$args[1]);
 					break;
@@ -76,6 +79,16 @@
             $this->_client = $client;
             $this->_listeTache = null;
 			$this->_responsable = $responsable;
+		}
+		private function constructor3Args($id, $nom, $avancement) {
+			$this->_id = $id;
+            $this->_nom = $nom;
+            $this->_description = null;
+            $this->_uniteTemps = null;
+            $this->_avancement = $avancement;
+            $this->_client = null;
+            $this->_listeTache = null;
+			$this->_responsable = null;
 		}
 		private function constructor2Args($id, $nom) {
 			$this->_id = $id;
@@ -248,6 +261,50 @@
 				$i = 0;
 				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 					$retVal[$i] = new Projet($row["id"], $row["nom"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
+	// retourne la liste des projets d'un rsponssable de projet precis
+	function getListProjectActifRespo($idRespo) {
+		if (isConnectMySql()) {
+			$sql = 'select id, nom, avancement from projetGL_projet where etat = 1 and responsable = ' . $idRespo . ' ;';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Projet($row["id"], $row["nom"], $row["avancement"]);
+					$i++;
+				}
+				return $retVal;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+	
+	// retourne la liste des projet du collaborateur
+	function getListProjetCollabo($idCollabo) {
+		if (isConnectMySql()) {
+			$sql = 'select distinct p.id from projetGL_tache t join projetGL_projet p on t.projet = p.id where p.etat = 1 and t.responsable = ' . sanitize_string($idCollabo) . ';';
+			$result = $_SESSION["link"]->query($sql);
+			if ($result->num_rows == 0){
+				return null;
+			}
+			else {
+				$i = 0;
+				while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+					$retVal[$i] = new Projet($row["id"]);
 					$i++;
 				}
 				return $retVal;

@@ -108,7 +108,12 @@
 					require_once($path . "html/search.php");
 					break;
 				case $CURSOR_tableau:
-					require_once($path . "html/tableau_collabo.php");
+					if ($_SESSION["systemData"]->getUserRole() == 4) {
+						require_once($path . "html/tableau_collabo.php");
+					}
+					else {
+						require_once($path . "html/tableau_respo.php");
+					}
 					break;
 				case $CURSOR_collabo:
 					if (isset($_SESSION["collabo"])) {
@@ -195,9 +200,7 @@
 					break;
 				// use as default page
 				default:
-					$tacheId = 1;
-					$selectedTache = new Tache($tacheId);
-					require_once($path . "html/task.php");
+					require_once($path . "html/actu.php");
 			}
 		}
 		else {
