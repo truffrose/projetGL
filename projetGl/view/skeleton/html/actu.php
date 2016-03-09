@@ -64,16 +64,16 @@
               <ul class="alerts_list">
                 <input type="hidden" id="alert_state" value="showed">
                 <li onclick="hideShowAlerts();" class="alert_title">&nbsp;&nbsp;&nbsp;Alertes (<span id="nb_alerts">-</span>)</li>
-                <li onclick="" class="alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retard Tâche 2.3, Projet Azure (02/01/2016)</li>
-                <li onclick="" class="alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retard Tâche 3.1, Projet Azure (27/01/2016)</li>
+                <li onclick="" class="alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retard Ceuillir les fleurs, Bouquet de fleur (16/03/2016)</li>
+                <li onclick="" class="alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retard Couper les fleurs, Bouquet de fleur (19/03/2016)</li>
 
                 <input type="hidden" id="task_alert_state" value="showed">
                 <li onclick="hideShowTaskAlerts();" class="task_alert_title">&nbsp;&nbsp;&nbsp;Tâches (<span id="nb_task_alerts">-</span>)</li>
-                <li onclick="" class="task_alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification Tâche 1.1, Projet Azure (fin : 12/03/2016 - av : 30%)</li>
+                <li onclick="" class="task_alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification Assembler les fleurs, Bouquet de fleur (fin : 29/03/2016 - av : 35%)</li>
 
                 <input type="hidden" id="project_alert_state" value="showed">
                 <li onclick="hideShowProjectAlerts();" class="project_alert_title">&nbsp;&nbsp;&nbsp;Projets (<span id="nb_project_alerts">-</span>)</li>
-                <li onclick="" class="project_alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clôture Projet Lunar (11/11/2014)</li>
+                <li onclick="" class="project_alert_field"><input type="button" class="btn_field" onclick="deleteAlert();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clôture Nettoyage Serres (24/02/2016)</li>
               </ul>
             </div>
 
