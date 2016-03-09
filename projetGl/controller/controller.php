@@ -193,12 +193,15 @@
 				}
 				break;
 			case $ACTION_clientSave:
-				
 				if (isset($_POST["client"])) {
 					$_SESSION["client"] = $_POST["client"];
 				}
 				$tempClient = new Client($_POST["client"], $_POST["client_name_field"], $_POST["client_address_field"]);
 				$tempClient->save();
+				break;
+			case $ACTION_clientCreate:
+				$tempClient = new Client($_POST["client_name_field"], $_POST["client_address_field"]);
+				$tempClient->create();
 				break;
 			case $ACTION_clientDelete:
 				$tempClient = new Client($_GET["client"]);
@@ -295,12 +298,12 @@
 					$tempTache->save();
 				}
 				else {
-					$tempTache = new Tache($_POST["tache"], $_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], null, null, $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
+					$tempTache = new Tache($_POST["tache"], $_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], $_POST["task_previous_id"], $_POST["task_mother_id"], $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_spend_value"], $_POST["time_remain_value"], $_POST["progress"]);
 					$tempTache->save();
 				}
 				break;
 			case $ACTION_tacheCreate:
-				$tempTache = new Tache($_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], null, null, $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_remain_value"], $_POST["projet"]);
+				$tempTache = new Tache($_POST["task_name"], $_POST["task_description"], $_POST["select_task_respo"], $_POST["select_task_contact"], $_POST["task_previous_id"], $_POST["task_mother_id"], $_POST["date_end_soon_value"], $_POST["date_end_late_value"], $_POST["time_remain_value"], $_POST["projet"]);
 				$_SESSION["tache"] = $tempTache->create();
 				break;
 			default:

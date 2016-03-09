@@ -160,6 +160,20 @@
 				}
 			}
 			
+			// permet de créer un client dans la base de donnée
+			public function create() {
+				if (isConnectMySql()) {
+					$sql = 'INSERT INTO projetGL_client(nom, adresse, etat) VALUES("' . sanitize_string($this->_nom) .'", "' . sanitize_string($this->_adresse) .'", 1);';
+					if ($_SESSION["link"]->query($sql) === true)
+						return $_SESSION["link"]->insert_id;
+					return -1;
+				}
+				else {
+					return -1;
+				}
+			}
+			
+			
 	}
     
 	// recupere la liste des clients

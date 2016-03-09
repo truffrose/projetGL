@@ -88,7 +88,6 @@
                     <input id="contact_tel_field" name="contact_tel_field" type="text" value=""/>
                     <div id="contact_email">Email : </div>
                     <input id="contact_email_field" name="contact_email_field" type="text" value=""/>
-                    <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_contactView . '&action=' . $ACTION_contactView . '&contact=-1'; ?>'"/>
                     <input id="save_btn" type="submit" value="Creer"/>
                   </FORM>
                 <?php
@@ -160,9 +159,6 @@
                         echo '<li><a href="./index.php?cursor=' . $CURSOR_contactEditView . '&action=' . $ACTION_contactView . '&contact=' . $value->getPersonne()->getId() . '">' . $value->getPersonne()->getPrenom() . ' ' . $value->getPersonne()->getNom() . '</a></li>';
                       }
                     }
-                  }
-                  else {
-                    echo 'no contact';
                   }
                 ?>
               </ul>

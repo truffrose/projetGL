@@ -98,11 +98,11 @@
                   <?php
                     if($selectedTache->getPredecesseur() != null) {
                       echo '<a id="href_task_previous" href="">' . $selectedTache->getPredecesseur()->getNom() . '</a>';
-                      echo '<input type="hidden" id="task_previous_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
+                      echo '<input type="hidden" id="task_previous_id" name="task_previous_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
                     }
                     else {
                       echo '<a id="href_task_previous" href="">Aucune</a>';
-                      echo '<input type="hidden" id="task_previous_id" value="-1">';
+                      echo '<input type="hidden" id="task_previous_id" name="task_previous_id" value="-1">';
                     }
                   ?>
                   
@@ -135,11 +135,11 @@
                   <?php
                     if($selectedTache->getTacheMere() != null) {
                       echo '<a id="href_task_mother" href="">' . $selectedTache->getTacheMere()->getNom() . '</a>';
-                      echo '<input type="hidden" id="task_mother_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
+                      echo '<input type="hidden" id="task_mother_id" name="task_mother_id" value="'.$selectedTache->getPredecesseur()->getId().'">';
                     }
                     else {
                       echo '<a id="href_task_mother" href="">Aucune</a>';
-                      echo '<input type="hidden" id="task_mother_id" value="-1">';
+                      echo '<input type="hidden" id="task_mother_id" name="task_mother_id" value="-1">';
                     }
                   ?>
       
@@ -225,7 +225,7 @@
                   <div id="label_task_previous">Tâche précédente : </div>
                   
                   <a id="href_task_previous" href="">Aucune</a>
-                  <input type="hidden" id="task_previous_id" value="-1">
+                  <input type="hidden" id="task_previous_id" name="task_previous_id" value="-1">
                   
       
                   <input id="search_field_task_previous" type="text" value="Rechercher" onblur="resetFieldTaskPrevious('div_tasks_previous');" onclick="emptyFieldTaskPrevious('div_tasks_previous');" oninput="searchTaskPrevious('div_tasks_previous');"/>
@@ -245,7 +245,7 @@
                   <div id="label_task_mother">Tâche mère : </div>
                   
                   <a id="href_task_mother" href="">Aucune</a>
-                  <input type="hidden" id="task_mother_id" value="-1">
+                  <input type="hidden" id="task_mother_id"  name="task_mother_id" value="-1">
       
                   <input id="search_field_task_mother" type="text" value="Rechercher" onblur="resetFieldTaskMother('div_tasks_mother');" onclick="emptyFieldTaskMother('div_tasks_mother');" oninput="searchTaskMother('div_tasks_mother');"/>
       

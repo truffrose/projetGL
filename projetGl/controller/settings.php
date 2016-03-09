@@ -38,6 +38,7 @@
 		$ACTION_projetDelete = 22;
 		$ACTION_projetSave = 23;
 		$ACTION_projetCreate = 24;
+		$ACTION_clientCreate = 25;
 		
 	
 		// getting the action

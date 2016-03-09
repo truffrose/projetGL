@@ -109,7 +109,7 @@
 
             <?php
               if ($_SESSION["systemData"]->getUserRole() != 4) {
-                echo '<input id="new_client_btn" type="button" value="Nouveau Client"/>';
+                echo '<input id="new_client_btn" type="button" value="Nouveau Client" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_clientEditView . '&action=' . $ACTION_clientView . '&client=-1\'"/>';
               }
             ?>
             

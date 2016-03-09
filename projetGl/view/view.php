@@ -24,12 +24,13 @@
 					$selectClient = new Client($idClient);
 					$listeContact = $selectClient->getContact();
 					$selectContact = null;
-					foreach ($listeContact as $value) {
-						if ($idContact == $value->getPersonne()->getId()) {
-							$selectContact = $value;
-							break;
+					if ($listeContact != null)
+						foreach ($listeContact as $value) {
+							if ($idContact == $value->getPersonne()->getId()) {
+								$selectContact = $value;
+								break;
+							}
 						}
-					}
 					if ($selectContact == null) {
 						$selectContact = getContactById($idContact);
 						$selectClient = new Client($selectContact->getClient());
@@ -47,12 +48,13 @@
 					$selectClient = new Client($idClient);
 					$listeContact = $selectClient->getContact();
 					$selectContact = null;
-					foreach ($listeContact as $value) {
-						if ($idContact == $value->getPersonne()->getId()) {
-							$selectContact = $value;
-							break;
+					if ($listeContact != null)
+						foreach ($listeContact as $value) {
+							if ($idContact == $value->getPersonne()->getId()) {
+								$selectContact = $value;
+								break;
+							}
 						}
-					}
 					require_once($path . "html/contact_edit.php");
 					break;
 				case $CURSOR_contactDelete:

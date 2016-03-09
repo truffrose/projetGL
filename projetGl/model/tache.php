@@ -166,8 +166,8 @@
 			$this->_description = $description;
 			$this->_responsable = new Personne($responsable);
 			$this->_contact = new Personne($contact);
-			$this->_predecesseur = $predecesseur;
-			$this->_tacheMere = $tacheMere;
+			$this->_predecesseur = new Tache($predecesseur);
+			$this->_tacheMere = new Tache($tacheMere);
 			$this->_dateFinTot = $dateFinTot;
 			$this->_dateFinTard = $dateFinTard;
 			$this->_tempsPasse = $tempPasse;

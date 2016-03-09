@@ -15,6 +15,8 @@
 		echo 'Error Load UTF8';
 	}
 	
+	// Désactiver le rapport d'erreurs
+	error_reporting(0);
 
 	// return true or false if the system is connect to the DB
 	function isConnectMySql() {

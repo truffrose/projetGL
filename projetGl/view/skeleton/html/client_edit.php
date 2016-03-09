@@ -59,8 +59,16 @@
           <div id="main_box">
             <FORM method=post action="./">
               <input type="hidden"  name="client"  value="<?php echo $selectClient->getId(); ?>">    
-              <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_clientView; ?>">    
-              <input type="hidden"  name="action"  value="<?php echo $ACTION_clientSave; ?>">              
+              <input type="hidden"  name="cursor"  value="<?php echo $CURSOR_clientView; ?>">
+			  <?php
+				if ($selectClient->getId() == -1) {
+					echo '<input type="hidden"  name="action"  value="' . $ACTION_clientCreate . '">';
+				}
+				else {
+					echo '<input type="hidden"  name="action"  value="' . $ACTION_clientSave . '">';
+				}
+			  ?>
+               
               <div id="main_box_title">Edition de Client</div>
               <div id="client_name">Nom : </div>
               <input id="client_name_field" name="client_name_field" type="text" value="<?php echo $selectClient->getNom(); ?>" />
@@ -97,15 +105,20 @@
               
               <input id="add_projects_btn" type="button" value="Nouveau"/>
   
-              <input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href='<?php echo './index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId(); ?>'"/>
+  
+			  <?php
+				if ($selectClient->getId() == -1) {
+					echo '<input id="save_btn" type="submit" value="Créer"/>';
+				}
+				else {
+					echo '<input id="cancel_btn" type="button" value="Annuler" onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientView . '&client=' . $selectClient->getId() . '\'"/>';
+					if ($_SESSION["systemData"]->getUserRole() != 4) {
+					  echo '<input id="delete_btn" type="button" value="Supprimer" onclick="confirmDelete(); window.location.href=\'./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientDelete . '&client=' . $selectClient->getId() . '\'"/>';
+					}
+					echo '<input id="save_btn" type="submit" value="Sauvegarder"/>';
+				}
+			  ?>
               
-              <?php
-                if ($_SESSION["systemData"]->getUserRole() != 4) {
-                  echo '<input id="delete_btn" type="button" value="Supprimer" onclick="confirmDelete(); window.location.href=\'./index.php?cursor=' . $CURSOR_clientView . '&action=' . $ACTION_clientDelete . '&client=' . $selectClient->getId() . '\'"/>';
-                }
-              ?>
-              
-              <input id="save_btn" type="submit" value="Sauvegarder"/>
             </FORM>
           </div>
 
@@ -115,7 +128,7 @@
 
             <div id="clients_list_title">Clients</div>
 
-            <input id="new_client_btn" type="button" value="Nouveau Client"/>
+            <input id="new_client_btn" type="button" value="Nouveau Client" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_clientEditView . '&action=' . $ACTION_clientView . '&client=-1\'"'; ?>/>
 
             <div id="clients_list">
               <ul class="href_list">
