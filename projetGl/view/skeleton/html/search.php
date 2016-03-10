@@ -216,7 +216,7 @@
                   unset($_SESSION["resultat"]);
                 }
                 else {
-                  echo 'Pas d résultat';
+                  echo 'Pas de résultat';
                 }
               ?>
               <br>

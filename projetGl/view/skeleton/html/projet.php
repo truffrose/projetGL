@@ -71,7 +71,7 @@
                     <div id="label">Avancement <span id="progress_value">0</span> %</div>
                   </div>
                   
-                  <div id="list_title">Liste de tâches</div>
+                  <div id="list_title">Liste des tâches</div>
                   <input id="search_field_task" type="text" value="Rechercher"/>
       
                   <div id="div_tree">
@@ -103,7 +103,7 @@
                     <div id="label">Avancement <span id="progress_value"><?php echo $projectSelected->getAvancement(); ?></span> %</div>
                   </div>
                   
-                  <div id="list_title">Liste de tâches</div>
+                  <div id="list_title">Liste des tâches</div>
                   <input id="search_field_task" type="text" value="Rechercher" onblur="resetFieldTask('div_tree','tasks_list_search');" onclick="emptyFieldTask('div_tree','tasks_list_search');" oninput="searchTask('tasks_list_search');"/>
       
                   <div id="div_tree">

@@ -106,7 +106,7 @@
 					<option>Heure</option>
 				  </select>
 				  
-				  <div id="list_title">Liste de tâches</div>
+				  <div id="list_title">Liste des tâches</div>
 				  <input id="search_field_task" type="text" value="Rechercher" onblur="resetFieldTask('div_tasks');" onclick="emptyFieldTask('div_tasks');" oninput="searchTask('div_tasks');"/>
 	  
 				  <div id="div_tasks">
