@@ -58,7 +58,7 @@
   
               <div id="div_table">
   
-                <div id="info_div">Si vous voulez que le nouveau contact d'une tâche soit le contact de la tache mère, choisir "Automatique".</div>
+                <div id="info_div">Si vous voulez que le nouveau contact d'une tâche soit le contact de la tache mère, le choisir dans la liste.</div>
   
                 <table id="title_table">
                   <tr>

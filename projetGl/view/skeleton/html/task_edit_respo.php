@@ -166,12 +166,12 @@
                     </ul>
                   </div>
        
-                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="8"/></div>
-                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="8"/></div>
-                  <div id="label_time_spend">Temps passé (<span id="unit_time">jours</span>) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="3"/></div> 
-                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="3"/></div>   
+                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="<?php echo $selectedTache->getDateFinTot(); ?>" maxlength="10"/></div>
+                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="<?php echo $selectedTache->getDateFinTard(); ?>" maxlength="10"/></div>
+                  <div id="label_time_spend">Temps passé (<span id="unit_time">jours</span>) : <input id="time_spend_value" name="time_spend_value" type="text" value="<?php echo $selectedTache->getTempsPasse(); ?>" maxlength="5"/></div> 
+                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="<?php echo $selectedTache->getTempsRestant(); ?>" maxlength="5"/></div>   
       
-                  <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
+                  <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="5"/></div>    
       
                   <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
                   
@@ -261,9 +261,9 @@
                     </ul>
                   </div>
        
-                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="" maxlength="8"/></div>
-                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="" maxlength="8"/></div>
-                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="" maxlength="3"/></div>   
+                  <div id="label_date_end_soon">Date fin (+ tôt) : <input id="date_end_soon_value" name="date_end_soon_value" type="text" value="" maxlength="12"/></div>
+                  <div id="label_date_end_late">Date fin (+ tard) : <input id="date_end_late_value" name="date_end_late_value" type="text" value="" maxlength="12"/></div>
+                  <div id="label_time_remain">Temps restant (<span id="unit_time">jours</span>) : <input id="time_remain_value" name="time_remain_value" type="text" value="" maxlength="5"/></div>   
       
                   <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=-1\'"'; ?>/>
                   
@@ -286,7 +286,7 @@
 
             <input id="search_field" type="text" value="Rechercher" onblur="resetField('tasks_list','tasks_list_search');" onclick="emptyField('tasks_list','tasks_list_search');" oninput="search('tasks_list_search');"/>
 
-            <div id="tasks_list_title">Projet Azure</div>
+            <div id="tasks_list_title"><?php echo $_SESSION["projet"]->getNom(); ?></div>
 
             <!-- BOUTON A CACHER SELON LE ROLE-->
             <input id="new_task_btn" type="button" value="Nouvelle Tâche" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheEdit . '&action=' . $ACTION_tacheView . '&tache=-1&projet=' . $_SESSION["projet"]->getId() . '\'"'; ?>/>

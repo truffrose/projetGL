@@ -65,7 +65,7 @@
             
             <?php
               if ($idContact == -1 ) {
-                echo '<div id="contact_company">Veuillez selectionner un contact (utilise la balise message)</div>';
+                echo '<div id="contact_company">Veuillez selectionner un contact</div>';
               }
               else {
                 echo '<div id="contact_company">Societe : ' . $selectClient->getNom() .'</div>';

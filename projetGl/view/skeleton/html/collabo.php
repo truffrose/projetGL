@@ -58,7 +58,7 @@
           <?php
             if ($idCollabo == -1) {
               echo '<div id="main_box_title">Collaborateur</div>';
-              echo '<div id="collabo_name">Veuillez selectionner un client (utilise la balise message)</div>';
+              echo '<div id="collabo_name">Veuillez selectionner un collaborateur</div>';
             }
             else {
               if ($_SESSION["systemData"]->getUserRole() == 2) {

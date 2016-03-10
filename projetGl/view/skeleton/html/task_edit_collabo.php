@@ -74,10 +74,10 @@
   
               <div id="label_date_end_soon">Date fin (plus tôt) : <span id="date_end_soon_value"><?php echo $selectedTache->getDateFinTot(); ?></span></div>
               <div id="label_date_end_late">Date fin (plus tard) : <span id="date_end_late_value"><?php echo $selectedTache->getDateFinTard(); ?></span></div>
-              <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="6" maxlength="3" value="<?php echo $selectedTache->getTempsPasse(); ?>"/></div> 
-              <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="1" maxlength="3" value="<?php echo $selectedTache->getTempsPasse(); ?>"/></div>   
+              <div id="label_time_spend">Temps passé (jours) : <input id="time_spend_value" name="time_spend_value" type="text" value="6" maxlength="5" value="<?php echo $selectedTache->getTempsPasse(); ?>"/></div> 
+              <div id="label_time_remain">Temps restant (jours) : <input id="time_remain_value" name="time_remain_value" type="text" value="1" maxlength="5" value="<?php echo $selectedTache->getTempsPasse(); ?>"/></div>   
   
-              <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="3"/></div>    
+              <div id="label_progress">Avancement (%) : <input id="progress" name="progress" type="text" value="<?php echo $selectedTache->getAvancement(); ?>" maxlength="5"/></div>    
   
               <input id="cancel_btn" type="button" value="Annuler" <?php echo 'onclick="window.location.href=\'./index.php?cursor=' . $CURSOR_tacheView . '&action=' . $ACTION_tacheView . '&tache=' . $selectedTache->getId() . '\'"'; ?>/>
               <?php

@@ -116,12 +116,12 @@
         
         // contructeur via l'id d'une tache
         private function constructor1Args($id) {
+			$this->_id = $id;
 			if (isConnectMySql()) {
 				$sql = 'select u.typeUnite, t.nom, t.description, t.dateDebut, t.dateFinTot, t.dateFinTard, t.charge, t.avancement, t.tempsPasse, t.tempsRestant, t.niveau, t.tacheMere, t.predecesseur, t.projet, t.responsable, t.contact from projetGL_tache t join projetGL_projet p on t.projet = p.id join projetGL_uniteTemps u on u.id = p.uniteTemps where t.id = ' . sanitize_string($id) . ';';
 				$result = $_SESSION["link"]->query($sql);
 				if ($result->num_rows != 0){
 					$row = $result->fetch_array(MYSQLI_ASSOC);
-					$this->_id = $id;
 					$this->_nom = $row["nom"];
 					$this->_description = $row["description"];
 					$this->_dateDebut = $row["dateDebut"];
@@ -199,11 +199,15 @@
 				$tm = "null";
 				$pred = "null";
 				if ($this->_tacheMere != null) {
-					$lvl = $this->_tacheMere->getNiveau() + 1;
-					$tm = $this->_tacheMere->getId();
+					if ($this->_tacheMere->getId() != -1) {
+						$lvl = $this->_tacheMere->getNiveau() + 1;
+						$tm = $this->_tacheMere->getId();
+					}
 				}
 				if ($this->_predecesseur != null) {
-					$pred = $this->_predecesseur->getId();
+					if ($this->_predecesseur->getId() != -1) {
+						$pred = $this->_predecesseur->getId();
+					}
 				}
 				$sql = 'update projetGL_tache t set t.nom = "' .  sanitize_string($this->_nom) . '", t.description = "' .  sanitize_string($this->_description) . '", t.dateFinTot = "' .  sanitize_string($this->_dateFinTot) . '", t.dateFinTard = "' .  sanitize_string($this->_dateFinTard) . '", t.avancement = ' .  sanitize_string($this->_avancement) . ', t.tempsPasse = ' .  sanitize_string($this->_tempsPasse) . ', t.tempsRestant = ' .  sanitize_string($this->_tempsRestant) . ', t.niveau = ' .  $lvl . ', t.tacheMere = ' .  sanitize_string($tm) . ', t.predecesseur = ' .  sanitize_string($pred) . ', t.responsable = ' .  sanitize_string($this->_responsable->getId()) . ', t.contact = ' .  sanitize_string($this->_contact->getId()) . ' where id = ' . sanitize_string($this->_id) . ';';
 				return $_SESSION["link"]->query($sql);
@@ -220,11 +224,13 @@
 				$lvl = 0;
 				$tm = "null";
 				$pred = "null";
-				if ($this->_tacheMere != null) {
+				if ($this->_tacheMere != null && $this->_tacheMere != -1) {
+					$this->_tacheMere = new Tache($this->_tacheMere);
 					$lvl = $this->_tacheMere->getNiveau() + 1;
 					$tm = $this->_tacheMere->getId();
 				}
-				if ($this->_predecesseur != null) {
+				if ($this->_predecesseur != null && $this->_predecesseur != -1) {
+					$this->_predecesseur = new Tache($this->_predecesseur);
 					$pred = $this->_predecesseur->getId();
 				}
 				$sql .= 'VALUES("' . sanitize_string($this->_nom) . '", "' .  sanitize_string($this->_description) . '", now(), "' .  sanitize_string($this->_dateFinTot) . '", "' .  sanitize_string($this->_dateFinTard) . '", ' . sanitize_string($this->_charge) . ', 0, ' .  sanitize_string($this->_tempsPasse) . ', ' .  sanitize_string($this->_tempsRestant) . ', true, ' . $lvl . ', ' . sanitize_string($tm) . ', ' .  sanitize_string($pred) . ', ' .  sanitize_string($this->_projet->getId()) . ', ' .  sanitize_string($this->_responsable->getId()) . ', ' .  sanitize_string($this->_contact->getId()) . ', 1);';

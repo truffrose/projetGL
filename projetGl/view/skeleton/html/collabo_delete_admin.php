@@ -102,7 +102,7 @@
   
               <div id="div_table_task">
   
-                <div id="info_div_task">Si vous voulez que le nouveau responsable d'une tâche soit le collaborateur de la tache mère, choisir "Automatique".</div>
+                <div id="info_div_task">Si vous voulez que le nouveau responsable d'une tâche soit le collaborateur de la tache mère, le choisir dans la liste.</div>
   
                 <table id="title_table_task">
                   <tr>

@@ -65,7 +65,7 @@
             <div id="main_box_title">Client</div>
             <?php
               if ($idClient == -1) {
-                echo '<div id="client_name">Veuillez selectionner un client (utilise la balise message)</div>';
+                echo '<div id="client_name">Veuillez selectionner un client</div>';
               }
               else {
                 echo '<div id="client_name">Nom : ' . $selectClient->getNom() . '</div>';
